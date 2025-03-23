@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const PanelWrapper = styled.div`
   display: inline-block;
-  background: white;
   margin: 20px;
   padding: 20px;
   border-radius: 10px;
