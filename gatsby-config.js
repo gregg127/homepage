@@ -6,5 +6,5 @@ module.exports = {
     title: `Homepage`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [],
+  plugins: [`gatsby-plugin-styled-components`],
 }
