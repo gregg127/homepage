@@ -12,4 +12,11 @@ const ContactPage = () => (
 
 export default ContactPage;
 
-export const Head = () => <title>Contact</title>;
+export function Head() {
+  return (
+    <>
+      <html lang="en" />
+      <title>Contact</title>
+    </>
+  )
+}

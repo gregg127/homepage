@@ -30,4 +30,11 @@ const AboutPage = () => (
 
 export default AboutPage;
 
-export const Head = () => <title>About</title>;
+export function Head() {
+  return (
+    <>
+      <html lang="en" />
+      <title>About</title>
+    </>
+  )
+}

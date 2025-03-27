@@ -54,4 +54,11 @@ export const photographyQuery = graphql`
 }
 `
 
-export const Head = () => <title>Photography</title>;
+export function Head() {
+  return (
+    <>
+      <html lang="en" />
+      <title>Photography</title>
+    </>
+  )
+}

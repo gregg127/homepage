@@ -19,4 +19,11 @@ const IndexPage = () => (
 
 export default IndexPage;
 
-export const Head = () => <title>Homepage</title>;
+export function Head() {
+  return (
+    <>
+      <html lang="en" />
+      <title>Homepage</title>
+    </>
+  )
+}
