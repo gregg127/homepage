@@ -12,7 +12,8 @@ const GlobalStyle = createGlobalStyle`
     background-color: rgba(0, 0, 0, 0) !important;
   }
   .ril__toolbarRightSide {
-    padding-right: 20px;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
     background-color: rgba(0, 0, 0, 0.2) !important;
   }
 `;

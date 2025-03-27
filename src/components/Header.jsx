@@ -38,16 +38,18 @@ const Menu = styled.nav`
   }
 
   @media (max-width: 576px) {
-    margin-bottom: 25px;
-    font-size: 1.2em;
+    margin-bottom: 17px;
+    font-size: 1em;
 
     ul {
-      flex-direction: column;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      text-align: center;
     }
 
     li {
-      margin-top: 25px;
+      margin: 10px;
     }
   }
 `;

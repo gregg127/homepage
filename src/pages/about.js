@@ -14,6 +14,17 @@ const AboutPage = () => (
         Technologies that I mostly enjoy working with are Java, Kotlin, Spring Boot, PostgreSQL and Docker. I'm a fan of containerization and truly scalable microservices architecture.
       </span>
     </ImagePanel>
+    <ImagePanel title="experience" imageName="java.png" childrenDirection="left">
+      <span>
+        I landed my first real job as a junior developer because of some projects done at uni and blah blah blah. Then quite quickly I got promoted to a tech lead of a team consisting of bla bla blah
+        Add here description like a motivational letter. Dont do any specifis because you got linkedid
+      </span>
+    </ImagePanel>
+    <ImagePanel title="interests" imageName="java.png" childrenDirection="right">
+      <span>
+        Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback shankle meatloaf landjaeger.
+      </span>
+    </ImagePanel>
   </Page>
 );
 

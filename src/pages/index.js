@@ -11,7 +11,7 @@ const IndexPage = () => (
   <Page>
     <Intro>
       <Panel title="GRZEGORZ GOŁĘBIOWSKI">
-        <span>computer science graduate and software engineer</span>
+        <span>computer science graduate | software engineer | tech lead</span>
       </Panel>
     </Intro>
   </Page>

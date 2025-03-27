@@ -25,8 +25,8 @@ const PanelWrapper = styled.div`
   }
 
   @media only screen and (max-width: 576px) {
-    margin: 5px;
-    max-width: 80%;
+    max-width: 100%;
+    margin: 0;
 
     p {
       text-align: left;

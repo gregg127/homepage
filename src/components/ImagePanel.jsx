@@ -38,42 +38,38 @@ const PanelWrapper = styled.div`
   }
 
   @media only screen and (max-width: 576px) {
-    max-width: 80%;
+    max-width: 100%;
+    margin: 0;
     .row {
       flex-direction: column;
     }
     .column-40 {
-      margin-top: 15px;
+      display: none;
     }
   }
 `;
-
 
 const ImagePanel = ({ title, imageName, childrenDirection, children }) => {
   return (
     <PanelWrapper>
       <h2>{title}</h2>
-      {childrenDirection === "left" ?
+      {childrenDirection === "left" ? (
         <div className="row">
-          <div className="column-60">
-            {children}
-          </div>
+          <div className="column-60">{children}</div>
           <div className="column-40">
             <img src={`/${imageName}`} alt="image" />
-          </div>
-        </div> :
-        <div className="row">
-          <div className="column-40">
-            <img src={`/${imageName}`} alt="image" />
-          </div>
-          <div className="column-60">
-            {children}
           </div>
         </div>
-      }
+      ) : (
+        <div className="row">
+          <div className="column-40">
+            <img src={`/${imageName}`} alt="image" />
+          </div>
+          <div className="column-60">{children}</div>
+        </div>
+      )}
     </PanelWrapper>
   );
 };
-
 
 export default ImagePanel;
