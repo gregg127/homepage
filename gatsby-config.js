@@ -6,6 +6,7 @@ module.exports = {
     title: `Homepage`,
     siteUrl: `https://www.yourdomain.tld`,
   },
+  
   plugins: [`gatsby-plugin-styled-components`,
     `gatsby-image`,
     `gatsby-plugin-sharp`,
@@ -16,6 +17,17 @@ module.exports = {
       options: {
         name: `static`,
         path: `${__dirname}/static/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Homepage`,
+        short_name: `homepage`,
+        lang: 'en',
+        start_url: `/`,
+        display: `standalone`,
+        icon: `static/favicon.svg`, 
       },
     },
   ],
