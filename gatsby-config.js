@@ -6,12 +6,23 @@ module.exports = {
     title: `Homepage`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  
-  plugins: [`gatsby-plugin-styled-components`,
-    `gatsby-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `@browniebroke/gatsby-image-gallery`,
+
+  plugins: [
+    {
+      resolve: `gatsby-plugin-styled-components`,
+    },
+    {
+      resolve: `gatsby-image`,
+    },
+    {
+      resolve: `gatsby-plugin-sharp`,
+    },
+    {
+      resolve: `gatsby-transformer-sharp`,
+    },
+    {
+      resolve: `@browniebroke/gatsby-image-gallery`,
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -27,7 +38,7 @@ module.exports = {
         lang: 'en',
         start_url: `/`,
         display: `standalone`,
-        icon: `static/favicon.svg`, 
+        icon: `static/favicon.svg`,
       },
     },
   ],
