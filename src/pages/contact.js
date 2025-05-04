@@ -14,7 +14,7 @@ const ContactPage = () => (
     <Contact>
       <Panel title="any questions?">
         <div>
-          <span>you can find me on <a href="https://www.linkedin.com/in/grzegorz-golebiowski">LinkedIn</a></span>
+          <span>You can find me on <a href="https://www.linkedin.com/in/grzegorz-golebiowski">LinkedIn</a>.</span>
         </div>
       </Panel>
     </Contact>

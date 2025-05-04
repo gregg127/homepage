@@ -21,7 +21,8 @@ spec:
         fsGroup: 101
       containers:
         - name: homepage
-          image: harbor.golebiowski.dev/services/homepage:1.0 # private registry
+          # private registry
+          image: harbor.golebiowski.dev/services/homepage:1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

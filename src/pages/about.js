@@ -53,10 +53,8 @@ const AboutPage = () => (
     <About>
       <Panel title="about me">
         <div>
-          Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow
-          kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta
-          jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback
-          shankle meatloaf landjaeger.
+          I am a software engineer with a Master’s degree in Computer Science, experienced in the Java-based tech stack. 
+          Currently, I serve as the tech lead of a team of around 10 people developing software for the banking sector.
         </div>
       </Panel>
       <Panel title="experience">
