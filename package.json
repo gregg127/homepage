@@ -14,7 +14,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "audit": "node lighthouse_tests/lighthouse_tests.mjs",
-    "docs": "docsify serve docsify --open"
+    "docs": "docsify serve docsify --open",
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "@browniebroke/gatsby-image-gallery": "^8.2.0",
