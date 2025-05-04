@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   text-align: center;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   a {
     text-decoration: none;
@@ -38,7 +38,7 @@ const Menu = styled.nav`
   }
 
   @media (max-width: 576px) {
-    margin-bottom: 17px;
+    margin-bottom: 5px;
     font-size: 1em;
 
     ul {
@@ -61,8 +61,9 @@ const Header = () => (
         {[
           { path: "/", label: "HOME" },
           { path: "/about", label: "ABOUT" },
+          // { path: "/resume", label: "RESUME" },
+          // { path: "/photos", label: "PHOTOS" },
           { path: "/contact", label: "CONTACT" },
-          { path: "/photography", label: "PHOTOGRAPHY" },
         ].map(({ path, label }) => (
           <li key={path}>
             <Link to={path}>{label}</Link>

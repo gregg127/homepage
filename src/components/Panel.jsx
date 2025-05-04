@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const PanelWrapper = styled.div`
-  display: inline-block;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 10px;
   max-width: 60%;
-
+  margin: 10px auto;
+  padding: 20px;
+  
   h2 {
     margin: 10px 0 30px 0;
     padding: 0 0 20px 0;
@@ -15,20 +13,15 @@ const PanelWrapper = styled.div`
     letter-spacing: 4px;
   }
 
-  p {
+  .children {
     margin: 5px 10px;
     text-align: justify;
   }
 
-  .list-container {
-    text-align: left;
-  }
-
   @media only screen and (max-width: 576px) {
     max-width: 100%;
-    margin: 0;
 
-    p {
+    .children {
       text-align: left;
     }
   }
@@ -39,7 +32,9 @@ const Panel = ({ title, children }) => {
     <PanelWrapper>
       <h2>{title}</h2>
       <span className="line"></span>
-      <div>{children}</div>
+      <p className="children">
+        {children}
+      </p>
     </PanelWrapper>
   );
 };

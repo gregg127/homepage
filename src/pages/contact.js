@@ -1,12 +1,23 @@
 import React from "react";
+import styled from "styled-components";
 import Page from "../components/Page";
 import Panel from "../components/Panel";
 
+const Contact = styled.div`
+  div {
+    text-align: center;
+  }
+`;
+
 const ContactPage = () => (
   <Page>
-    <Panel title="any questions?">
-      <span>you can find me on <a href="https://www.linkedin.com/in/grzegorz-golebiowski">LinkedIn</a></span>
-    </Panel>
+    <Contact>
+      <Panel title="any questions?">
+        <div>
+          <span>you can find me on <a href="https://www.linkedin.com/in/grzegorz-golebiowski">LinkedIn</a></span>
+        </div>
+      </Panel>
+    </Contact>
   </Page>
 );
 

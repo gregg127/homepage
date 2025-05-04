@@ -40,7 +40,8 @@ export default PhotographyPage;
 export const photographyQuery = graphql`
 {
   allFile(
-    filter: {extension: {regex: "/(jpg)|(jpeg)/"}, relativeDirectory: {eq: "photos"}}
+    filter: {extension: {regex: "/(jpg)|(jpeg)/"}, relativeDirectory: {eq: "photos"}},
+    sort: { name: ASC }
   ) {
     edges {
       node {

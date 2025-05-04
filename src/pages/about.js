@@ -1,30 +1,175 @@
 import React from "react";
+import styled from "styled-components";
 import Page from "../components/Page";
-import ImagePanel from "../components/ImagePanel";
+import Panel from "../components/Panel";
+
+const About = styled.div`
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .skills-section {
+    flex: 1 1 calc(33.333%);
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0;
+  }
+
+  .skills-title {
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 10px;
+  }
+
+  .skills-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  @media only screen and (max-width: 576px) {
+    .skills {
+      flex-direction: column;
+    }
+
+    .skills-section {
+      text-align: left;
+      flex: 1 1 100%;
+    }
+
+    .skills-list {
+      margin-left: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      list-style-type: disc;
+    }
+  }
+`;
 
 const AboutPage = () => (
   <Page>
-    <ImagePanel title="education" imageName="pjatk.png" childrenDirection="left">
-      <span>
-        I am a graduate of <a href="https://pja.edu.pl/en/">Polish-Japanese Academy of Information Technology</a> currently doing my Master's degree also in PJAIT.
-      </span>
-    </ImagePanel>
-    <ImagePanel title="technology" imageName="java.png" childrenDirection="right">
-      <span>
-        Technologies that I mostly enjoy working with are Java, Kotlin, Spring Boot, PostgreSQL and Docker. I'm a fan of containerization and truly scalable microservices architecture.
-      </span>
-    </ImagePanel>
-    <ImagePanel title="experience" imageName="java.png" childrenDirection="left">
-      <span>
-        I landed my first real job as a junior developer because of some projects done at uni and blah blah blah. Then quite quickly I got promoted to a tech lead of a team consisting of bla bla blah
-        Add here description like a motivational letter. Dont do any specifis because you got linkedid
-      </span>
-    </ImagePanel>
-    <ImagePanel title="interests" imageName="java.png" childrenDirection="right">
-      <span>
-        Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback shankle meatloaf landjaeger.
-      </span>
-    </ImagePanel>
+    <About>
+      <Panel title="about me">
+        <div>
+          Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow
+          kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta
+          jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback
+          shankle meatloaf landjaeger.
+        </div>
+      </Panel>
+      <Panel title="experience">
+        <div>
+          Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow
+          kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta
+          jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback
+          shankle meatloaf landjaeger.
+        </div>
+      </Panel>
+      <Panel title="key skills">
+        <div className="skills">
+          {[
+            {
+              title: "Areas of expertise",
+              items: [
+                "Content Management Systems",
+                "Custom software development",
+                "Backend development",
+                "Requirements analysis",
+                "Project estimation",
+                "System design",
+              ],
+            },
+            {
+              title: "Languages",
+              items: [
+                "Java",
+                "Clojure",
+                "SQL",
+                "Python",
+                "JavaScript",
+                "Typescript"
+              ],
+            },
+            {
+              title: "Technologies",
+              items: [
+                "Spring",
+                "Spring Boot",
+                "PostgreSQL",
+                "jOOQ",
+                "Flyway",
+                "Varnish Cache",
+                "Consul",
+                "Apache Kafka",
+                "Apache Zookeeper",
+                "Hazelcast",
+                "React JS",
+              ],
+            },
+            {
+              title: "Architecture",
+              items: [
+                "Microservices",
+                "C4",
+                "Onion architecture",
+                "Anemic model"],
+            },
+            {
+              title: "DevOps",
+              items: [
+                "Docker",
+                "Kubernetes",
+                "k3s",
+                "OKD",
+                "Openshift",
+                "Kustomize",
+                "Jenkins",
+                "Grafana",
+              ],
+            },
+            {
+              title: "Tools",
+              items: [
+                "Linux",
+                "macOS",
+                "Intellij IDEA",
+                "Visual Studio Code",
+                "Git",
+                "Gradle"
+              ],
+            },
+          ].map((section, index) => (
+            <div key={index} className="skills-section">
+              <span className="skills-title">{section.title}</span>
+              <ul className="skills-list">
+                {section.items.map((item, idx) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Panel>
+
+      <Panel title="education">
+        <div>
+          Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow
+          kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta
+          jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback
+          shankle meatloaf landjaeger.
+        </div>
+      </Panel>
+      <Panel title="interests">
+        <div>
+          Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow
+          kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta
+          jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback
+          shankle meatloaf landjaeger.
+        </div>
+      </Panel>
+    </About>
   </Page>
 );
 
@@ -36,5 +181,5 @@ export function Head() {
       <html lang="en" />
       <title>About</title>
     </>
-  )
+  );
 }
