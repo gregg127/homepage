@@ -19,6 +19,9 @@ const Intro = styled.div`
     }
   }
   @media only screen and (max-width: 576px) {
+    .introContent {
+      text-align: left;
+    }
     .title {
       display: block;
     }
