@@ -62,7 +62,6 @@ const Header = () => (
           { path: "/", label: "HOME" },
           { path: "/about", label: "ABOUT" },
           // { path: "/resume", label: "RESUME" },
-          // { path: "/photos", label: "PHOTOS" },
           { path: "/contact", label: "CONTACT" },
         ].map(({ path, label }) => (
           <li key={path}>

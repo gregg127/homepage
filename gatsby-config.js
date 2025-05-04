@@ -12,18 +12,6 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`,
     },
     {
-      resolve: `gatsby-image`,
-    },
-    {
-      resolve: `gatsby-plugin-sharp`,
-    },
-    {
-      resolve: `gatsby-transformer-sharp`,
-    },
-    {
-      resolve: `@browniebroke/gatsby-image-gallery`,
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `static`,
