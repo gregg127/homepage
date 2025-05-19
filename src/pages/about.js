@@ -19,14 +19,14 @@ const AboutPage = () => (
           Currently, I serve as the tech lead of a team of around 10 people developing software for the banking sector.
         </div>
       </Panel>
-      <Panel title="experience">
+      {/* <Panel title="experience">
         <div>
           Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow
           kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta
           jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback
           shankle meatloaf landjaeger.
         </div>
-      </Panel>
+      </Panel> */}
       <Panel title="key skills">
         <div className="skills">
           {[
@@ -63,7 +63,7 @@ const AboutPage = () => (
         </div>
       </Panel>
 
-      <Panel title="education">
+      {/* <Panel title="education">
         <div>
           Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow
           kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta
@@ -78,7 +78,7 @@ const AboutPage = () => (
           jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback
           shankle meatloaf landjaeger.
         </div>
-      </Panel>
+      </Panel> */}
     </About>
   </Page>
 );
