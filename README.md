@@ -25,15 +25,15 @@ npm run audit
 ## Deployment
 
 ### Steps to Deploy
-1. **Update Version**: Manually update the `VERSION` variable in the `deploy.sh` file.
-2. **Run Deployment**: Execute the following command:
+1. **Run Deployment**: Execute the following command:
    ```sh
    npm run deploy
    ```
    This will:
+   - Automatically increment the minor version based on the latest git tag.
    - Update the version in `package.json`.
    - Build a Docker image.
    - Push the Docker image to a private registry.
    - Update the version in the kustomization directory.
    - Create a commit and tag with the new release.
-3. Push commit and tag. This will cause deployment to [the cluster](https://github.com/gregg127/anton).
+2. Push commit and tag. This will cause deployment to [the cluster](https://github.com/gregg127/anton).
