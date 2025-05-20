@@ -50,7 +50,7 @@ const Menu = styled.nav`
     }
 
     li {
-      margin: 5px;
+      margin: 10px;
     }
   }
 `;
