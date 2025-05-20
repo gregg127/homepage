@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=1.3
+VERSION=1.4
 IMAGE_NAME=harbor.golebiowski.dev/services/homepage
 
 log() {
