@@ -55,7 +55,7 @@ export function Head() {
   return (
     <>
       <html lang="en" />
-      <title>Homepage</title>
+      <title>Grzegorz Gołębiowski - personal website</title>
     </>
   )
 }
