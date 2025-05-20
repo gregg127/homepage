@@ -26,12 +26,6 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-family: "Courier New", Courier, monospace, sans-serif;
   }
-
-  @media only screen and (max-width: 576px) {
-    body {
-      font-size: 0.8em
-    }
-  }
 `;
 
 const Wrapper = styled.div`
