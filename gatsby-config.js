@@ -3,8 +3,8 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Homepage`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Grzegorz Gołębiowski - personal website`,
+    siteUrl: `https://golebiowski.dev`,
   },
 
   plugins: [
@@ -21,8 +21,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Homepage`,
-        short_name: `homepage`,
+        name: `Grzegorz Gołębiowski - personal website`,
+        short_name: `Grzegorz Gołębiowski`,
         lang: 'en',
         start_url: `/`,
         display: `standalone`,
