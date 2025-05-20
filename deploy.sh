@@ -16,6 +16,7 @@ npm run clean
 
 log "Updating version in package.json..."
 sed -i '' "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" package.json
+npm install
 
 log "Building site..."
 npm run build
