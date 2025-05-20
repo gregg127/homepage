@@ -32,28 +32,36 @@ const AboutPage = () => (
           {[
             {
               title: "Areas of expertise",
-              content: "Content Management Systems, Custom software development, Backend development, Requirements analysis, Project estimation, System design"
+              content: "Content management systems, custom software development, requirements analysis, project estimation, system design and architecture, backend development"
             },
             {
-              title: "Languages",
+              title: "Programming languages",
               content: "Java, Clojure, SQL, Python, JavaScript, Typescript"
             },
             {
               title: "Technologies",
-              content: "Spring, Spring Boot, PostgreSQL, jOOQ, Flyway, Varnish Cache, Consul, Apache Kafka, Apache Zookeeper, Hazelcast, React JS"
+              content: "Spring, Spring Boot, Jakarta EE, WildFly, JBoss EAP, Hazelcast, PostgreSQL, jOOQ, Flyway, Varnish Cache, Consul, Apache Kafka, Apache Zookeeper, Solr, Quartz, Swagger, React JS, Gatsby SSR"
             },
             {
               title: "Architecture",
-              content: "Microservices, C4, Onion architecture, Anemic model"
+              content: "Microservices, C4 model, onion architecture, anemic and rich domain models"
             },
             {
               title: "DevOps",
-              content: "Docker, Kubernetes, k3s, OKD, Openshift, Kustomize, Jenkins, Grafana"
+              content: "Docker, Kubernetes, k3s, OKD, Openshift, Kustomize, Jenkins, Grafana, Sonatype Nexus Repository"
             },
             {
               title: "Tools",
-              content: "Linux, macOS, Intellij IDEA, Visual Studio Code, Git, Gradle"
+              content: "Linux, macOS, Intellij IDEA, Visual Studio Code, Git, Gradle, SonarQube, OWASP Dependency-Check"
             },
+            {
+              title: "Leadership",
+              content: "Blake and Mouton Managerial Grid Model, Blanchard Situational Leadership Model, Start-Stop-Continue feedback"
+            },
+            {
+              title: "Languages",
+              content: "Polish (native), English (C1)"
+            }
           ].map((section, index) => (
             <p key={index}>
               <div class="skills-title">{section.title}</div>
