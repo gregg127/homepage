@@ -39,7 +39,7 @@ const Menu = styled.nav`
   }
 
   @media (max-width: 576px) {
-    margin-bottom: 5px;
+    margin-bottom: 0;
     font-size: 1em;
 
     ul {
@@ -50,7 +50,7 @@ const Menu = styled.nav`
     }
 
     li {
-      margin: 10px;
+      margin: 5px;
     }
   }
 `;

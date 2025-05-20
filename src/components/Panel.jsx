@@ -20,12 +20,8 @@ const PanelWrapper = styled.div`
 
   @media only screen and (max-width: 576px) {
     max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-
-    /* .children {
-      text-align: left;
-    } */
+    padding: 0;
+    margin-bottom: 40px;
   }
 `;
 
