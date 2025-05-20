@@ -6,6 +6,11 @@ log() {
   echo "$(date +"%Y-%m-%d %H:%M:%S") - $1"
 }
 
+if ! docker info > /dev/null 2>&1; then
+    log "Error: Docker daemon is not running"
+    exit 1
+fi
+
 log "Cleaning up..."
 npm run clean
 
