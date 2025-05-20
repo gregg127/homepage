@@ -18,9 +18,19 @@ const GlobalStyle = createGlobalStyle`
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
     font-family: "Courier New", Courier, monospace, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media only screen and (max-width: 576px) {
+    body {
+      font-size: 0.8em
+    }
   }
 `;
 

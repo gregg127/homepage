@@ -26,6 +26,7 @@ const Wrapper = styled.div`
 
 const Menu = styled.nav`
   ul {
+    font-family: "Courier New", Courier, monospace, sans-serif;
     list-style: none;
     padding: 0;
     display: flex;
