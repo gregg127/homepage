@@ -20,7 +20,7 @@ The template code for log entry:
 ## Decision
 ...
 
-## Consequences
+## Result
 ...
 ```
 
