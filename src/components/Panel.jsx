@@ -10,7 +10,7 @@ const PanelWrapper = styled.div`
     margin: 10px 0 30px 0;
     padding: 0 0 20px 0;
     border-bottom: 1px solid silver;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
   }
 
   .children {

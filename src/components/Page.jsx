@@ -7,7 +7,6 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   :root {
     --color-text: black;
-    /* --color-background: rgb(250, 249, 246); */
     --color-background: white;
   }
 
@@ -24,7 +23,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Courier New", Courier, monospace, sans-serif;
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-style: normal;
   }
 `;
 
