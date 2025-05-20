@@ -1,5 +1,12 @@
 #!/bin/bash
-VERSION=1.5
+
+# Get the latest version from git tags and increment minor version
+CURRENT_VERSION=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/v//' || echo "1.0")
+MAJOR=$(echo $CURRENT_VERSION | cut -d. -f1)
+MINOR=$(echo $CURRENT_VERSION | cut -d. -f2)
+NEW_MINOR=$((MINOR + 1))
+VERSION="$MAJOR.$NEW_MINOR"
+
 IMAGE_NAME=harbor.golebiowski.dev/services/homepage
 
 log() {
