@@ -32,6 +32,7 @@ sed -i '' "s|$IMAGE_NAME:.*|$IMAGE_NAME:$VERSION|" kustomization/deployment.yaml
 log "Commiting version to the repostiory..."
 git add deploy.sh
 git add package.json
+git add package-lock.json
 git add kustomization/deployment.yaml
 git commit -m "Release version $VERSION"
 git tag v$VERSION
