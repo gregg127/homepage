@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Page from "../components/Page";
-import Panel from "../components/Panel";
+import Page from "../components/common/Page";
+import Panel from "../components/layout/Panel";
 
 const NotFound = styled.div`
   div {

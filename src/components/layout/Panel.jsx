@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const PanelWrapper = styled.div`
+const StyledPanel = styled.div`
   max-width: 60%;
   margin: 10px auto;
   padding: 20px;
@@ -9,7 +9,7 @@ const PanelWrapper = styled.div`
   h2 {
     margin: 10px 0 30px 0;
     padding: 0 0 20px 0;
-    border-bottom: 1px solid silver;
+    border-bottom: 1px solid var(--secondary-color);
     letter-spacing: 3px;
   }
 
@@ -27,13 +27,12 @@ const PanelWrapper = styled.div`
 
 const Panel = ({ title, children }) => {
   return (
-    <PanelWrapper>
+    <StyledPanel>
       <h2>{title}</h2>
-      <span className="line"></span>
       <p className="children">
         {children}
       </p>
-    </PanelWrapper>
+    </StyledPanel>
   );
 };
 

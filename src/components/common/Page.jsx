@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --color-text: black;
     --color-background: white;
+    --secondary-color: silver;
+    --accent-color: #00c16a;
   }
 
   body {
@@ -29,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   margin: 0;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -38,11 +40,11 @@ const Wrapper = styled.div`
 
 const Page = ({ children }) => {
   return (
-    <Wrapper>
+    <StyledWrapper>
       <GlobalStyle />
       <Header />
       {children}
-    </Wrapper>
+    </StyledWrapper>
   );
 };
 

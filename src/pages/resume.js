@@ -1,6 +1,6 @@
 import React from "react";
-import Page from "../components/Page";
-import Panel from "../components/Panel";
+import Page from "../components/common/Page";
+import Panel from "../components/layout/Panel";
 
 const ResumePage = () => (
   <Page>

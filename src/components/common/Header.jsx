@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const StyledHeader = styled.div`
   text-align: center;
   padding: 10px;
   margin-bottom: 10px;
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Menu = styled.nav`
+const StyledMenu = styled.nav`
   ul {
     font-family: "Courier Prime", monospace;
     font-weight: 400;
@@ -58,8 +58,8 @@ const Menu = styled.nav`
 `;
 
 const Header = () => (
-  <Wrapper>
-    <Menu>
+  <StyledHeader>
+    <StyledMenu>
       <ul>
         {[
           { path: "/", label: "HOME" },
@@ -72,8 +72,8 @@ const Header = () => (
           </li>
         ))}
       </ul>
-    </Menu>
-  </Wrapper>
+    </StyledMenu>
+  </StyledHeader>
 );
 
 export default Header;
