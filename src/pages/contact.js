@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
+import Link from "../components/ui/Link";
 
 const Contact = styled.div`
   div {
@@ -14,7 +15,7 @@ const ContactPage = () => (
     <Contact>
       <Panel title="any questions?">
         <div>
-          <span>You can find me on <a href="https://www.linkedin.com/in/grzegorz-golebiowski">LinkedIn</a>.</span>
+          You can find me on <Link href="https://www.linkedin.com/in/grzegorz-golebiowski">LinkedIn</Link>.
         </div>
       </Panel>
     </Contact>

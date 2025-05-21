@@ -1,12 +1,24 @@
 import React from "react";
+import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
+import Link from "../components/ui/Link";
+
+const Resume = styled.div`
+  div {
+    text-align: center;
+  }
+`;
 
 const ResumePage = () => (
   <Page>
-    <Panel title="my resume">
-      <span>you can download my CV as PDF file from ...</span>
-    </Panel>
+    <Resume>
+      <Panel title="my resume">
+        <div>
+          You can see my resume by <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">clicking here</Link>.
+        </div>
+      </Panel>
+    </Resume>
   </Page>
 );
 
