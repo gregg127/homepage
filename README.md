@@ -5,9 +5,15 @@ This repository contains the source code for my homepage built with Gatsby.
 ## Development
 
 ### Run the Application
-To start the development server:
+To start the local development server:
 ```sh
 npm run develop
+```
+
+### Run in Container
+To run the application in a Docker container:
+```sh
+npm run container
 ```
 
 ### Run Documentation

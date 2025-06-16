@@ -25,7 +25,7 @@ spec:
           image: harbor.golebiowski.dev/services/homepage:1.11
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 8000
           resources:
             requests:
               memory: "64Mi"

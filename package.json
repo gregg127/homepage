@@ -13,6 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "container": "npm run clean && npm run build && docker-compose up --build",
     "audit": "node lighthouse_tests/lighthouse_tests.mjs",
     "docs": "docsify serve docsify --open",
     "deploy": "./deploy.sh"

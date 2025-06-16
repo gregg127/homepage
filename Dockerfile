@@ -1,7 +1,17 @@
-FROM nginxinc/nginx-unprivileged:1.27.4
+FROM bitnami/nginx:1.28.0
 
-COPY public /usr/share/nginx/html
+USER 0
 
-EXPOSE 8080
+RUN mkdir -p /homepage
 
-CMD ["nginx", "-g", "daemon off;"]
+USER 1001
+
+### Modify 'worker_connections' on NGINX config file to '512'
+RUN sed -i -r "s#(\s+worker_connections\s+)[0-9]+;#\1512;#" /opt/bitnami/nginx/conf/nginx.conf
+
+COPY public /homepage
+COPY nginx/server.conf /opt/bitnami/nginx/conf/server_blocks/server.conf
+
+EXPOSE 8000
+
+USER 1002
