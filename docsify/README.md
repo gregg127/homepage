@@ -8,7 +8,7 @@ When writing log entries, I follow a modified ADR (Architecture Decision Record)
 * **Title** – A first-level heading with the entry number.  
 * **Context** – A description of the problem the log entry addresses.  
 * **Decision** – The solution chosen to address the problem.  
-* **Result** – How the implementation of the decision helped resolve the problem.  
+* **Result** – What was done and what are the results, verification if the problem was solved.
 
 The template code for log entry:
 ```markdown

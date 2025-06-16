@@ -61,8 +61,8 @@ async function runLighthouse(url, tagDir, tag) {
 
 // Main function to execute Lighthouse tests for all URLs
 async function runLighthouseTests() {
-    const host = "http://themachine";
-    const paths = ["/", "/about/", "/contact/", "/photography/"];
+    const host = "https://golebiowski.dev";
+    const paths = ["/", "/about/", "/resume/", "/contact/"];
     const urls = paths.map(path => `${host}${path}`);
     
     // Get the current tag from the latest commit
