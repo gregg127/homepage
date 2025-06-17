@@ -14,11 +14,6 @@ spec:
       labels:
         app: homepage
     spec:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 101
-        runAsGroup: 101
-        fsGroup: 101
       containers:
         - name: homepage
           # private registry
@@ -33,12 +28,5 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "200m"
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            seccompProfile:
-              type: RuntimeDefault
       imagePullSecrets:
         - name: harbor-registry-key
