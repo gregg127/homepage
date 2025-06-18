@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
-import Button from "../components/ui/Button";
-import DeveloperIcon from "../components/ui/DeveloperIcon";
+import Icon from "../components/ui/Icon";
 import SectionedList from "../components/layout/SectionedList";
 import Link from "../components/ui/Link";
 
@@ -102,28 +101,28 @@ const AboutPage = () => (
       <Panel title="technologies">
         <div className="technologies-list">
           {[
-            { iconName: "Java", label: "Java" },
-            { iconName: "Spring", label: "Spring" },
-            { iconName: "PostgreSQL", label: "PostgreSQL" },
-            { iconName: "Docker", label: "Docker" },
-            { iconName: "Kubernetes", label: "Kubernetes" },
-            { iconName: "Jenkins", label: "Jenkins" },
-            { iconName: "Grafana", label: "Grafana" },
-            { iconName: "Apache", label: "Kafka" },
-            { iconName: "JavaScript", label: "JavaScript" },
-            { iconName: "TypeScript", label: "TypeScript" },
-            { iconName: "React", label: "React" },
-            { iconName: "Gatsby", label: "Gatsby" },
-            { iconName: "Linux", label: "Linux" },
-            { iconName: "AppleDark", label: "iOS" },
-            { iconName: "Python", label: "Python" },
-            { iconName: "Bash", label: "Bash" }
+            { iconName: "java", label: "Java" },
+            { iconName: "python", label: "Python" },
+            { iconName: "clojure", label: "Clojure" },
+            { iconName: "spring", label: "Spring" },
+            { iconName: "postgresql", label: "PostgreSQL" },
+            { iconName: "kafka", label: "Kafka" },
+            { iconName: "docker", label: "Docker" },
+            { iconName: "kubernetes", label: "Kubernetes" },
+            { iconName: "openshift", label: "OpenShift" },
+            { iconName: "jenkins", label: "Jenkins" },
+            { iconName: "grafana", label: "Grafana" },
+            { iconName: "javascript", label: "JavaScript" },
+            { iconName: "typescript", label: "TypeScript" },
+            { iconName: "react", label: "React" },
+            { iconName: "linux", label: "Linux" },
+            { iconName: "apple", label: "iOS" },
           ].map((tech, index) => (
-            <DeveloperIcon key={index} iconName={tech.iconName} label={tech.label} />
+            <Icon key={index} iconName={tech.iconName} label={tech.label} />
           ))}
         </div>
         <div className="technologies-more">
-          ... and many, many more: <Button href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">Resume</Button>
+          ... and many, many more: <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">see resume</Link>. 
         </div>
       </Panel>
 

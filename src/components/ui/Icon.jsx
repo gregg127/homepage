@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import * as Icons from "developer-icons";
 
 const StyledIcon = styled.div`
   display: inline-block;
@@ -15,7 +14,7 @@ const StyledIcon = styled.div`
     display: block;
     margin: 0 auto;
     transition: all 0.2s linear;
-    
+    max-width: 40px;
     &:hover {
       transform: translateY(-2px);
     }
@@ -27,14 +26,13 @@ const StyledIcon = styled.div`
   }
 `;
 
-const DeveloperIcon = ({ iconName, label }) => {
-  const Icon = Icons[iconName];
+const Icon = ({ iconName, label }) => {
   return (
     <StyledIcon>
-      <Icon size={40} className="icon" />
+      <img class="icon" src={"/icons/" + iconName + "-svgrepo-com.svg"} alt={iconName} />
       <div className="iconLabel">{label}</div>
     </StyledIcon>
   );
 };
 
-export default DeveloperIcon;
+export default Icon;
