@@ -8,9 +8,9 @@ const Intro = styled.div`
   .introContent {
     text-align: center;
   }
-  .video {
+  .gif {
     margin-top: 30px;
-    video {
+    img {
       border-radius: 8px;
       max-width: 100%;
       height: auto;
@@ -39,10 +39,9 @@ const IndexPage = () => (
           <span class="title">computer science graduate</span><span class="divider"> | </span>
           <span class="title">software engineer</span><span class="divider"> | </span>
           <span class="title">tech lead</span>
-          <div class="video">
-            <video autoplay="autoplay" muted="muted" loop="loop">
-              <source src="jin_yang_handshake.mp4" type="video/mp4" />
-            </video>
+          <div class="gif">
+            <img src="/jin%20yang%20handshake%20GIF%20by%20Silicon%20Valley.gif"
+              alt="Jin Yang Handshake from Silicon Valley" />
           </div>
         </div>
       </Panel>
