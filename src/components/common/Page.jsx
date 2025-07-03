@@ -6,6 +6,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   :root {
+    font-size: 1.1em;
     --color-text: black;
     --color-background: white;
     --secondary-color: silver;
