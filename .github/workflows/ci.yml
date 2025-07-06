@@ -7,6 +7,8 @@ jobs:
   lighthouseci:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait 5 minutes for the cluster to fetch and deploy app 
+        run: sleep 300
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
