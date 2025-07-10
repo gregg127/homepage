@@ -6,7 +6,7 @@ const StyledSectionedList = styled.div`
 
   .section-date {
     font-style: italic;
-    color: var(--secondary-color);
+    color: var(--color-text-light);
   }
 
   .section-list {

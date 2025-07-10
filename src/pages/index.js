@@ -4,7 +4,7 @@ import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
 
 const Intro = styled.div`
-  font-size: 1.3em;
+  font-size: 1.2em;
   .introContent {
     text-align: center;
   }

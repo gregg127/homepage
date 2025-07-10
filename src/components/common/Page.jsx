@@ -8,9 +8,9 @@ const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 1.1em;
     --color-text: black;
+    --color-text-light: #777777;
     --color-background: white;
     --secondary-color: silver;
-    --accent-color: #00c16a;
   }
 
   body {

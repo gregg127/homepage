@@ -9,7 +9,7 @@ const StyledIcon = styled.div`
   margin: 2px;
   width: 80px;
   text-align: center;
-
+  font-size: 0.85em;
   .icon {
     display: block;
     margin: 0 auto;
