@@ -29,16 +29,8 @@ RUN apt update && \
     apt install -y libbrotli-dev
 # Copy brotli module from builder
 COPY --from=builder /opt/bitnami/nginx/modules/ngx_http_brotli_filter_module.so /opt/bitnami/nginx/modules/ngx_http_brotli_filter_module.so
-# Enable brotli module
-RUN sed -i '/worker_processes/aload_module modules/ngx_http_brotli_filter_module.so;' /opt/bitnami/nginx/conf/nginx.conf
-# Replace 'gzip' with 'brotli' compression
-RUN sed -i -r "s#(\s+)gzip(\s+)on;#\1brotli\2on;#" /opt/bitnami/nginx/conf/nginx.conf
-RUN sed -i "/gzip_http_version/d" /opt/bitnami/nginx/conf/nginx.conf
-RUN sed -i -r "s#(\s+)gzip_comp_level(\s+).*;#\1brotli_comp_level\24;#" /opt/bitnami/nginx/conf/nginx.conf
-RUN sed -i "/gzip_proxied/d" /opt/bitnami/nginx/conf/nginx.conf
-RUN sed -i -r "s#(\s+)gzip_types(\s+).*;#\1brotli_types\2text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;#" /opt/bitnami/nginx/conf/nginx.conf
-# Modify 'worker_connections' on NGINX config file to '512'
-RUN sed -i -r "s#(\s+worker_connections\s+)[0-9]+;#\1512;#" /opt/bitnami/nginx/conf/nginx.conf
+# Copy NGINX configuration file
+COPY nginx/nginx.conf /opt/bitnami/nginx/conf/nginx.conf
 # Copy homepage server block configuration
 COPY nginx/server.conf /opt/bitnami/nginx/conf/server_blocks/server.conf
 # Create a directory for the homepage static files
