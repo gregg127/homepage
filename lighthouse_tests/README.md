@@ -1,8 +1,27 @@
-### Prerequisites
-Tests are run using the [Lighthouse](https://github.com/GoogleChrome/lighthouse) tool. They are executed on a locally hosted server. Ensure that tests are performed on a tagged version, and add the output file to the `results` directory with a suffix containing the version tag.
+## Lighthouse Performance Tracking
 
-### Running the Test
-From the project root run
-```sh
-npm run audit
-```
+### Index Page
+| Version | Performance | Accessibility | Best Practices | SEO |
+|---------|-------------|---------------|----------------|-----|
+| v1.19   | -           | -             | -              | -   |
+
+### About Page
+| Version | Performance | Accessibility | Best Practices | SEO |
+|---------|-------------|---------------|----------------|-----|
+| v1.19   | -           | -             | -              | -   |
+
+### Resume Page
+| Version | Performance | Accessibility | Best Practices | SEO |
+|---------|-------------|---------------|----------------|-----|
+| v1.19   | -           | -             | -              | -   |
+
+### Contact Page
+| Version | Performance | Accessibility | Best Practices | SEO |
+|---------|-------------|---------------|----------------|-----|
+| v1.19   | -           | -             | -              | -   |
+
+**Notes:**
+- All scores are out of 100
+- Performance reports are stored in Lighthouse's temporary public storage service
+- Links to detailed reports are available in GitHub Actions workflow logs after each tag push
+- Scores are updated manually after each application release
