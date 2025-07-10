@@ -3,22 +3,22 @@
 ### Index Page
 | Version | Performance | Accessibility | Best Practices | SEO |
 |---------|-------------|---------------|----------------|-----|
-| v1.19   | -           | -             | -              | -   |
+| v1.20   | 83          | 100           | 96             | 91  |
 
 ### About Page
 | Version | Performance | Accessibility | Best Practices | SEO |
 |---------|-------------|---------------|----------------|-----|
-| v1.19   | -           | -             | -              | -   |
+| v1.20   | 93          | 95            | 96             | 91  |
 
 ### Resume Page
 | Version | Performance | Accessibility | Best Practices | SEO |
 |---------|-------------|---------------|----------------|-----|
-| v1.19   | -           | -             | -              | -   |
+| v1.20   | 97          | 100           | 96             | 90  |
 
 ### Contact Page
 | Version | Performance | Accessibility | Best Practices | SEO |
 |---------|-------------|---------------|----------------|-----|
-| v1.19   | -           | -             | -              | -   |
+| v1.20   | 97          | 100           | 96             | 90  |
 
 **Notes:**
 - All scores are out of 100
