@@ -3,3 +3,4 @@
 * [log_001](logs/log_001)
 * [log_002](logs/log_002)
 * [log_003](logs/log_003)
+* [log_004](logs/log_004)
