@@ -48,6 +48,13 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-sitemap`,
-    }
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        sitemap: `https://golebiowski.dev/sitemap-0.xml`,
+        policy: [{ userAgent: `*`, allow: `/` }],
+      },
+    },
   ],
 }
