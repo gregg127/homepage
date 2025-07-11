@@ -40,8 +40,16 @@ const StyledMenu = styled.nav`
     gap: 20px;
   }
 
+  .active {
+    background-color: var(--secondary-color);
+  }
+
   li {
     font-size: 1.1em;
+  }
+
+  .link:focus {
+    outline-offset: 0px;
   }
 
   @media (max-width: 576px) {
@@ -64,18 +72,22 @@ const StyledMenu = styled.nav`
 const Header = () => (
   <StyledHeader>
     <StyledMenu>
-      <ul>
-        {[
-          { path: "/", label: "HOME" },
-          { path: "/about", label: "ABOUT" },
-          { path: "/resume", label: "RESUME" },
-          { path: "/contact", label: "CONTACT" },
-        ].map(({ path, label }) => (
-          <li key={path}>
-            <Link to={path}>{label}</Link>
-          </li>
-        ))}
-      </ul>
+      <nav>
+        <ul>
+          {[
+            { path: "/", label: "HOME" },
+            { path: "/about", label: "ABOUT" },
+            { path: "/resume", label: "RESUME" },
+            { path: "/contact", label: "CONTACT" },
+          ].map(({ path, label }) => (
+            <li key={path}>
+              <Link class="link" activeClassName="active" to={path}>
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </StyledMenu>
     <div className="theme-button">
       <ThemeButton />
