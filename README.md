@@ -5,6 +5,16 @@ This repository contains the source code for my homepage built with Gatsby.
 
 ## Development
 
+### Setup
+Install npm:
+```sh
+sudo apt install npm
+```
+Install dependencies using npm:
+```sh
+npm install
+```
+
 ### Run the Application
 To start the local development server:
 ```sh
