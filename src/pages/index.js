@@ -43,10 +43,10 @@ const IndexPage = () => (
           <span className="title">tech lead</span>
           <div className="video">
             <video
-              autoplay="autoplay"
+              autoPlay="autoplay"
               muted="muted"
               loop="loop"
-              playsinline="playsinline"
+              playsInline="playsinline"
             >
               <source src="jin_yang_handshake.mp4" type="video/mp4" />
             </video>
