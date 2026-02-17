@@ -35,12 +35,19 @@ const IndexPage = () => (
   <Page>
     <Intro>
       <Panel title="GRZEGORZ GOŁĘBIOWSKI">
-        <div class="introContent">
-          <span class="title">computer science graduate</span><span class="divider"> | </span>
-          <span class="title">software engineer</span><span class="divider"> | </span>
-          <span class="title">tech lead</span>
-          <div class="video">
-            <video autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline">
+        <div className="introContent">
+          <span className="title">computer science graduate</span>
+          <span className="divider"> | </span>
+          <span className="title">software engineer</span>
+          <span className="divider"> | </span>
+          <span className="title">tech lead</span>
+          <div className="video">
+            <video
+              autoplay="autoplay"
+              muted="muted"
+              loop="loop"
+              playsinline="playsinline"
+            >
               <source src="jin_yang_handshake.mp4" type="video/mp4" />
             </video>
           </div>
@@ -58,5 +65,6 @@ export function Head() {
       <html lang="en" />
       <title>Grzegorz Gołębiowski - personal website</title>
     </>
-  )
+  );
 }
+

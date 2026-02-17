@@ -29,10 +29,15 @@ const StyledIcon = styled.div`
 const Icon = ({ iconName, label }) => {
   return (
     <StyledIcon>
-      <img class="icon" src={"/icons/" + iconName + "-svgrepo-com.svg"} alt={iconName} />
+      <img
+        className="icon"
+        src={"/icons/" + iconName + "-svgrepo-com.svg"}
+        alt={iconName}
+      />
       <div className="iconLabel">{label}</div>
     </StyledIcon>
   );
 };
 
 export default Icon;
+
