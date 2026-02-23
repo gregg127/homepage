@@ -6,7 +6,7 @@ const StyledSectionedList = styled.div`
 
   .section-date {
     font-style: italic;
-    color: var(--color-text-light);
+    color: var(--color-text-accent);
   }
 
   .section-list {
@@ -16,17 +16,17 @@ const StyledSectionedList = styled.div`
 `;
 
 const SectionedList = ({ header, date, list }) => (
-    <StyledSectionedList>
-        <div>
-            <strong>{header}</strong>
-        </div>
-        <div className="section-date">{date}</div>
-        <ul className="section-list">
-            {list.map((item, index) => (
-                <li key={index}>{item}</li>
-            ))}
-        </ul>
-    </StyledSectionedList>
+  <StyledSectionedList>
+    <div>
+      <strong>{header}</strong>
+    </div>
+    <div className="section-date">{date}</div>
+    <ul className="section-list">
+      {list.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  </StyledSectionedList>
 );
 
 export default SectionedList;

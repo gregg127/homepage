@@ -1,30 +1,33 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import ThemeButton from "../ui/ThemeButton.jsx";
 
 const StyledHeader = styled.div`
-  text-align: center;
-  padding: 10px;
-  margin-bottom: 10px;
-
   a {
     text-decoration: none;
-    color: black;
+    color: var(--color-text);
     padding: 10px 15px;
     border-radius: 5px;
-    transition: 0.6s;
+    transition: background 0.5s;
 
     &:hover {
-      background: rgba(100, 100, 100, 0.3);
+      background: var(--secondary-color);
     }
   }
 
-  div {
-    display: inline-block;
+  .theme-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
 `;
 
 const StyledMenu = styled.nav`
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+
   ul {
     font-family: "Courier Prime", monospace;
     font-weight: 400;
@@ -33,6 +36,7 @@ const StyledMenu = styled.nav`
     padding: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
   }
 
@@ -46,9 +50,9 @@ const StyledMenu = styled.nav`
 
     ul {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      text-align: center;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 5px;
+      text-align: left;
     }
 
     li {
@@ -73,6 +77,9 @@ const Header = () => (
         ))}
       </ul>
     </StyledMenu>
+    <div className="theme-button">
+      <ThemeButton />
+    </div>
   </StyledHeader>
 );
 

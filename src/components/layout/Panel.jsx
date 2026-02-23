@@ -5,7 +5,7 @@ const StyledPanel = styled.div`
   max-width: 60%;
   margin: 10px auto;
   padding: 20px;
-  
+
   h2 {
     margin: 10px 0 30px 0;
     padding: 0 0 20px 0;
@@ -29,9 +29,7 @@ const Panel = ({ title, children }) => {
   return (
     <StyledPanel>
       <h2>{title}</h2>
-      <p className="children">
-        {children}
-      </p>
+      <div className="children">{children}</div>
     </StyledPanel>
   );
 };

@@ -2,15 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import Header from "./Header";
 
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 1.1em;
     --color-text: black;
-    --color-text-light: #777777;
+    --color-text-accent: #777777;
     --color-background: white;
     --secondary-color: silver;
+
+    --light-color-text: black;
+    --light-color-text-accent: #777777;
+    --light-color-background: white;
+    --light-secondary-color: silver;
+
+    --dark-color-text: #F9F6EE;
+    --dark-color-text-accent: #F9F1EE;
+    --dark-color-background: #24283B;
+    --dark-secondary-color: #2F334D;
   }
 
   body {
