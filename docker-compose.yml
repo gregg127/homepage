@@ -1,10 +1,9 @@
+---
 version: '3.8'
-
 services:
   homepage:
-    container_name: homepage
+    container_name: gatsby_page
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
+    ports: [8000:80]

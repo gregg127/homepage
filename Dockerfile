@@ -1,43 +1,41 @@
-ARG NGINX_VERSION=1.29.0
-ARG BITNAMI_NGINX_REVISION=r2
-ARG BITNAMI_NGINX_TAG=${NGINX_VERSION}-debian-12-${BITNAMI_NGINX_REVISION}
+ARG ALPINE_VERSION=3.23.3
+ARG NGINX_TAG=1.29.6-alpine
+ARG NGINX_VERSION=1.29.6
 
-FROM bitnami/nginx:${BITNAMI_NGINX_TAG} AS builder
-USER root
-# Redeclare NGINX_VERSION so it can be used as a parameter inside this build stage
+# Builder that compiles linked brotli modules
+FROM alpine:${ALPINE_VERSION} AS nginx-builder
 ARG NGINX_VERSION
-# Install required packages and build dependencies
-RUN apt update && \
-    apt upgrade -y && \
-    apt install -y libpcre3 libpcre3-dev zlib1g zlib1g-dev openssl libssl-dev wget git make libbrotli-dev curl build-essential
-# Download NGINX, extract and clone ngx_brotli repository
-RUN cd /tmp && \
-    curl -O http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
-    tar xzf nginx-${NGINX_VERSION}.tar.gz && \
-    git clone --recurse-submodules -j8 https://github.com/google/ngx_brotli
-# Compile NGINX with desired module
-RUN cd /tmp/nginx-${NGINX_VERSION} && \
-    rm -rf /opt/bitnami/nginx && \
-    ./configure --prefix=/opt/bitnami/nginx --with-compat --add-dynamic-module=/tmp/ngx_brotli && \
-    make && \
-    make install
+RUN apk add --no-cache \
+    build-base \
+    pcre-dev \
+    zlib-dev \
+    openssl-dev \
+    wget \
+    git \
+    brotli-dev
+WORKDIR /app
+RUN echo "Building nginx version: $NGINX_VERSION" \
+    && wget "https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" \
+    && tar -zxf "nginx-${NGINX_VERSION}.tar.gz" \
+    && ln -s "nginx-${NGINX_VERSION}" nginx \
+    && git clone --recurse-submodules -j8 https://github.com/google/ngx_brotli \
+    && cd nginx \
+    && ./configure --with-compat --add-dynamic-module=../ngx_brotli \
+    && make modules
 
-FROM bitnami/nginx:${BITNAMI_NGINX_TAG}
-USER root
-RUN apt update && \
-    apt upgrade -y && \
-    apt install -y libbrotli-dev
-# Copy brotli module from builder
-COPY --from=builder /opt/bitnami/nginx/modules/ngx_http_brotli_filter_module.so /opt/bitnami/nginx/modules/ngx_http_brotli_filter_module.so
-# Copy NGINX configuration file
-COPY nginx/nginx.conf /opt/bitnami/nginx/conf/nginx.conf
-# Copy homepage server block configuration
-COPY nginx/server.conf /opt/bitnami/nginx/conf/server_blocks/server.conf
-# Create a directory for the homepage static files
-RUN mkdir -p /homepage
-# Copy homepage static files
-COPY public /homepage
-# Expose port
-EXPOSE 8000
-# Set the container to be run as a non-root user by default
-USER 1001
+# Runtime image
+FROM nginx:${NGINX_TAG} AS runtime
+# install the brotli runtime libraries
+RUN apk add --no-cache brotli-libs
+RUN touch /var/run/nginx.pid && \
+    chown -R nginx:nginx /var/cache/nginx /var/run/nginx.pid
+USER nginx
+# COPY --from=nginx-builder /app/nginx/objs/ngx_http_brotli_static_module.so /etc/nginx/modules/
+COPY --from=nginx-builder /app/nginx/objs/ngx_http_brotli_filter_module.so /etc/nginx/modules/
+COPY --chown=nginx:nginx nginx/server.conf /etc/nginx/conf.d/default.conf
+COPY --chown=nginx:nginx nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --chown=nginx:nginx public /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
