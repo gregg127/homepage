@@ -32,9 +32,6 @@ if ! docker info > /dev/null 2>&1; then
     exit 1
 fi
 
-log "Cleaning up..."
-npm run clean
-
 log "Updating version in package.json..."
 if [[ "$OSTYPE" == "darwin"* ]]; then
     sed -i '' "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" package.json
@@ -43,7 +40,11 @@ else
 fi
 
 log "Installing for production..."
+rm -rf node_modules
 npm install --production
+
+log "Cleaning up..."
+npm run clean
 
 log "Building site..."
 npm run build
