@@ -23,7 +23,7 @@ module.exports = {
       options: {
         name: `Grzegorz Gołębiowski - personal website`,
         short_name: `Grzegorz Gołębiowski`,
-        lang: 'en',
+        lang: "en",
         start_url: `/`,
         display: `standalone`,
         icon: `static/favicon.svg`,
@@ -33,7 +33,10 @@ module.exports = {
       resolve: `gatsby-omni-font-loader`,
       options: {
         enableListener: true,
-        preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
+        preconnect: [
+          `https://fonts.googleapis.com`,
+          `https://fonts.gstatic.com`,
+        ],
         web: [
           {
             name: `Lato`,
@@ -49,12 +52,5 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
     },
-    {
-      resolve: `gatsby-plugin-robots-txt`,
-      options: {
-        sitemap: `https://golebiowski.dev/sitemap-0.xml`,
-        policy: [{ userAgent: `*`, allow: `/` }],
-      },
-    },
   ],
-}
+};
