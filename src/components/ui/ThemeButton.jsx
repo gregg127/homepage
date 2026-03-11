@@ -54,8 +54,10 @@ const THEME_PROPERTIES = {
 };
 
 const getStoredTheme = () => {
-  const stored = window.localStorage.getItem(THEME_KEY);
-  return stored ? stored : LIGHT_THEME;
+  if (typeof window === "undefined") {
+    return LIGHT_THEME;
+  }
+  return window.localStorage.getItem(THEME_KEY) ?? LIGHT_THEME;
 };
 
 const ThemeButton = () => {
