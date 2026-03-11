@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
     --dark-color-text: #F9F6EE;
     --dark-color-text-accent: #F9F1EE;
     --dark-color-background: #24283B;
-    --dark-secondary-color: #2F334D;
+    --dark-secondary-color: #394B70;
   }
 
   body {
