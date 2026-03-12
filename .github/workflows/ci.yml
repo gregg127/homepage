@@ -1,14 +1,12 @@
+---
 name: CI
 on:
   push:
-    tags:
-      - '*' 
+    tags: ['*']
 jobs:
   lighthouseci:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait 2 minutes for the cluster to fetch and deploy app
-        run: sleep 120
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
