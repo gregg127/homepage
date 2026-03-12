@@ -39,16 +39,6 @@ else
     sed -i "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" package.json
 fi
 
-log "Installing for production..."
-rm -rf node_modules
-npm install --production
-
-log "Cleaning up..."
-npm run clean
-
-log "Building site..."
-npm run build
-
 log "Building Docker image with version $VERSION..."
 if ! docker build --platform "$PLATFORMS" --build-arg VERSION="$VERSION" --tag "$IMAGE_NAME:$VERSION" -f Dockerfile .; then
     log_error "Application Docker build failed"
