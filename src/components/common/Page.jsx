@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
+    overflow-y: scroll;
     font-size: 1.1em;
     color: var(--color-text);
     background-color: var(--color-background);
