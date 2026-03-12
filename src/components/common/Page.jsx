@@ -7,6 +7,8 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 1.1em;
+    margin-left: calc(100vw - 100%);
+
     --color-text: black;
     --color-text-accent: #777777;
     --color-background: white;
