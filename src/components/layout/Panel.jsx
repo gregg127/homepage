@@ -20,7 +20,7 @@ const StyledPanel = styled.div`
 
   @media only screen and (max-width: 576px) {
     max-width: 100%;
-    padding: 0;
+    padding: 0 10px;
     margin-bottom: 40px;
   }
 `;
