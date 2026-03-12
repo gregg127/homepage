@@ -61,7 +61,12 @@ const getStoredTheme = () => {
 };
 
 const ThemeButton = () => {
+  const [isClient, setClient] = React.useState(false);
   const [theme, setTheme] = React.useState(getStoredTheme());
+
+  React.useEffect(() => {
+    setClient(true);
+  }, []);
 
   const toggleTheme = React.useCallback(() => {
     setTheme((current) => (current === LIGHT_THEME ? DARK_THEME : LIGHT_THEME));
@@ -77,6 +82,7 @@ const ThemeButton = () => {
 
   const isDark = theme === DARK_THEME;
 
+  if (!isClient) return null;
   return (
     <StyledThemeButton>
       <button onClick={toggleTheme}>
