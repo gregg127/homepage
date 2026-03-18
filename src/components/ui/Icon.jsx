@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledIcon = styled.div`
   display: inline-block;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--color-secondary);
   border-radius: 10px;
   padding: 10px;
   margin: 2px;

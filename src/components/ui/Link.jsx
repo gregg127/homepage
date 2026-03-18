@@ -7,7 +7,7 @@ const StyledLink = styled.a`
   text-decoration: underline;
 
   &:hover {
-    color: var(--color-link-hover);
+    color: var(--color-text-link-hover);
   }
 `;
 

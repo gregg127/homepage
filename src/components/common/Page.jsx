@@ -7,19 +7,22 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   :root {
     --color-text: black;
-    --color-link-hover: #339af0;
+    --color-text-muted: #64748B;
+    --color-text-link-hover: #339AF0;
     --color-background: white;
-    --secondary-color: silver;
+    --color-secondary: silver;
 
     --light-color-text: black;
-    --light-color-link-hover: #339af0;
+    --light-color-text-muted: #64748B;
+    --light-color-text-link-hover: #339AF0;
     --light-color-background: white;
-    --light-secondary-color: silver;
+    --light-color-secondary: silver;
 
     --dark-color-text: #F9F6EE;
-    --dark-color-link-hover: #339af0;
+    --dark-color-text-muted: #94A3B8;
+    --dark-color-text-link-hover: #339AF0;
     --dark-color-background: #24283B;
-    --dark-secondary-color: #394B70;
+    --dark-color-secondary: #394B70;
   }
 
   body {

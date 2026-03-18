@@ -18,7 +18,7 @@ const StyledThemeButton = styled.div`
 
     &:hover {
       transition: background 0.5s;
-      background: var(--secondary-color);
+      background: var(--color-secondary);
     }
   }
 
@@ -41,15 +41,17 @@ const DARK_THEME = "dark";
 const THEME_PROPERTIES = {
   [LIGHT_THEME]: {
     "--color-text": "var(--light-color-text)",
-    "--color-link-hover": "var(--light-color-link-hover)",
+    "--color-text-muted": "var(--light-color-text-muted)",
+    "--color-text-link-hover": "var(--light-color-text-link-hover)",
     "--color-background": "var(--light-color-background)",
-    "--secondary-color": "var(--light-secondary-color)",
+    "--color-secondary": "var(--light-color-secondary)",
   },
   [DARK_THEME]: {
     "--color-text": "var(--dark-color-text)",
-    "--color-link-hover": "var(--dark-color-link-hover)",
+    "--color-text-muted": "var(--dark-color-text-muted)",
+    "--color-text-link-hover": "var(--dark-color-text-link-hover)",
     "--color-background": "var(--dark-color-background)",
-    "--secondary-color": "var(--dark-secondary-color)",
+    "--color-secondary": "var(--dark-color-secondary)",
   },
 };
 
