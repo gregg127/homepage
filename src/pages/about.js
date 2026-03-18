@@ -36,12 +36,13 @@ const AboutPage = () => (
       <Panel title="about me">
         <div>
           Software Engineer with a Master's degree in Computer Science and
-          hands-on experience in Java-based tech stack. Leading a team of 10 in
-          building software for banking sector. Actively guiding the
-          transformation of a monolithic architecture into microservices,
-          addressing challenges related to latency, throughput and system
-          scaling. Gained deep, practical knowledge through real-world
-          problem-solving and system optimization.
+          hands-on experience in Java-based tech stack. Led a team of 10+
+          members in building software for the banking sector. Experienced in
+          guiding the transformation of a system from monolithic architecture to
+          microservices, addressing challenges related to latency, throughput
+          and scalability. Gained deep, practical knowledge through real-world
+          problem-solving and system optimization. Collaborated closely with
+          clients and across multiple teams to deliver solutions.
         </div>
       </Panel>
 
@@ -55,7 +56,7 @@ const AboutPage = () => (
           {[
             {
               header: "Senior Java Developer, Tech Lead",
-              date: "Jan 2023 – Present",
+              date: "Jan 2023 – Sep 2025",
               list: [
                 // "TODO",
                 // "TODO",
@@ -184,4 +185,3 @@ export function Head() {
     </>
   );
 }
-
