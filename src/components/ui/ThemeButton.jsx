@@ -41,13 +41,13 @@ const DARK_THEME = "dark";
 const THEME_PROPERTIES = {
   [LIGHT_THEME]: {
     "--color-text": "var(--light-color-text)",
-    "--color-text-accent": "var(--light-color-text-accent)",
+    "--color-link-hover": "var(--light-color-link-hover)",
     "--color-background": "var(--light-color-background)",
     "--secondary-color": "var(--light-secondary-color)",
   },
   [DARK_THEME]: {
     "--color-text": "var(--dark-color-text)",
-    "--color-text-accent": "var(--dark-color-text-accent)",
+    "--color-link-hover": "var(--dark-color-link-hover)",
     "--color-background": "var(--dark-color-background)",
     "--secondary-color": "var(--dark-secondary-color)",
   },

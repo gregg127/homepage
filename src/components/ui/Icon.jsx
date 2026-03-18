@@ -40,4 +40,3 @@ const Icon = ({ iconName, label }) => {
 };
 
 export default Icon;
-

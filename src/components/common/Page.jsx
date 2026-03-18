@@ -7,17 +7,17 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   :root {
     --color-text: black;
-    --color-text-accent: #777777;
+    --color-link-hover: #339af0;
     --color-background: white;
     --secondary-color: silver;
 
     --light-color-text: black;
-    --light-color-text-accent: #777777;
+    --light-color-link-hover: #339af0;
     --light-color-background: white;
     --light-secondary-color: silver;
 
     --dark-color-text: #F9F6EE;
-    --dark-color-text-accent: #F9F1EE;
+    --dark-color-link-hover: #339af0;
     --dark-color-background: #24283B;
     --dark-secondary-color: #394B70;
   }

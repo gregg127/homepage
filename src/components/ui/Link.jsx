@@ -5,26 +5,27 @@ import styled from "styled-components";
 const StyledLink = styled.a`
   color: inherit;
   text-decoration: underline;
-  
+
   &:hover {
-    color: var(--secondary-color);
+    color: var(--color-link-hover);
   }
 `;
 
 const Link = ({ href, openInNewTab = false, children }) => (
-    <StyledLink
-        href={href}
-        target={openInNewTab ? "_blank" : undefined}
-        rel={openInNewTab ? "noopener noreferrer" : undefined}
-    >
-        {children}
-    </StyledLink>
+  <StyledLink
+    href={href}
+    target={openInNewTab ? "_blank" : undefined}
+    rel={openInNewTab ? "noopener noreferrer" : undefined}
+  >
+    {children}
+  </StyledLink>
 );
 
 Link.propTypes = {
-    href: PropTypes.string.isRequired,
-    openInNewTab: PropTypes.bool,
-    children: PropTypes.node.isRequired
+  href: PropTypes.string.isRequired,
+  openInNewTab: PropTypes.bool,
+  children: PropTypes.node.isRequired,
 };
 
 export default Link;
+

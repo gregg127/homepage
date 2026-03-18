@@ -10,7 +10,7 @@ const StyledHeader = styled.div`
     color: var(--color-text);
     padding: 3px 5px;
     margin: 0px 10px;
-    background-image: linear-gradient(var(--color-text-accent) 0 0);
+    background-image: linear-gradient(var(--color-link-hover) 0 0);
     background-position: bottom left;
     background-size: 0% 1px;
     background-repeat: no-repeat;
@@ -19,7 +19,7 @@ const StyledHeader = styled.div`
       background-position 0s 0.3s;
 
     &:hover {
-      color: var(--color-text-accent);
+      color: var(--color-link-hover);
       background-position: bottom right;
       background-size: 100% 1px;
     }
