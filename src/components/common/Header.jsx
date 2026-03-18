@@ -5,14 +5,23 @@ import ThemeButton from "../ui/ThemeButton.jsx";
 
 const StyledHeader = styled.div`
   a {
+    display: inline-block;
     text-decoration: none;
     color: var(--color-text);
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background 0.5s;
+    padding: 3px 5px;
+    margin: 0px 10px;
+    background-image: linear-gradient(var(--color-text-accent) 0 0);
+    background-position: bottom left;
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    transition:
+      background-size 0.3s,
+      background-position 0s 0.3s;
 
     &:hover {
-      background: var(--secondary-color);
+      color: var(--color-text-accent);
+      background-position: bottom right;
+      background-size: 100% 1px;
     }
   }
 
@@ -41,7 +50,7 @@ const StyledMenu = styled.nav`
   }
 
   .active {
-    background-color: var(--secondary-color);
+    background-size: 100% 1px;
   }
 
   li {
@@ -64,7 +73,7 @@ const StyledMenu = styled.nav`
     }
 
     li {
-      margin: 10px;
+      margin: 5px 20px;
     }
   }
 `;
@@ -72,22 +81,20 @@ const StyledMenu = styled.nav`
 const Header = () => (
   <StyledHeader>
     <StyledMenu>
-      <nav>
-        <ul>
-          {[
-            { path: "/", label: "HOME" },
-            { path: "/about", label: "ABOUT" },
-            { path: "/resume", label: "RESUME" },
-            { path: "/contact", label: "CONTACT" },
-          ].map(({ path, label }) => (
-            <li key={path}>
-              <Link class="link" activeClassName="active" to={path}>
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <ul>
+        {[
+          { path: "/", label: "HOME" },
+          { path: "/about", label: "ABOUT" },
+          { path: "/resume", label: "RESUME" },
+          { path: "/contact", label: "CONTACT" },
+        ].map(({ path, label }) => (
+          <li key={path}>
+            <Link class="link" activeClassName="active" to={path}>
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </StyledMenu>
     <div className="theme-button">
       <ThemeButton />
