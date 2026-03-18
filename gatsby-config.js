@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: `gatsby-omni-font-loader`,
       options: {
-        mode: `render-blocking`,
+        enableListener: true,
         preconnect: [
           `https://fonts.googleapis.com`,
           `https://fonts.gstatic.com`,
