@@ -3,10 +3,10 @@
 % Packages:
 \usepackage[
   ignoreheadfoot, % set margins without considering header and footer
-  top=2 cm, % seperation between body and page edge from the top
-  bottom=2 cm, % seperation between body and page edge from the bottom
-  left=2 cm, % seperation between body and page edge from the left
-  right=2 cm, % seperation between body and page edge from the right
+  top=1 cm, % seperation between body and page edge from the top
+  bottom=1 cm, % seperation between body and page edge from the bottom
+  left=1 cm, % seperation between body and page edge from the left
+  right=1 cm, % seperation between body and page edge from the right
   footskip=1.0 cm, % seperation between body and footer
   % showframe % for debugging
 ]{geometry} % for adjusting page geometry
@@ -64,18 +64,18 @@
   -1pt
 }{
   % top space:
-  0.3 cm
+  0.15 cm
 }{
   % bottom space:
-  0.2 cm
+  0.1 cm
 } % section title spacing
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom
 % bullet points
 \newenvironment{highlights}{
   \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
+        topsep=0.05 cm,
+        parsep=0.05 cm,
         partopsep=0pt,
         itemsep=0pt,
         leftmargin=0 cm + 10pt
@@ -86,8 +86,8 @@
 
 \newenvironment{highlightsforbulletentries}{
   \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
+        topsep=0.05 cm,
+        parsep=0.05 cm,
         partopsep=0pt,
         itemsep=0pt,
         leftmargin=10pt
@@ -165,9 +165,9 @@
 % =======================================================================
 
 \begin{header}
-  \fontsize{25 pt}{25 pt}\selectfont Grzegorz Gołębiowski
+  \fontsize{20 pt}{20 pt}\selectfont Grzegorz Gołębiowski
 
-  \fontsize{15 pt}{15 pt}\selectfont Senior Java Developer, Tech Lead, 6+ YoE
+  \fontsize{12 pt}{12 pt}\selectfont Tech Lead, Senior Java Developer, 6+ YoE
 
   \normalsize
   \mbox{Warsaw, Poland}%
@@ -182,11 +182,11 @@
   \kern 5.0 pt%
   \AND%
   \kern 5.0 pt%
-  \mbox{Gallup Top 5: Individualization, Learner, Relator, Arranger, Achiever }%
+  \mbox{\hrefWithoutArrow{https://github.com/gregg127}{github.com/gregg127}}%
   \kern 5.0 pt%
 \end{header}
 
-\vspace{5 pt - 0.3 cm}
+\vspace{0.1 cm}
 
 % =======================================================================
 % SUMMARY
@@ -200,10 +200,10 @@
   Led a team of 10+ members in building software for the
   banking sector. Experienced in guiding the transformation
   of a system from monolithic architecture to microservices,
-  addressing challenges related to latency, throughput and
-  scalability. Gained deep, practical knowledge through real-world
-  problem-solving and system optimization. Collaborated closely with
-  clients and across multiple teams to deliver solutions.
+  while continuously delivering new features and developing
+  solutions to address challenges related to latency, throughput
+  and scalability. Collaborated closely with clients and across
+  multiple teams to deliver solutions.
 \end{onecolentry}
 
 % =======================================================================
@@ -215,17 +215,17 @@
 \begin{onecolentry}
   \textbf{Areas of expertise:} content management systems, custom
   software development, requirements analysis, project estimation,
-  system design and architecture, backend development, debugging
+  system design and architecture, backend development
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.05 cm}
 
 \begin{onecolentry}
   \textbf{Programming languages:} Java, Clojure, SQL, Python,
   JavaScript, Typescript
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.05 cm}
 
 \begin{onecolentry}
   \textbf{Technologies:} Spring, Spring Boot, Jakarta EE, WildFly,
@@ -234,41 +234,41 @@
   React JS, Gatsby SSG
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.05 cm}
 
 \begin{onecolentry}
   \textbf{Architecture:} Microservices, C4 model, onion architecture,
   anemic and rich domain models, caching
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.05 cm}
 
 \begin{onecolentry}
   \textbf{DevOps:} Docker, Kubernetes, k3s, OKD, Openshift,
   Kustomize, Helm, GitOps, Jenkins, Grafana, Sonatype Nexus Repository
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.05 cm}
 
 \begin{onecolentry}
-  \textbf{AI:} GitHub Copilot CLI, Spec-Driven Development, GitHub's Spec Kit
+  \textbf{AI:} GitHub Copilot CLI, Spec-Driven Development, GitHub Spec Kit
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.05 cm}
 
 \begin{onecolentry}
   \textbf{Tools:} Linux, macOS, Jira, Neovim, Intellij IDEA, Git,
   Gradle, SonarQube, OWASP Dependency-Check
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.05 cm}
 
 \begin{onecolentry}
   \textbf{Leadership:} Blake and Mouton Managerial Grid Model,
   Blanchard Situational Leadership Model, Start-Stop-Continue feedback
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.05 cm}
 
 \begin{onecolentry}
   \textbf{Languages:} Polish (native), English (C1)
@@ -282,10 +282,10 @@
 
 \begin{twocolentry}
   { Jan 2023 – Sep 2025 }
-  \textbf{Senior Java Developer, Tech Lead},
+  \textbf{Tech Lead, Senior Java Developer},
   \href{https://www.e-point.com/}{e-point SA}
 \end{twocolentry}
-\vspace{0.10 cm}
+\vspace{0.1 cm}
 \begin{onecolentry}
   \begin{highlights}
   \item Led development of a CMS web platform with 15+ deployed
@@ -301,77 +301,72 @@
     migration
   \item Coordinated cross-team collaboration and acted as technical
     point of contact for clients
-  \item Orchestrated PostgreSQL major version upgrade (9.6 to 16.9),
-    including data migration planning and execution
-  \item Led migration of the container platform from OKD3 to OKD4
+  \item Led major version migrations of PostgreSQL 9.6 to 16,
+    OKD 3 to 4 and Java 8 to 11 across multiple applications
+  \item Maintained and enhanced a throttling mechanism using Apache
+    Kafka as a message broker
   \item Analysed DDoS incidents, investigated logs, implemented
     traffic protection measures and fixed corresponding bugs
   \end{highlights}
 \end{onecolentry}
-\vspace{0.2 cm}
+
+\vspace{0.1 cm}
 
 \begin{twocolentry}
   { May 2022 – Dec 2022 }
   \textbf{Senior Java Developer}, \href{https://www.e-point.com/}{e-point SA}
 \end{twocolentry}
-\vspace{0.10 cm}
+\vspace{0.1 cm}
 \begin{onecolentry}
   \begin{highlights}
   \item Implemented new features and contributed to decomposition of
     monolithic architecture into more modular components
-  \item Identified and resolved performance bottlenecks in application
-    code
-  \item Participated in architecture design and technology selection
-  \item Maintained and extended deployment pipelines using Jenkins
-  \item Configured and maintained Kubernetes environments in OKD
-  \item Analysed and optimised database queries to improve
-    application throughput
+  \item Diagnosed and resolved JVM memory leaks; performed JVM,
+    cache and database query tuning and resolved performance
+    bottlenecks in application code
   \item Designed SSE-based communication with frontend for parallel
     session handling and session count control
   \item Planned and executed load and performance tests using Gatling
+  \item Configured and maintained Kubernetes environments in OKD
   \item Coordinated application releases and production deployments
     in collaboration with a client
   \end{highlights}
 \end{onecolentry}
-\vspace{0.2 cm}
+
+\vspace{0.1 cm}
 
 \begin{twocolentry}
   { Sep 2020 – Apr 2022 }
   \textbf{Java Developer}, \href{https://www.e-point.com/}{e-point SA}
 \end{twocolentry}
-\vspace{0.10 cm}
+\vspace{0.1 cm}
 \begin{onecolentry}
   \begin{highlights}
   \item Remediated security vulnerabilities identified in external
-    audits, such as cache poisoning and XSS issues
-  \item Tuned circuit breaker, rate limiting and retry mechanism
-    parameters
+    audits and tuned circuit breaker and rate limiting mechanisms
+  \item Implemented new features and contributed to client requirements
+    analysis and refinement within an Agile team
   \item Contributed to architecture design, technology selection
     and solution evaluation
-  \item Participated in business requirements analysis and
-    refinement within an Agile team
-  \item Worked with deployment pipelines with Jenkins; configured
-    and maintained Kubernetes environments
+  \item Maintained and improved Jenkins pipelines
   \item Improved system observability with Grafana dashboards and alerts
-  \item Developed and maintained automated UI test suites using
-    Selenium
+  \item Developed and maintained automated UI test suites using Selenium
   \end{highlights}
 \end{onecolentry}
-\vspace{0.2 cm}
+
+\vspace{0.1 cm}
 
 \begin{twocolentry}
   { Aug 2019 – Aug 2020 }
   \textbf{Junior Java Developer}, \href{https://www.e-point.com/}{e-point SA}
 \end{twocolentry}
-\vspace{0.10 cm}
+\vspace{0.1 cm}
 \begin{onecolentry}
   \begin{highlights}
   \item Developed and maintained the e-point CMS platform for the
     banking and insurance sector
   \item Implemented new CMS modules and components tailored to client
     requirements
-  \item Handled bug fixes and performance optimisations in existing codebase
-  \item Worked on integrations with external systems and third-party APIs
   \end{highlights}
 \end{onecolentry}
 
@@ -385,7 +380,7 @@
   \textbf{Polish-Japanese Academy of Information Technology},
   MS in Computer Science
 \end{twocolentry}
-\vspace{0.10 cm}
+\vspace{0.1 cm}
 \begin{onecolentry}
   \begin{highlights}
   \item \textbf{Specialization:}
@@ -395,37 +390,19 @@
   \end{highlights}
 \end{onecolentry}
 
-\vspace{0.2 cm}
+\vspace{0.1 cm}
 
 \begin{twocolentry}
   { Sep 2016 – Jun 2020 }
   \textbf{Polish-Japanese Academy of Information Technology},
   BS in Computer Science
 \end{twocolentry}
-\vspace{0.10 cm}
+\vspace{0.1 cm}
 \begin{onecolentry}
   \begin{highlights}
   \item \textbf{Specialization:} Robotics
   \item \textbf{Thesis:} Educational robotic platform
   \end{highlights}
-\end{onecolentry}
-
-% =======================================================================
-% INTERESTS
-% =======================================================================
-
-\section{Interests}
-
-\begin{onecolentry}
-  \textbf{Systems Architecture}: examining IT systems through various
-  contexts and components
-\end{onecolentry}
-
-\vspace{0.2 cm}
-
-\begin{onecolentry}
-  \textbf{Brazilian Jiu Jitsu martial art}: active participation in
-  national BJJ competitions
 \end{onecolentry}
 
 \end{document}
