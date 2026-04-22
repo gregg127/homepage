@@ -39,10 +39,10 @@ const AboutPage = () => (
           hands-on experience in Java-based tech stack. Led a team of 10+
           members in building software for the banking sector. Experienced in
           guiding the transformation of a system from monolithic architecture to
-          microservices, addressing challenges related to latency, throughput
-          and scalability. Gained deep, practical knowledge through real-world
-          problem-solving and system optimization. Collaborated closely with
-          clients and across multiple teams to deliver solutions.
+          microservices, while continuously delivering new features and
+          developing solutions to address challenges related to latency,
+          throughput and scalability. Collaborated closely with clients and
+          across multiple teams to deliver solutions.
         </div>
       </Panel>
 
@@ -55,39 +55,53 @@ const AboutPage = () => (
         <div className="experience-entries">
           {[
             {
-              header: "Senior Java Developer, Tech Lead",
+              header: "Tech Lead, Senior Java Developer",
               date: "Jan 2023 – Sep 2025",
               list: [
-                // "TODO",
-                // "TODO",
-                // "TODO"
+                "Led development of a CMS web platform with 15+ deployed services, serving traffic for millions of users for one of the leading banks in Poland",
+                "Delivered features across multiple projects in both time-and-material and fixed-price contracts, working across Waterfall and Agile methodologies",
+                "Redesigned release and deployment processes, reducing error rate and developer's manual effort",
+                "Drove continued decomposition of monolithic architecture into a modular monolith, with a long-term goal of microservices migration",
+                "Coordinated cross-team collaboration and acted as technical point of contact for clients",
+                "Led major version migrations of PostgreSQL 9.6 to 16, OKD 3 to 4 and Java 8 to 11 across multiple applications",
+                "Maintained and enhanced a throttling mechanism using Apache Kafka as a message broker",
+                "Analysed DDoS incidents, investigated logs, implemented traffic protection measures and fixed corresponding bugs",
+                "Implemented periodic vulnerability scanning procedure with OWASP Dependency-Check and Docker image scanning with Trivy",
+                "Configured SonarQube 9 quality profiles to enforce code standards across services",
               ],
             },
             {
               header: "Senior Java Developer",
               date: "May 2022 – Dec 2022",
               list: [
-                // "TODO",
-                // "TODO",
-                // "TODO"
+                "Implemented new features and contributed to decomposition of monolithic architecture into more modular components",
+                "Diagnosed and resolved JVM memory leaks; performed JVM, cache and database query tuning and resolved performance bottlenecks in application code",
+                "Designed SSE-based communication with frontend for parallel session handling and session count control",
+                "Planned and executed load and performance tests using Gatling",
+                "Configured and maintained Kubernetes environments in OKD",
+                "Coordinated application releases and production deployments in collaboration with a client",
+                "Participated in architecture design and technology selection",
               ],
             },
             {
               header: "Java Developer",
               date: "Sep 2020 – Apr 2022",
               list: [
-                // "TODO",
-                // "TODO",
-                // "TODO"
+                "Remediated security vulnerabilities identified in external audits and tuned circuit breaker and rate limiting mechanisms",
+                "Implemented new features and contributed to client requirements analysis and refinement within an Agile team",
+                "Contributed to architecture design, technology selection and solution evaluation",
+                "Maintained and improved Jenkins pipelines",
+                "Improved system observability with Grafana dashboards and alerts",
+                "Developed and maintained automated UI test suites using Selenium",
               ],
             },
             {
               header: "Junior Java Developer",
               date: "Aug 2019 – Aug 2020",
               list: [
-                // "TODO",
-                // "TODO",
-                // "TODO"
+                "Developed and maintained the e-point CMS platform for the banking and insurance sector",
+                "Implemented new CMS modules and components tailored to client requirements",
+                "Worked on integrations with external systems and third-party APIs",
               ],
             },
           ].map((entry, index) => (
@@ -162,15 +176,6 @@ const AboutPage = () => (
           />
         ))}
       </Panel>
-
-      {/* <Panel title="interests">
-        <div>
-          Bacon ipsum dolor amet tenderloin jowl chislic filet mignon drumstick chuck, cupim cow
-          kevin fatback ham bresaola meatball. Short ribs meatloaf shoulder ribeye tail pancetta
-          jerky short loin filet mignon. Strip steak pancetta jerky spare ribs. Kevin fatback
-          shankle meatloaf landjaeger.
-        </div>
-      </Panel> */}
     </About>
   </Page>
 );
