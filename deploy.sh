@@ -7,7 +7,6 @@ MINOR=$(echo $CURRENT_VERSION | cut -d. -f2)
 NEW_MINOR=$((MINOR + 1))
 VERSION="$MAJOR.$NEW_MINOR"
 
-REGISTRY_HOST=harbor.golebiowski.dev
 IMAGE_NAME=harbor.golebiowski.dev/services/homepage
 
 log() {
@@ -39,8 +38,8 @@ else
     sed -i "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" package.json
 fi
 
-log "Installing dependencies locally..."
-npm install
+log "Updating package-lock.json..."
+npm install --package-lock-only
 
 log "Building Docker image with version $VERSION..."
 if ! docker build --platform "$PLATFORMS" --build-arg VERSION="$VERSION" --tag "$IMAGE_NAME:$VERSION" -f Dockerfile .; then
@@ -50,19 +49,12 @@ fi
 
 log "Pushing Docker image to remote registry..."
 
-log "Checking connectivity to registry host: $REGISTRY_HOST"
-if ping -c 1 -W 5 "$REGISTRY_HOST" > /dev/null 2>&1; then
-    log "Pushing application image..."
-    if docker push "$IMAGE_NAME:$VERSION" --platform linux/amd64; then
-        log "Application Docker image pushed successfully"
-    else
-        log_error "Failed to push application Docker image to registry"
-        exit 1
-    fi
-else
-    log_error "Cannot reach registry host $REGISTRY_HOST."
+log "Pushing application image..."
+if ! docker push "$IMAGE_NAME:$VERSION" --platform linux/amd64; then
+    log_error "Failed to push application Docker image to registry"
     exit 1
 fi
+log "Application Docker image pushed successfully"
 
 log "Updating version in kustomization..."
 if [[ "$OSTYPE" == "darwin"* ]]; then
