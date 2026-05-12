@@ -1,0 +1,42 @@
+---
+name: Deploy App
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: deployment
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Check required secrets
+        run: |
+          if [ -z "${{ secrets.HARBOR_USERNAME }}" ]; then
+            echo "Error: HARBOR_USERNAME secret is not set"
+            exit 1
+          fi
+          if [ -z "${{ secrets.HARBOR_PASSWORD }}" ]; then
+            echo "Error: HARBOR_PASSWORD secret is not set"
+            exit 1
+          fi
+      - name: Log in to Harbor registry
+        run: echo "${{ secrets.HARBOR_PASSWORD }}" | docker login harbor.golebiowski.dev
+          -u "${{ secrets.HARBOR_USERNAME }}" --password-stdin
+      - name: Run the deployment script
+        run: bash deploy.sh
+      - name: Push version commit and tag
+        run: |
+          git push
+          git push --tags
