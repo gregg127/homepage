@@ -30,23 +30,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-omni-font-loader`,
-      options: {
-        enableListener: true,
-        preconnect: [`https://fonts.gstatic.com`],
-        web: [
-          {
-            name: `Lato`,
-            file: `https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap`,
-          },
-          {
-            name: `Courier Prime`,
-            file: `https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap`,
-          },
-        ],
-      },
-    },
-    {
       resolve: `gatsby-plugin-sitemap`,
     },
     {
