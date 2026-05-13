@@ -30,6 +30,10 @@ describe('robots.txt', () => {
     assert.match(content, /^Allow: \/$/m);
   });
 
+  it('references the sitemap', () => {
+    assert.match(content, /^Sitemap: https:\/\/golebiowski\.dev\/sitemap-index\.xml$/m);
+  });
+
   for (const bot of AI_BOTS_DISALLOWED) {
     it(`disallows ${bot}`, () => {
       const re = new RegExp(`^User-agent: ${bot}\\s*\\nDisallow: /`, 'm');
