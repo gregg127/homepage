@@ -53,7 +53,7 @@ module.exports = {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: null,
-        sitemap: null,
+        sitemap: `https://golebiowski.dev/sitemap-index.xml`,
         policy: [
           { userAgent: '*', allow: '/' },
           { userAgent: 'GPTBot', disallow: '/' },
