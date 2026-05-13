@@ -57,7 +57,7 @@ const Page = ({ children }) => {
     <StyledWrapper>
       <GlobalStyle />
       <Header />
-      {children}
+      <main>{children}</main>
     </StyledWrapper>
   );
 };
