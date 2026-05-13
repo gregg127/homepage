@@ -187,6 +187,7 @@ export function Head() {
     <>
       <html lang="en" />
       <title>About</title>
+      <meta name="description" content="About Grzegorz Gołębiowski — Java tech lead with experience in microservices, banking software, and cloud-native technologies." />
     </>
   );
 }

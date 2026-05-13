@@ -64,6 +64,7 @@ export function Head() {
     <>
       <html lang="en" />
       <title>Grzegorz Gołębiowski - personal website</title>
+      <meta name="description" content="Personal website of Grzegorz Gołębiowski — software engineer, tech lead, and computer science graduate." />
     </>
   );
 }

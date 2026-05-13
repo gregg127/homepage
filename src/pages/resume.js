@@ -29,6 +29,7 @@ export function Head() {
     <>
       <html lang="en" />
       <title>Resume</title>
+      <meta name="description" content="Resume of Grzegorz Gołębiowski — download or view the full CV of a Java tech lead and software engineer." />
     </>
   )
 }

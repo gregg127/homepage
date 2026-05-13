@@ -29,6 +29,7 @@ export function Head() {
     <>
       <html lang="en" />
       <title>Contact</title>
+      <meta name="description" content="Get in touch with Grzegorz Gołębiowski via LinkedIn." />
     </>
   )
 }
