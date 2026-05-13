@@ -15,7 +15,11 @@ const ResumePage = () => (
     <Resume>
       <Panel title="my resume">
         <div>
-          You can see my resume by <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">clicking here</Link>.
+          You can see my resume by{" "}
+          <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">
+            clicking here
+          </Link>
+          .
         </div>
       </Panel>
     </Resume>
@@ -29,6 +33,11 @@ export function Head() {
     <>
       <html lang="en" />
       <title>Resume</title>
+      <meta
+        name="description"
+        content="Resume of Grzegorz Gołębiowski - download or view the full CV of a Java tech lead and software engineer."
+      />
     </>
-  )
+  );
 }
+

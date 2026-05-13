@@ -28,6 +28,8 @@ export function Head() {
     <>
       <html lang="en" />
       <title>Not Found</title>
+      <meta name="description" content="Page not found." />
     </>
-  )
+  );
 }
+

@@ -187,6 +187,10 @@ export function Head() {
     <>
       <html lang="en" />
       <title>About</title>
+      <meta
+        name="description"
+        content="About Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate."
+      />
     </>
   );
 }

@@ -49,5 +49,24 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
     },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: null,
+        sitemap: null,
+        policy: [
+          { userAgent: '*', allow: '/' },
+          { userAgent: 'GPTBot', disallow: '/' },
+          { userAgent: 'ClaudeBot', disallow: '/' },
+          { userAgent: 'CCBot', disallow: '/' },
+          { userAgent: 'Google-Extended', disallow: '/' },
+          { userAgent: 'PerplexityBot', disallow: '/' },
+          { userAgent: 'Grok', disallow: '/' },
+          { userAgent: 'Bytespider', disallow: '/' },
+          { userAgent: 'Amazonbot', disallow: '/' },
+          { userAgent: 'Meta-ExternalAgent', disallow: '/' },
+        ],
+      },
+    },
   ],
 };
