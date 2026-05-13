@@ -15,7 +15,11 @@ const ContactPage = () => (
     <Contact>
       <Panel title="any questions?">
         <div>
-          You can find me on <Link href="https://www.linkedin.com/in/grzegorz-golebiowski">LinkedIn</Link>.
+          You can find me on{" "}
+          <Link href="https://www.linkedin.com/in/grzegorz-golebiowski">
+            LinkedIn
+          </Link>
+          .
         </div>
       </Panel>
     </Contact>
@@ -29,7 +33,11 @@ export function Head() {
     <>
       <html lang="en" />
       <title>Contact</title>
-      <meta name="description" content="Get in touch with Grzegorz Gołębiowski via LinkedIn." />
+      <meta
+        name="description"
+        content="Get in touch with Grzegorz Gołębiowski."
+      />
     </>
-  )
+  );
 }
+

@@ -30,5 +30,6 @@ export function Head() {
       <title>Not Found</title>
       <meta name="description" content="Page not found." />
     </>
-  )
+  );
 }
+
