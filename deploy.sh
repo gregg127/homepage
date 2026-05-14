@@ -64,7 +64,6 @@ else
 fi
 
 log "Commiting version to the repostiory..."
-git add deploy.sh
 git add package.json
 git add package-lock.json
 git add kustomization/deployment.yaml

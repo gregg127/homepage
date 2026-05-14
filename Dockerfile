@@ -7,7 +7,7 @@ ARG NGINX_VERSION=1.29.6
 FROM node:${NODE_VERSION} AS app-builder
 WORKDIR /usr/src/app
 COPY package*.json .
-COPY gatsby-config.js .
+COPY gatsby-*.js .
 COPY static ./static/
 COPY src ./src/
 RUN npm install --production;

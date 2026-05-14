@@ -62,6 +62,34 @@ describe("built pages", () => {
   }
 });
 
+describe("font-display", () => {
+  it("built CSS uses font-display: block (not swap) for all @font-face rules", () => {
+    const indexHtml = fs.readFileSync(
+      path.join(PUBLIC_DIR, "index.html"),
+      "utf8",
+    );
+    const cssRefs = [
+      ...indexHtml.matchAll(/href="(\/styles\.[^"]+\.css)"/g),
+    ].map((m) => m[1]);
+    assert.ok(cssRefs.length > 0, "no styles.*.css link found in index.html");
+    const cssContent = cssRefs
+      .map((ref) =>
+        fs.readFileSync(path.join(PUBLIC_DIR, ref.replace(/^\//, "")), "utf8"),
+      )
+      .join("");
+    assert.ok(
+      !cssContent.includes("font-display:swap") &&
+        !cssContent.includes("font-display: swap"),
+      "found font-display: swap in built CSS — webpack rule may not be applying",
+    );
+    assert.ok(
+      cssContent.includes("font-display:block") ||
+        cssContent.includes("font-display: block"),
+      "font-display: block not found in built CSS",
+    );
+  });
+});
+
 describe("total bundle size", () => {
   it("reports public/ size", () => {
     const bytes = dirSize(PUBLIC_DIR);
