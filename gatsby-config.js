@@ -19,6 +19,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-autolink-headers`],
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Grzegorz Gołębiowski - personal website`,
@@ -30,23 +36,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-omni-font-loader`,
-      options: {
-        enableListener: true,
-        preconnect: [`https://fonts.gstatic.com`],
-        web: [
-          {
-            name: `Lato`,
-            file: `https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap`,
-          },
-          {
-            name: `Courier Prime`,
-            file: `https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap`,
-          },
-        ],
-      },
-    },
-    {
       resolve: `gatsby-plugin-sitemap`,
     },
     {
@@ -55,16 +44,16 @@ module.exports = {
         host: null,
         sitemap: `https://golebiowski.dev/sitemap-index.xml`,
         policy: [
-          { userAgent: '*', allow: '/' },
-          { userAgent: 'GPTBot', disallow: '/' },
-          { userAgent: 'ClaudeBot', disallow: '/' },
-          { userAgent: 'CCBot', disallow: '/' },
-          { userAgent: 'Google-Extended', disallow: '/' },
-          { userAgent: 'PerplexityBot', disallow: '/' },
-          { userAgent: 'Grok', disallow: '/' },
-          { userAgent: 'Bytespider', disallow: '/' },
-          { userAgent: 'Amazonbot', disallow: '/' },
-          { userAgent: 'Meta-ExternalAgent', disallow: '/' },
+          { userAgent: "*", allow: "/" },
+          { userAgent: "GPTBot", disallow: "/" },
+          { userAgent: "ClaudeBot", disallow: "/" },
+          { userAgent: "CCBot", disallow: "/" },
+          { userAgent: "Google-Extended", disallow: "/" },
+          { userAgent: "PerplexityBot", disallow: "/" },
+          { userAgent: "Grok", disallow: "/" },
+          { userAgent: "Bytespider", disallow: "/" },
+          { userAgent: "Amazonbot", disallow: "/" },
+          { userAgent: "Meta-ExternalAgent", disallow: "/" },
         ],
       },
     },
