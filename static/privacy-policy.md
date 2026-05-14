@@ -1,8 +1,10 @@
-_[English](#privacy-policy) · [Polski](#polityka-prywatności)_
-
+---
+slug: privacy-policy
 ---
 
-# Privacy Policy
+_[English](#) · [Polski](#polityka-prywatności)_
+
+---
 
 _Last updated: 13 May 2026_
 
