@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "./Header";
+import Footer from "./Footer";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -50,6 +51,14 @@ const GlobalStyle = createGlobalStyle`
 const StyledWrapper = styled.div`
   margin: 0;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex: 1;
+    margin-bottom: 40px;
+  }
 `;
 
 const Page = ({ children }) => {
@@ -58,6 +67,7 @@ const Page = ({ children }) => {
       <GlobalStyle />
       <Header />
       <main>{children}</main>
+      <Footer />
     </StyledWrapper>
   );
 };
