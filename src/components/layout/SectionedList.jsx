@@ -13,6 +13,12 @@ const StyledSectionedList = styled.div`
     list-style-type: disc;
     margin-top: 8px;
   }
+
+  @media only screen and (max-width: 576px) {
+    .section-list {
+      padding-left: 20px;
+    }
+  }
 `;
 
 const SectionedList = ({ header, date, list }) => (
