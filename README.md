@@ -26,16 +26,6 @@ To start the local development server:
 npm run dev
 ```
 
-### Build CV PDF
-
-To compile the CV from LaTeX source and place the PDF in `static/`:
-
-```sh
-npm run build:cv
-```
-
-Requires `latexmk` to be installed. If not available, the command prints a warning and skips. In Docker, the PDF is compiled automatically using the `texlive/texlive` image.
-
 ### Run in Container
 
 To run the application in a Docker container:
