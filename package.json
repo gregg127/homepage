@@ -16,7 +16,7 @@
     "containerUp": "docker compose up -d --build",
     "containerDown": "docker compose down",
     "docs": "docsify serve docsify --open",
-    "test": "gatsby build && node --test tests/*.test.js",
+    "test": "node --test tests/*.test.js",
     "deploy": "./deploy.sh"
   },
   "dependencies": {
