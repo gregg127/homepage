@@ -12,3 +12,9 @@ Run with:
 ```
 latexmk -c && latexmk -pdf -pvc Grzegorz-Golebiowski-Java-Tech-Lead-CV.tex
 ```
+
+Or from the project root using the npm task:
+
+```sh
+npm run dev:cv
+```

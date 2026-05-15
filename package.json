@@ -9,8 +9,9 @@
   ],
   "scripts": {
     "dev": "gatsby develop",
-    "build": "npm run build:cv && gatsby build",
+    "dev:cv": "cd cv && latexmk -c && latexmk -pdf -pvc Grzegorz-Golebiowski-Java-Tech-Lead-CV.tex",
     "build:cv": "command -v latexmk >/dev/null 2>&1 && (cd cv && latexmk -c && latexmk -pdf Grzegorz-Golebiowski-Java-Tech-Lead-CV.tex && cp Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf ../static/) || echo 'Warning: latexmk not found, skipping CV PDF build'",
+    "build": "npm run build:cv && gatsby build",
     "clean": "gatsby clean",
     "containerUp": "docker compose up -d --build",
     "containerDown": "docker compose down",
