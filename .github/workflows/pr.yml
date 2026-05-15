@@ -1,0 +1,18 @@
+---
+name: Pull request tests
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Create placeholder for CV PDF (compiled when building Docker image)
+        run: touch static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf
+      - run: npm install
+      - run: npm run build
+      - run: npm run test
