@@ -18,7 +18,7 @@ spec:
       containers:
         - name: homepage
           # private registry
-          image: harbor.golebiowski.dev/services/homepage:1.37
+          image: harbor.golebiowski.dev/services/homepage:1.38
           imagePullPolicy: Always
           ports:
             - containerPort: 80
