@@ -4,6 +4,12 @@ This repository contains the source code for my homepage built with Gatsby.
 
 ## Development
 
+### Prerequisites
+
+- Node.js
+- Docker
+- `latexmk` with a full TeX Live installation (required to build the CV PDF locally)
+
 ### Setup
 
 Install dependencies using npm:
@@ -20,28 +26,32 @@ To start the local development server:
 npm run dev
 ```
 
+### Build CV PDF
+
+To compile the CV from LaTeX source and place the PDF in `static/`:
+
+```sh
+npm run build:cv
+```
+
+Requires `latexmk` to be installed. If not available, the command prints a warning and skips. In Docker, the PDF is compiled automatically using the `texlive/texlive` image.
+
 ### Run in Container
 
 To run the application in a Docker container:
 
 ```sh
-npm run container
+npm run containerUp
 ```
 
 ## Deployment
 
-### Steps to Deploy
-
-1. **Run Deployment**: Execute the following command:
-   ```sh
-   npm run deploy
-   ```
-   This will:
-   - Automatically increment the minor version based on the latest git tag.
-   - Update the version in `package.json`.
-   - Build a Docker image.
-   - Push the Docker image to a private registry.
-   - Update the version in the kustomization directory.
-   - Create a commit and tag with the new release.
-2. Push commit and tag. This will cause deployment to [the cluster](https://github.com/gregg127/anton).
-
+1. Open a pull request with your changes.
+2. Merge the pull request into `main`. This triggers a GitHub Actions workflow that runs `deploy.sh`, which:
+   - Automatically increments the minor version based on the latest git tag.
+   - Updates the version in `package.json` and regenerates `package-lock.json`.
+   - Builds a Docker image.
+   - Pushes the Docker image to a private registry.
+   - Updates the image tag in the `kustomization/` directory (Kubernetes manifests).
+   - Creates a commit and tag with the new release and pushes them to the repository.
+   - Flux CD, running on [the cluster](https://github.com/gregg127/anton), detects the new image tag in `kustomization/` and triggers deployment.
