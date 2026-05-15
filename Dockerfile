@@ -3,12 +3,19 @@ ARG ALPINE_VERSION=3.23.3
 ARG NGINX_TAG=1.29.6-alpine
 ARG NGINX_VERSION=1.29.6
 
-# Builder that builds the application application 
+# Builder that compiles the CV PDF from LaTeX source
+FROM texlive/texlive:latest AS cv-builder
+WORKDIR /cv
+COPY cv/Grzegorz-Golebiowski-Java-Tech-Lead-CV.tex .
+RUN latexmk -pdf Grzegorz-Golebiowski-Java-Tech-Lead-CV.tex
+
+# Builder that builds the application
 FROM node:${NODE_VERSION} AS app-builder
 WORKDIR /usr/src/app
 COPY package*.json .
 COPY gatsby-*.js .
 COPY static ./static/
+COPY --from=cv-builder /cv/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf ./static/
 COPY src ./src/
 RUN npm install --production;
 RUN npm run clean;
