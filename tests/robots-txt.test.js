@@ -5,27 +5,6 @@ const path = require("node:path");
 
 const ROBOTS_TXT = path.join(__dirname, "..", "public", "robots.txt");
 
-const AI_BOTS_DISALLOWED = [
-  "GPTBot",
-  "ClaudeBot",
-  "CCBot",
-  "Google-Extended",
-  "PerplexityBot",
-  "Grok",
-  "Bytespider",
-  "Amazonbot",
-  "Meta-ExternalAgent",
-];
-
-const LLMS_ALLOWED_PATHS = [
-  "/llms.txt",
-  "/",
-  "/about/",
-  "/resume/",
-  "/contact/",
-  "/privacy/",
-];
-
 describe("robots.txt", () => {
   let content;
 
@@ -34,9 +13,13 @@ describe("robots.txt", () => {
     content = fs.readFileSync(ROBOTS_TXT, "utf8");
   });
 
-  it("allows all general crawlers", () => {
+  it("allows all crawlers", () => {
     assert.match(content, /^User-agent: \*$/m);
     assert.match(content, /^Allow: \/$/m);
+  });
+
+  it("has no Disallow directives", () => {
+    assert.doesNotMatch(content, /^Disallow:/m);
   });
 
   it("references the sitemap", () => {
@@ -45,29 +28,4 @@ describe("robots.txt", () => {
       /^Sitemap: https:\/\/golebiowski\.dev\/sitemap-index\.xml$/m,
     );
   });
-
-  for (const bot of AI_BOTS_DISALLOWED) {
-    it(`disallows ${bot} from crawling the full site`, () => {
-      const botSection = content.match(
-        new RegExp(`User-agent: ${bot}[\\s\\S]*?(?=\\n\\n|$)`),
-      )?.[0];
-      assert.ok(botSection, `No section found for ${bot}`);
-      assert.match(botSection, /^Disallow: \/$/m);
-    });
-
-    for (const allowedPath of LLMS_ALLOWED_PATHS) {
-      const escapedPath = allowedPath.replace(/\./g, "\\.").replace(/\//g, "\\/");
-      it(`allows ${bot} to access ${allowedPath}`, () => {
-        const botSection = content.match(
-          new RegExp(`User-agent: ${bot}[\\s\\S]*?(?=\\n\\n|$)`),
-        )?.[0];
-        assert.ok(botSection, `No section found for ${bot}`);
-        assert.match(
-          botSection,
-          new RegExp(`^Allow: ${escapedPath}$`, "m"),
-          `Expected "${bot}" block to allow ${allowedPath}`,
-        );
-      });
-    }
-  }
 });
