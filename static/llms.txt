@@ -1,0 +1,13 @@
+# Grzegorz Gołębiowski
+
+> Personal website of Grzegorz Gołębiowski — software engineer, tech lead, and computer science graduate based in Poland.
+
+Software Engineer with a Master's degree in Computer Science and hands-on experience in a Java-based tech stack. Led a team of 10+ members building software for the banking sector. Experienced in guiding the transformation of a system from monolithic architecture to microservices, while continuously delivering new features and addressing challenges related to latency, throughput, and scalability.
+
+## Pages
+
+- [Home](https://golebiowski.dev/): Introduction page.
+- [About](https://golebiowski.dev/about/): Professional background, work experience, technologies, and education.
+- [Resume](https://golebiowski.dev/resume/): Link to the full CV PDF.
+- [Contact](https://golebiowski.dev/contact/): Contact information (LinkedIn).
+- [Privacy Policy](https://golebiowski.dev/privacy/): How personal data is handled under GDPR.
