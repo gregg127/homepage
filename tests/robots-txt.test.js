@@ -17,6 +17,15 @@ const AI_BOTS_DISALLOWED = [
   "Meta-ExternalAgent",
 ];
 
+const LLMS_ALLOWED_PATHS = [
+  "/llms.txt",
+  "/",
+  "/about/",
+  "/resume/",
+  "/contact/",
+  "/privacy/",
+];
+
 describe("robots.txt", () => {
   let content;
 
@@ -38,22 +47,27 @@ describe("robots.txt", () => {
   });
 
   for (const bot of AI_BOTS_DISALLOWED) {
-    it(`disallows ${bot} from crawling the site`, () => {
-      const re = new RegExp(`^User-agent: ${bot}\\s*\\nAllow: /llms\\.txt\\s*\\nDisallow: /`, "m");
-      assert.match(
-        content,
-        re,
-        `Expected "User-agent: ${bot}" with "Allow: /llms.txt" followed by "Disallow: /"`,
-      );
+    it(`disallows ${bot} from crawling the full site`, () => {
+      const botSection = content.match(
+        new RegExp(`User-agent: ${bot}[\\s\\S]*?(?=\\n\\n|$)`),
+      )?.[0];
+      assert.ok(botSection, `No section found for ${bot}`);
+      assert.match(botSection, /^Disallow: \/$/m);
     });
 
-    it(`allows ${bot} to access /llms.txt`, () => {
-      const re = new RegExp(`^User-agent: ${bot}[\\s\\S]*?Allow: /llms\\.txt`, "m");
-      assert.match(
-        content,
-        re,
-        `Expected "User-agent: ${bot}" block to allow /llms.txt`,
-      );
-    });
+    for (const allowedPath of LLMS_ALLOWED_PATHS) {
+      const escapedPath = allowedPath.replace(/\./g, "\\.").replace(/\//g, "\\/");
+      it(`allows ${bot} to access ${allowedPath}`, () => {
+        const botSection = content.match(
+          new RegExp(`User-agent: ${bot}[\\s\\S]*?(?=\\n\\n|$)`),
+        )?.[0];
+        assert.ok(botSection, `No section found for ${bot}`);
+        assert.match(
+          botSection,
+          new RegExp(`^Allow: ${escapedPath}$`, "m"),
+          `Expected "${bot}" block to allow ${allowedPath}`,
+        );
+      });
+    }
   }
 });
