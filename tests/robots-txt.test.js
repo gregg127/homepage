@@ -38,12 +38,21 @@ describe("robots.txt", () => {
   });
 
   for (const bot of AI_BOTS_DISALLOWED) {
-    it(`disallows ${bot}`, () => {
-      const re = new RegExp(`^User-agent: ${bot}\\s*\\nDisallow: /`, "m");
+    it(`disallows ${bot} from crawling the site`, () => {
+      const re = new RegExp(`^User-agent: ${bot}\\s*\\nAllow: /llms\\.txt\\s*\\nDisallow: /`, "m");
       assert.match(
         content,
         re,
-        `Expected "User-agent: ${bot}" followed by "Disallow: /"`,
+        `Expected "User-agent: ${bot}" with "Allow: /llms.txt" followed by "Disallow: /"`,
+      );
+    });
+
+    it(`allows ${bot} to access /llms.txt`, () => {
+      const re = new RegExp(`^User-agent: ${bot}[\\s\\S]*?Allow: /llms\\.txt`, "m");
+      assert.match(
+        content,
+        re,
+        `Expected "User-agent: ${bot}" block to allow /llms.txt`,
       );
     });
   }
