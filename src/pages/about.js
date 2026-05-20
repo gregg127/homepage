@@ -5,6 +5,7 @@ import Panel from "../components/layout/Panel";
 import Icon from "../components/ui/Icon";
 import SectionedList from "../components/layout/SectionedList";
 import Link from "../components/ui/Link";
+import Button from "../components/ui/Button";
 
 const About = styled.div`
   .experience-company {
@@ -24,22 +25,8 @@ const About = styled.div`
   }
 
   .cv-download {
-    display: block;
-    width: fit-content;
-    margin: 20px auto 0;
-    padding: 10px 20px;
-    border: 1px solid var(--color-secondary);
-    border-radius: 8px;
-    color: var(--color-text);
-    text-decoration: none;
-    transition:
-      color 0.3s,
-      border-color 0.3s;
-
-    &:hover {
-      color: var(--color-text-link-hover);
-      border-color: var(--color-text-link-hover);
-    }
+    text-align: center;
+    margin-top: 20px;
   }
 
   @media only screen and (max-width: 576px) {
@@ -158,13 +145,14 @@ const AboutPage = () => (
           ))}
         </div>
         <div className="technologies-more">... and many, many more.</div>
-        <a
-          href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
-          className="cv-download"
-          download
-        >
-          Download CV (PDF)
-        </a>
+        <div className="cv-download">
+          <Button
+            href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
+            download
+          >
+            Download CV (PDF)
+          </Button>
+        </div>
       </Panel>
 
       <Panel title="education">
