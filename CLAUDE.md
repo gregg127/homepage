@@ -58,7 +58,7 @@ Every page must: wrap content in `<Page>`, export `Head()` with `<html lang="en"
 Every change must pass both gates before it can ship:
 
 - **axe-core**: no moderate, serious, or critical accessibility violations on any page.
-- **Lighthouse CI**: performance ≥80%, accessibility ≥90%, best-practices ≥90%, SEO ≥90%. Thresholds are in `lighthouserc.yml`.
+- **Lighthouse CI**: performance ≥90%, accessibility ≥90%, best-practices ≥90%, SEO ≥90%. Thresholds are in `lighthouserc.yml`.
 
 When adding a page, add it to the `PAGES` arrays in `tests/pages.test.js`, `tests/html-validity.test.js`, `tests/accessibility.test.js`, `tests/asset-integrity.test.js`, and add its URL to `lighthouserc.yml`.
 
