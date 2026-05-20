@@ -72,6 +72,8 @@ npm run build && npm run test
 
 Test files in `tests/` cover: page metadata, robots.txt, sitemap, HTML validity, asset integrity, PWA manifest, static assets, bundle sizes, and axe-core accessibility. Each file name is self-explanatory.
 
+Any meaningful code change should be accompanied by expanded or new tests. If you add a page, new static asset, or change behaviour that existing tests don't cover, update the relevant test file or add a new one. Don't leave a change untested just because the existing suite still passes.
+
 ## Gotchas
 
 - **`deploy.sh` pushes to the production Docker registry.** Running it locally (via `npm run deploy`) will build and push a Docker image to Harbor and commit locally — but won't push to git (that part is done by CI). Don't run it outside CI unless you intend a manual release.
