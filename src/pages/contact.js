@@ -40,11 +40,6 @@ const ContactPage = () => (
           </Link>
           .
         </p>
-        <p>
-          Happy to talk about Java internals, Clojure, observability, banking
-          systems, DDoS war stories, or pretty much anything that involves
-          debugging a memory leak. I usually reply within a few days.
-        </p>
       </Panel>
     </Contact>
   </Page>
