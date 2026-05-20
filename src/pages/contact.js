@@ -5,8 +5,13 @@ import Panel from "../components/layout/Panel";
 import Link from "../components/ui/Link";
 
 const Contact = styled.div`
-  div {
+  p {
     text-align: center;
+    margin: 0 0 16px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -14,13 +19,32 @@ const ContactPage = () => (
   <Page>
     <Contact>
       <Panel title="any questions?">
-        <div>
-          You can find me on{" "}
-          <Link href="https://www.linkedin.com/in/grzegorz-golebiowski">
+        <p>
+          Drop me a line at{" "}
+          <Link href="mailto:grzegorz.golebiowski127@gmail.com">
+            grzegorz.golebiowski127@gmail.com
+          </Link>
+          .
+        </p>
+        <p>
+          I'm also on{" "}
+          <Link href="https://github.com/gregg127" openInNewTab>
+            GitHub
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="https://www.linkedin.com/in/grzegorz-golebiowski"
+            openInNewTab
+          >
             LinkedIn
           </Link>
           .
-        </div>
+        </p>
+        <p>
+          Happy to talk about Java internals, Clojure, observability, banking
+          systems, DDoS war stories, or pretty much anything that involves
+          debugging a memory leak. I usually reply within a few days.
+        </p>
       </Panel>
     </Contact>
   </Page>

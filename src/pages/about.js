@@ -23,6 +23,10 @@ const About = styled.div`
     margin-top: 15px;
   }
 
+  .resume-download {
+    text-align: center;
+  }
+
   @media only screen and (max-width: 576px) {
     .technologies-more {
       text-align: center;
@@ -142,6 +146,15 @@ const AboutPage = () => (
           ... and many, many more:{" "}
           <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">
             see resume
+          </Link>
+          .
+        </div>
+      </Panel>
+
+      <Panel title="resume">
+        <div className="resume-download">
+          <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">
+            Download my CV (PDF)
           </Link>
           .
         </div>

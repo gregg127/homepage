@@ -9,7 +9,6 @@ const MIN_HTML_SIZE = 1024;
 const PAGES = [
   "index.html",
   "about/index.html",
-  "resume/index.html",
   "contact/index.html",
   "404.html",
 ];
@@ -40,7 +39,7 @@ describe("build artifacts", () => {
   });
 
   it("every page has a corresponding page-data.json", () => {
-    const routes = ["index", "404", "about", "contact", "resume"];
+    const routes = ["index", "404", "about", "contact"];
     const missing = routes.filter(
       (r) =>
         !fs.existsSync(path.join(PUBLIC_DIR, "page-data", r, "page-data.json")),
