@@ -48,7 +48,7 @@ After each commit, check whether the change affects anything documented in this 
 - `export default` for components; named `export function Head()` for Gatsby's head API.
 - Never hardcode colours — always use CSS custom properties (defined in `src/components/common/Page.jsx`):
   `--color-text`, `--color-text-muted`, `--color-text-link-hover`, `--color-background`, `--color-secondary`.
-  Both light and dark variants must be defined (`--light-*` and `--dark-*`) — `ThemeButton` toggles a class on `<body>` to switch between them.
+  Both light and dark variants must be defined (`--light-*` and `--dark-*`) — `ThemeButton` remaps the `--color-*` properties to either set directly on `<html>` via `document.documentElement.style.setProperty()`, persisting the choice in `localStorage`.
 - Single responsive breakpoint: `@media only screen and (max-width: 576px)`
 - No TypeScript, no ESLint, no Prettier — project is intentionally plain JS. Don't add config files for these.
 - No comments unless the why is genuinely non-obvious.
