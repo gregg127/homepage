@@ -13,7 +13,7 @@ npm run containerUp  # Build + run Docker locally (port 8000)
 npm run containerDown  # Stop Docker container
 ```
 
-**Node.js 22 required** (matches CI — see `.github/workflows/pr.yml`).
+**Node.js 25 required** — see `.nvmrc`. Run `nvm use` to switch automatically.
 
 ## Branch and PR Workflow
 
