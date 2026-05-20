@@ -24,11 +24,12 @@ const About = styled.div`
   }
 
   .cv-download {
-    display: inline-block;
-    margin-top: 20px;
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0;
     padding: 10px 20px;
-    border: 1px solid var(--color-text);
-    border-radius: 4px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 8px;
     color: var(--color-text);
     text-decoration: none;
     transition:
@@ -39,10 +40,6 @@ const About = styled.div`
       color: var(--color-text-link-hover);
       border-color: var(--color-text-link-hover);
     }
-  }
-
-  .cv-download-wrapper {
-    text-align: center;
   }
 
   @media only screen and (max-width: 576px) {
@@ -161,15 +158,13 @@ const AboutPage = () => (
           ))}
         </div>
         <div className="technologies-more">... and many, many more.</div>
-        <div className="cv-download-wrapper">
-          <a
-            href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
-            className="cv-download"
-            download
-          >
-            Download CV (PDF)
-          </a>
-        </div>
+        <a
+          href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
+          className="cv-download"
+          download
+        >
+          Download CV (PDF)
+        </a>
       </Panel>
 
       <Panel title="education">

@@ -34,7 +34,9 @@ const Footer = () => (
       >
         LinkedIn
       </Link>
-      <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">CV</Link>
+      <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf" download>
+        CV
+      </Link>
       <Link href="/privacy">Privacy Policy</Link>
     </Links>
   </StyledFooter>
