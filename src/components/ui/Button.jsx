@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const StyledButton = styled.a`
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: 1px solid var(--color-secondary);
   border-radius: 8px;
   color: var(--color-text);

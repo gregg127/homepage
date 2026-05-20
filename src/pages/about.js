@@ -144,14 +144,21 @@ const AboutPage = () => (
             <Icon key={index} iconName={tech.iconName} label={tech.label} />
           ))}
         </div>
-        <div className="technologies-more">... and many, many more.</div>
-        <div className="cv-download">
-          <Button
-            href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
-            download
-          >
-            Download CV (PDF)
+        <div className="technologies-more">
+          ... and many more. See the full list in my CV -{" "}
+          <Button href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf" download>
+            Download PDF
           </Button>
+          <div>
+            or{" "}
+            <Link
+              href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
+              openInNewTab
+            >
+              open the CV in browser
+            </Link>
+            .
+          </div>
         </div>
       </Panel>
 
