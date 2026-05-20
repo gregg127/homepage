@@ -25,9 +25,8 @@ Branch naming:
 |------|--------|---------|
 | Feature | `feature/` | `feature/add-blog-page` |
 | Bug fix | `fix/` | `fix/docker-fonts` |
-| Claude-initiated | `claude/` | `claude/some-task` |
 
-PR to `main` triggers `pr.yml` (build + test). Merge triggers `deploy.yml` (build + test + deploy). Both must be green before merging.
+PR to `main` triggers `pr.yml` (build + test) — this must be green to merge. Merge to `main` triggers `deploy.yml` which re-runs tests then deploys.
 
 ## Commit Style
 
@@ -41,12 +40,15 @@ Reduce bullet list left padding on mobile
 
 Use: **Add** / **Fix** / **Update** / **Remove**.
 
+After each commit, check whether the change affects anything documented in this file (commands, conventions, thresholds, gotchas, pipeline). If it does, update CLAUDE.md in the same commit or a follow-up before the PR is merged.
+
 ## Code Conventions
 
 - Pages: `.js` in `src/pages/`. Components: `.jsx` in `src/components/<category>/`.
 - `export default` for components; named `export function Head()` for Gatsby's head API.
 - Never hardcode colours — always use CSS custom properties (defined in `src/components/common/Page.jsx`):
-  `--color-text`, `--color-text-muted`, `--color-text-link-hover`, `--color-background`, `--color-secondary`
+  `--color-text`, `--color-text-muted`, `--color-text-link-hover`, `--color-background`, `--color-secondary`.
+  Both light and dark variants must be defined (`--light-*` and `--dark-*`) — `ThemeButton` toggles a class on `<body>` to switch between them.
 - Single responsive breakpoint: `@media only screen and (max-width: 576px)`
 - No TypeScript, no ESLint, no Prettier — project is intentionally plain JS. Don't add config files for these.
 - No comments unless the why is genuinely non-obvious.
@@ -78,7 +80,7 @@ Any meaningful code change should be accompanied by expanded or new tests. If yo
 
 - **`deploy.sh` pushes to the production Docker registry.** Running it locally (via `npm run deploy`) will build and push a Docker image to Harbor and commit locally — but won't push to git (that part is done by CI). Don't run it outside CI unless you intend a manual release.
 - **Tests operate on `public/`, not `src/`.** A passing build that doesn't re-run `gatsby build` will test stale output. When in doubt: `npm run clean && npm run build && npm run test`.
-- **`font-display: block` is injected by webpack**, not set in source CSS. `gatsby-node.js` rewrites every `font-display: swap` in `@fontsource` stylesheets at build time. Editing the @fontsource files directly has no effect.
+- **`font-display` is overridden by webpack.** `gatsby-node.js` rewrites every `font-display: swap` in `@fontsource` stylesheets to `block` at build time. To change font-display behaviour, edit `gatsby-node.js` — not the @fontsource source files.
 - **CV PDF must exist before `gatsby build`.** CI creates a placeholder with `touch`. Locally, if `latexmk` is not installed and `static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf` is absent, the build will fail.
 - **`public/` and `.cache/` are not tracked by git.** Don't try to commit or diff them.
 
