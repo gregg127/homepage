@@ -33,6 +33,11 @@ const About = styled.div`
     .technologies-more {
       text-align: center;
     }
+
+    .technologies-more-cv {
+      display: block;
+      margin-top: 5px;
+    }
   }
 `;
 
@@ -145,20 +150,23 @@ const AboutPage = () => (
           ))}
         </div>
         <div className="technologies-more">
-          ... and many more. See the full list in my CV -{" "}
-          <Button href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf" download>
-            Download PDF
-          </Button>
-          <div>
-            or{" "}
-            <Link
-              href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
-              openInNewTab
-            >
-              open the CV in browser
-            </Link>
-            .
-          </div>
+          ...and many more.{" "}
+          <span className="technologies-more-cv">
+            See the full list in my CV -{" "}
+            <Button href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf" download>
+              Download PDF
+            </Button>
+            <div>
+              or{" "}
+              <Link
+                href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
+                openInNewTab
+              >
+                open the CV in browser
+              </Link>
+              .
+            </div>
+          </span>
         </div>
       </Panel>
 
