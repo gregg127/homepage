@@ -11,12 +11,11 @@ const StyledLink = styled.a`
   }
 `;
 
-const Link = ({ href, openInNewTab = false, download = false, children }) => (
+const Link = ({ href, openInNewTab = false, children }) => (
   <StyledLink
     href={href}
     target={openInNewTab ? "_blank" : undefined}
     rel={openInNewTab ? "noopener noreferrer" : undefined}
-    download={download || undefined}
   >
     {children}
   </StyledLink>
@@ -25,7 +24,6 @@ const Link = ({ href, openInNewTab = false, download = false, children }) => (
 Link.propTypes = {
   href: PropTypes.string.isRequired,
   openInNewTab: PropTypes.bool,
-  download: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 
