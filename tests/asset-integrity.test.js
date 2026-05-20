@@ -9,7 +9,6 @@ const PUBLIC_DIR = path.join(__dirname, "..", "public");
 const PAGES = [
   "index.html",
   "about/index.html",
-  "resume/index.html",
   "contact/index.html",
   "404.html",
   "privacy/index.html",

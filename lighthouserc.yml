@@ -3,7 +3,6 @@ ci:
     url:
       - https://golebiowski.dev/
       - https://golebiowski.dev/about/
-      - https://golebiowski.dev/resume/
       - https://golebiowski.dev/contact/
     numberOfRuns: 3
     settings:

@@ -8,7 +8,6 @@ const PUBLIC_DIR = path.join(__dirname, "..", "public");
 const PAGES = [
   { file: "index.html", title: "Grzegorz Gołębiowski - personal website" },
   { file: "about/index.html", title: "About" },
-  { file: "resume/index.html", title: "Resume" },
   { file: "contact/index.html", title: "Contact" },
   { file: "404.html", title: "Not Found" },
   { file: "privacy/index.html", title: "Privacy Policy" },

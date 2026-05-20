@@ -7,7 +7,7 @@ const PUBLIC_DIR = path.join(__dirname, "..", "public");
 const SITEMAP_INDEX = path.join(PUBLIC_DIR, "sitemap-index.xml");
 const SITEMAP_0 = path.join(PUBLIC_DIR, "sitemap-0.xml");
 const SITE_URL = "https://golebiowski.dev";
-const EXPECTED_PAGES = ["/", "/about/", "/contact/", "/resume/", "/privacy/"];
+const EXPECTED_PAGES = ["/", "/about/", "/contact/", "/privacy/"];
 
 describe("sitemap-index.xml", () => {
   it("exists in public directory", () => {
