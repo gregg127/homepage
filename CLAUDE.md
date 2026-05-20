@@ -10,7 +10,7 @@ npm run build        # Build CV PDF (if latexmk available) + Gatsby site → pub
 npm run clean        # Clear .cache/ and public/
 npm run test         # Run integration tests (requires a prior build)
 npm run containerUp  # Build + run Docker locally (port 8000)
-npm run containerDown
+npm run containerDown  # Stop Docker container
 ```
 
 **Node.js 22 required** (matches CI — see `.github/workflows/pr.yml`).
