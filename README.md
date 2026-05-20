@@ -1,47 +1,50 @@
 # Homepage
 
-This repository contains the source code for my homepage built with Gatsby.
+Source code for my personal website built with Gatsby 5 + React 19 + styled-components, deployed to Kubernetes.
 
-## Development
+## Prerequisites
 
-### Prerequisites
+- **Node.js 25** — run `nvm use` in the project root (reads `.nvmrc` automatically)
+- **Docker** — for container builds
+- **latexmk** + full TeX Live installation — required to build the CV PDF locally (optional: skipped automatically if absent)
 
-- Node.js
-- Docker
-- `latexmk` with a full TeX Live installation (required to build the CV PDF locally)
-
-### Setup
-
-Install dependencies using npm:
+## Setup
 
 ```sh
 npm install
 ```
 
-### Run the Application
-
-To start the local development server:
+## Development
 
 ```sh
-npm run dev
+npm run dev        # start dev server at localhost:8000
+npm run build      # build CV PDF (if latexmk available) + Gatsby site → public/
+npm run clean      # clear .cache/ and public/
+npm run test       # run integration tests (requires a prior build)
 ```
 
-### Run in Container
-
-To run the application in a Docker container:
+Tests run against the built output in `public/`, not source files. Always build before testing:
 
 ```sh
-npm run containerUp
+npm run build && npm run test
+```
+
+## Run in Docker
+
+```sh
+npm run containerUp    # build image and start container at localhost:8000
+npm run containerDown  # stop container
 ```
 
 ## Deployment
 
-1. Open a pull request with your changes.
-2. Merge the pull request into `main`. This triggers a GitHub Actions workflow that runs `deploy.sh`, which:
-   - Automatically increments the minor version based on the latest git tag.
-   - Updates the version in `package.json` and regenerates `package-lock.json`.
-   - Builds a Docker image.
-   - Pushes the Docker image to a private registry.
-   - Updates the image tag in the `kustomization/` directory (Kubernetes manifests).
-   - Creates a commit and tag with the new release and pushes them to the repository.
-   - Flux CD, running on [the cluster](https://github.com/gregg127/anton), detects the new image tag in `kustomization/` and triggers deployment.
+All changes go through a branch and pull request — never commit directly to `main`.
+
+1. Open a pull request targeting `main`.
+2. `pr.yml` runs automatically: build + test must pass before merging.
+3. Merge into `main` triggers `deploy.yml`, which re-runs tests and then runs `deploy.sh`:
+   - Increments the minor version from the latest git tag.
+   - Updates `package.json`, `package-lock.json`, and the image tag in `kustomization/`.
+   - Builds and pushes a Docker image to a private Harbor registry.
+   - Commits the version bump and tag locally; `deploy.yml` pushes them to the repository.
+4. Flux CD, running on [the cluster](https://github.com/gregg127/anton), detects the new image tag in `kustomization/` and deploys.

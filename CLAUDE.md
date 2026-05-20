@@ -40,7 +40,7 @@ Reduce bullet list left padding on mobile
 
 Use: **Add** / **Fix** / **Update** / **Remove**.
 
-After each commit, check whether the change affects anything documented in this file (commands, conventions, thresholds, gotchas, pipeline). If it does, update CLAUDE.md in the same commit or a follow-up before the PR is merged.
+After each commit, check whether the change affects anything documented in this file or in `README.md` (commands, conventions, thresholds, gotchas, pipeline, prerequisites). If it does, update the relevant file in the same commit or a follow-up before the PR is merged.
 
 ## Code Conventions
 
