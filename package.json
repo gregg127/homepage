@@ -7,6 +7,9 @@
   "keywords": [
     "gatsby"
   ],
+  "engines": {
+    "node": ">=25"
+  },
   "scripts": {
     "dev": "gatsby develop",
     "dev:cv": "cd cv && latexmk -c && latexmk -pdf -pvc Grzegorz-Golebiowski-Java-Tech-Lead-CV.tex",
