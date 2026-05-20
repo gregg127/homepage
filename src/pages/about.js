@@ -5,6 +5,7 @@ import Panel from "../components/layout/Panel";
 import Icon from "../components/ui/Icon";
 import SectionedList from "../components/layout/SectionedList";
 import Link from "../components/ui/Link";
+import Button from "../components/ui/Button";
 
 const About = styled.div`
   .experience-company {
@@ -23,8 +24,9 @@ const About = styled.div`
     margin-top: 15px;
   }
 
-  .resume-download {
+  .cv-download {
     text-align: center;
+    margin-top: 20px;
   }
 
   @media only screen and (max-width: 576px) {
@@ -143,20 +145,20 @@ const AboutPage = () => (
           ))}
         </div>
         <div className="technologies-more">
-          ... and many, many more:{" "}
-          <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">
-            see resume
-          </Link>
-          .
-        </div>
-      </Panel>
-
-      <Panel title="resume">
-        <div className="resume-download">
-          <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">
-            Download my CV (PDF)
-          </Link>
-          .
+          ... and many more. See the full list in my CV -{" "}
+          <Button href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf" download>
+            Download PDF
+          </Button>
+          <div>
+            or{" "}
+            <Link
+              href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
+              openInNewTab
+            >
+              open the CV in browser
+            </Link>
+            .
+          </div>
         </div>
       </Panel>
 
