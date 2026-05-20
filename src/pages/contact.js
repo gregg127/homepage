@@ -5,13 +5,13 @@ import Panel from "../components/layout/Panel";
 import Link from "../components/ui/Link";
 
 const Contact = styled.div`
-  p {
+  .paragraph {
     text-align: center;
-    margin: 0 0 16px 0;
+    margin: 0;
+  }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+  .paragraph + .paragraph {
+    margin-top: 16px;
   }
 `;
 
@@ -19,14 +19,14 @@ const ContactPage = () => (
   <Page>
     <Contact>
       <Panel title="any questions?">
-        <p>
+        <p className="paragraph">
           Drop me a line at{" "}
           <Link href="mailto:grzegorz.golebiowski127@gmail.com">
             grzegorz.golebiowski127@gmail.com
           </Link>
           .
         </p>
-        <p>
+        <p className="paragraph">
           I'm also on{" "}
           <Link href="https://github.com/gregg127" openInNewTab>
             GitHub
