@@ -140,7 +140,7 @@ const AboutPage = () => (
           ))}
         </div>
         <div className="technologies-more">
-          ...and many more.{" "}
+          ... and many more.{" "}
           <span className="technologies-more-cv">
             See the full list in my CV -{" "}
             <Button href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf" download>
