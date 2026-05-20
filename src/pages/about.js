@@ -24,19 +24,9 @@ const About = styled.div`
     margin-top: 15px;
   }
 
-  .cv-download {
-    text-align: center;
-    margin-top: 20px;
-  }
-
   @media only screen and (max-width: 576px) {
-    .technologies-more {
-      text-align: center;
-    }
-
     .technologies-more-cv {
       display: block;
-      margin-top: 5px;
     }
   }
 `;
