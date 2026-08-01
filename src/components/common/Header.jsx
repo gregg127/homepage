@@ -88,11 +88,21 @@ const Header = () => (
           { path: "/contact", label: "CONTACT" },
         ].map(({ path, label }) => (
           <li key={path}>
-            <Link class="link" activeClassName="active" to={path}>
+            <Link className="link" activeClassName="active" to={path}>
               {label}
             </Link>
           </li>
         ))}
+        <li>
+          <a
+            className="link"
+            href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CV
+          </a>
+        </li>
       </ul>
     </StyledMenu>
     <div className="theme-button">

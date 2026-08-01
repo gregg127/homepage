@@ -34,6 +34,7 @@
 \usepackage{ifthen} % for conditional statements
 \usepackage{needspace} % for avoiding page brake right after the section title
 \usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage[normalem]{ulem} % for underlining links
 
 % Ensure that generate pdf is machine readable/ATS parsable:
 \ifPDFTeX
@@ -148,6 +149,10 @@
   }%
 }%
 
+% underline every link:
+\let\hrefOriginal\href
+\renewcommand{\href}[2]{\hrefOriginal{#1}{\uline{#2}}}
+
 % save the original href command in a new command:
 \let\hrefWithoutArrow\href
 
@@ -206,6 +211,15 @@
   multiple teams to deliver solutions.
 \end{onecolentry}
 
+\vspace{0.15 cm}
+
+\begin{onecolentry}
+  Currently working as a Principal Engineer, building AI solutions
+  that automate software development and leading a project to deliver
+  the \href{https://www.e-point.com/produkty/e-point-cms}{e-point CMS}
+  platform for one of the leading banks in Poland.
+\end{onecolentry}
+
 % =======================================================================
 % KEY SKILLS
 % =======================================================================
@@ -251,7 +265,8 @@
 \vspace{0.05 cm}
 
 \begin{onecolentry}
-  \textbf{AI:} GitHub Copilot CLI, Spec-Driven Development, GitHub Spec Kit
+  \textbf{AI:} GitHub Copilot CLI, Spec-Driven Development,
+  GitHub Spec Kit, Claude Code, agentic workflows, loop engineering
 \end{onecolentry}
 
 \vspace{0.05 cm}
@@ -281,6 +296,25 @@
 \section{Experience}
 
 \begin{twocolentry}
+  { Jun 2026 – Present }
+  \textbf{Tech Lead, Principal Engineer},
+  \href{https://www.e-point.com/}{e-point SA}
+\end{twocolentry}
+\vspace{0.1 cm}
+\begin{onecolentry}
+  \begin{highlights}
+  \item Building AI agents and tooling that automate software
+    development workflows, moving from assisted coding toward
+    closed-loop delivery with humans reviewing at the gates
+  \item Leading a migration project from a legacy CMS to
+    \href{https://www.e-point.com/produkty/e-point-cms}{e-point CMS}
+    for one of the leading banks in Poland
+  \end{highlights}
+\end{onecolentry}
+
+\vspace{0.1 cm}
+
+\begin{twocolentry}
   { Jan 2023 – Sep 2025 }
   \textbf{Tech Lead, Senior Java Developer},
   \href{https://www.e-point.com/}{e-point SA}
@@ -296,11 +330,6 @@
     Waterfall and Agile methodologies
   \item Redesigned release and deployment processes, reducing error
     rate and developer's manual effort
-  \item Drove continued decomposition of monolithic architecture into
-    a modular monolith, with a long-term goal of microservices
-    migration
-  \item Coordinated cross-team collaboration and acted as technical
-    point of contact for clients
   \item Led major version migrations of PostgreSQL 9.6 to 16,
     OKD 3 to 4 and Java 8 to 11 across multiple applications
   \item Maintained and enhanced a throttling mechanism using Apache
@@ -319,14 +348,9 @@
 \vspace{0.1 cm}
 \begin{onecolentry}
   \begin{highlights}
-  \item Implemented new features and contributed to decomposition of
-    monolithic architecture into more modular components
   \item Diagnosed and resolved JVM memory leaks; performed JVM,
     cache and database query tuning and resolved performance
     bottlenecks in application code
-  \item Designed SSE-based communication with frontend for parallel
-    session handling and session count control
-  \item Planned and executed load and performance tests using Gatling
   \item Configured and maintained Kubernetes environments in OKD
   \item Coordinated application releases and production deployments
     in collaboration with a client
@@ -346,11 +370,8 @@
     audits and tuned circuit breaker and rate limiting mechanisms
   \item Implemented new features and contributed to client requirements
     analysis and refinement within an Agile team
-  \item Contributed to architecture design, technology selection
-    and solution evaluation
   \item Maintained and improved Jenkins pipelines
   \item Improved system observability with Grafana dashboards and alerts
-  \item Developed and maintained automated UI test suites using Selenium
   \end{highlights}
 \end{onecolentry}
 
@@ -363,8 +384,9 @@
 \vspace{0.1 cm}
 \begin{onecolentry}
   \begin{highlights}
-  \item Developed and maintained the e-point CMS platform for the
-    banking and insurance sector
+  \item Developed and maintained the
+    \href{https://www.e-point.com/produkty/e-point-cms}{e-point CMS}
+    platform for the banking and insurance sector
   \item Implemented new CMS modules and components tailored to client
     requirements
   \end{highlights}
