@@ -5,7 +5,6 @@ import Panel from "../components/layout/Panel";
 import Icon from "../components/ui/Icon";
 import SectionedList from "../components/layout/SectionedList";
 import Link from "../components/ui/Link";
-import Button from "../components/ui/Button";
 
 const About = styled.div`
   .about-current {
@@ -26,12 +25,6 @@ const About = styled.div`
 
   .technologies-more {
     margin-top: 15px;
-  }
-
-  @media only screen and (max-width: 576px) {
-    .technologies-more-cv {
-      display: block;
-    }
   }
 `;
 
@@ -161,23 +154,11 @@ const AboutPage = () => (
           ))}
         </div>
         <div className="technologies-more">
-          ... and many more.{" "}
-          <span className="technologies-more-cv">
-            See the full list in my CV -{" "}
-            <Button href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf" download>
-              Download PDF
-            </Button>
-            <div>
-              or{" "}
-              <Link
-                href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
-                openInNewTab
-              >
-                open the CV in browser
-              </Link>
-              .
-            </div>
-          </span>
+          ... and many more. See the full list in my{" "}
+          <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf" openInNewTab>
+            CV
+          </Link>
+          .
         </div>
       </Panel>
 
