@@ -8,6 +8,10 @@ import Link from "../components/ui/Link";
 import Button from "../components/ui/Button";
 
 const About = styled.div`
+  .about-current {
+    margin-top: 15px;
+  }
+
   .experience-company {
     margin-bottom: 10px;
   }
@@ -45,6 +49,14 @@ const AboutPage = () => (
           throughput and scalability. Collaborated closely with clients and
           across multiple teams to deliver solutions.
         </div>
+        <div className="about-current">
+          Currently working as a Principal Engineer, building AI solutions that
+          automate software development and leading a project to deliver the{" "}
+          <Link href="https://www.e-point.com/produkty/e-point-cms">
+            e-point CMS
+          </Link>{" "}
+          platform for one of the leading banks in Poland.
+        </div>
       </Panel>
 
       <Panel title="experience">
@@ -56,32 +68,38 @@ const AboutPage = () => (
         <div className="experience-entries">
           {[
             {
+              header: "Tech Lead, Principal Engineer",
+              date: "Jun 2026 – Present",
+              list: [
+                "Building AI agents and tooling that automate software development workflows, moving from assisted coding toward closed-loop delivery with humans reviewing at the gates",
+                <>
+                  Leading a migration project from a legacy CMS to{" "}
+                  <Link href="https://www.e-point.com/produkty/e-point-cms">
+                    e-point CMS
+                  </Link>{" "}
+                  for one of the leading banks in Poland
+                </>,
+              ],
+            },
+            {
               header: "Tech Lead, Senior Java Developer",
               date: "Jan 2023 – Sep 2025",
               list: [
                 "Led development of a CMS web platform with 15+ deployed services, serving traffic for millions of users for one of the leading banks in Poland",
                 "Delivered features across multiple projects in both time-and-material and fixed-price contracts, working across Waterfall and Agile methodologies",
                 "Redesigned release and deployment processes, reducing error rate and developer's manual effort",
-                "Drove continued decomposition of monolithic architecture into a modular monolith, with a long-term goal of microservices migration",
-                "Coordinated cross-team collaboration and acted as technical point of contact for clients",
                 "Led major version migrations of PostgreSQL 9.6 to 16, OKD 3 to 4 and Java 8 to 11 across multiple applications",
                 "Maintained and enhanced a throttling mechanism using Apache Kafka as a message broker",
                 "Analysed DDoS incidents, investigated logs, implemented traffic protection measures and fixed corresponding bugs",
-                "Implemented periodic vulnerability scanning procedure with OWASP Dependency-Check and Docker image scanning with Trivy",
-                "Configured SonarQube 9 quality profiles to enforce code standards across services",
               ],
             },
             {
               header: "Senior Java Developer",
               date: "May 2022 – Dec 2022",
               list: [
-                "Implemented new features and contributed to decomposition of monolithic architecture into more modular components",
                 "Diagnosed and resolved JVM memory leaks; performed JVM, cache and database query tuning and resolved performance bottlenecks in application code",
-                "Designed SSE-based communication with frontend for parallel session handling and session count control",
-                "Planned and executed load and performance tests using Gatling",
                 "Configured and maintained Kubernetes environments in OKD",
                 "Coordinated application releases and production deployments in collaboration with a client",
-                "Participated in architecture design and technology selection",
               ],
             },
             {
@@ -90,19 +108,22 @@ const AboutPage = () => (
               list: [
                 "Remediated security vulnerabilities identified in external audits and tuned circuit breaker and rate limiting mechanisms",
                 "Implemented new features and contributed to client requirements analysis and refinement within an Agile team",
-                "Contributed to architecture design, technology selection and solution evaluation",
                 "Maintained and improved Jenkins pipelines",
                 "Improved system observability with Grafana dashboards and alerts",
-                "Developed and maintained automated UI test suites using Selenium",
               ],
             },
             {
               header: "Junior Java Developer",
               date: "Aug 2019 – Aug 2020",
               list: [
-                "Developed and maintained the e-point CMS platform for the banking and insurance sector",
+                <>
+                  Developed and maintained the{" "}
+                  <Link href="https://www.e-point.com/produkty/e-point-cms">
+                    e-point CMS
+                  </Link>{" "}
+                  platform for the banking and insurance sector
+                </>,
                 "Implemented new CMS modules and components tailored to client requirements",
-                "Worked on integrations with external systems and third-party APIs",
               ],
             },
           ].map((entry, index) => (
