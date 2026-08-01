@@ -21,6 +21,7 @@ npm test  # runs `gatsby build` then the tests
 | `static-assets.test.js`   | Hardcoded list of important static assets (CV PDF, favicon, video, technology icons) exist                                      |
 | `bundle.test.js`          | Build artifacts (`webpack.stats.json`, `chunk-map.json`, `page-data/`) exist; HTML pages > 1 KB; reports total bundle size      |
 | `accessibility.test.js`   | Runs axe-core via jsdom against each page; one test per impact level (`moderate`/`serious`/`critical`) — any violation fails    |
+| `navigation.test.js`      | Header menu on every page: expected labels, hrefs, and the CV link's `target`/`rel`                                             |
 
 ## Debugging failures
 
