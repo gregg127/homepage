@@ -27,4 +27,3 @@ export default NotFoundPage;
 export function Head() {
   return <Seo title="Not Found" description="Page not found." noindex />;
 }
-
