@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
+import Seo from "../components/common/Seo";
 
 const NotFound = styled.div`
   div {
@@ -24,12 +25,6 @@ const NotFoundPage = () => (
 export default NotFoundPage;
 
 export function Head() {
-  return (
-    <>
-      <html lang="en" />
-      <title>Not Found</title>
-      <meta name="description" content="Page not found." />
-    </>
-  );
+  return <Seo title="Not Found" description="Page not found." />;
 }
 

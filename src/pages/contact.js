@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
 import Link from "../components/ui/Link";
+import Seo from "../components/common/Seo";
 
 const Contact = styled.div`
   p {
@@ -49,14 +50,10 @@ export default ContactPage;
 
 export function Head() {
   return (
-    <>
-      <html lang="en" />
-      <title>Contact</title>
-      <meta
-        name="description"
-        content="Get in touch with Grzegorz Gołębiowski."
-      />
-    </>
+    <Seo
+      title="Contact"
+      description="Get in touch with Grzegorz Gołębiowski."
+    />
   );
 }
 

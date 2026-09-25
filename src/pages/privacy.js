@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
+import Seo from "../components/common/Seo";
 
 const PrivacyContent = styled.div`
   text-align: left;
@@ -49,14 +50,10 @@ export default PrivacyPage;
 
 export function Head() {
   return (
-    <>
-      <html lang="en" />
-      <title>Privacy Policy</title>
-      <meta
-        name="description"
-        content="Privacy policy for golebiowski.dev — how personal data is handled under GDPR."
-      />
-    </>
+    <Seo
+      title="Privacy Policy"
+      description="Privacy policy for golebiowski.dev — how personal data is handled under GDPR."
+    />
   );
 }
 

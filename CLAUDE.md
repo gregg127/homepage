@@ -53,7 +53,7 @@ After each commit, check whether the change affects anything documented in this 
 - No TypeScript, no ESLint, no Prettier — project is intentionally plain JS. Don't add config files for these.
 - No comments unless the why is genuinely non-obvious.
 
-Every page must: wrap content in `<Page>`, export `Head()` with `<html lang="en" />`, `<title>`, and `<meta name="description">`.
+Every page must: wrap content in `<Page>` and export `Head()` returning `<Seo title=… description=… />` (`src/components/common/Seo.jsx`), which renders `<html lang="en" />`, `<title>`, and `<meta name="description">`. Site-wide values (name, URL, description, social links) live in `siteMetadata` in `gatsby-config.js`.
 
 ## Quality Gates
 

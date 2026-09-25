@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
+import Seo from "../components/common/Seo";
 
 const Intro = styled.div`
   font-size: 1.2em;
@@ -60,14 +61,5 @@ const IndexPage = () => (
 export default IndexPage;
 
 export function Head() {
-  return (
-    <>
-      <html lang="en" />
-      <title>Grzegorz Gołębiowski - Principal Engineer, Tech Lead</title>
-      <meta
-        name="description"
-        content="Personal website of Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate."
-      />
-    </>
-  );
+  return <Seo />;
 }

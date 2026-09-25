@@ -5,6 +5,7 @@ import Panel from "../components/layout/Panel";
 import Icon from "../components/ui/Icon";
 import SectionedList from "../components/layout/SectionedList";
 import Link from "../components/ui/Link";
+import Seo from "../components/common/Seo";
 
 const About = styled.div`
   .about-current {
@@ -199,13 +200,9 @@ export default AboutPage;
 
 export function Head() {
   return (
-    <>
-      <html lang="en" />
-      <title>About</title>
-      <meta
-        name="description"
-        content="About Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate."
-      />
-    </>
+    <Seo
+      title="About"
+      description="About Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate."
+    />
   );
 }

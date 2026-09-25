@@ -1,11 +1,19 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-module.exports = {
-  siteMetadata: {
-    title: `Grzegorz Gołębiowski - Principal Engineer, Tech Lead`,
-    siteUrl: `https://golebiowski.dev`,
+const siteMetadata = {
+  title: `Grzegorz Gołębiowski - Principal Engineer, Tech Lead`,
+  description: `Personal website of Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate.`,
+  author: `Grzegorz Gołębiowski`,
+  siteUrl: `https://golebiowski.dev`,
+  social: {
+    github: `https://github.com/gregg127`,
+    linkedin: `https://www.linkedin.com/in/grzegorz-golebiowski`,
   },
+};
+
+module.exports = {
+  siteMetadata,
 
   plugins: [
     {
@@ -27,8 +35,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Grzegorz Gołębiowski - Principal Engineer, Tech Lead`,
-        short_name: `Grzegorz Gołębiowski`,
+        name: siteMetadata.title,
+        short_name: siteMetadata.author,
         lang: "en",
         start_url: `/`,
         display: `standalone`,
@@ -42,7 +50,7 @@ module.exports = {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: null,
-        sitemap: `https://golebiowski.dev/sitemap-index.xml`,
+        sitemap: `${siteMetadata.siteUrl}/sitemap-index.xml`,
         policy: [
           { userAgent: "*", allow: "/" },
           { userAgent: "GPTBot", disallow: "/" },
