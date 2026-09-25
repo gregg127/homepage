@@ -9,11 +9,11 @@ const PAGES = [
   { file: "index.html", title: "Grzegorz Gołębiowski - Principal Engineer, Tech Lead" },
   { file: "about/index.html", title: "About" },
   { file: "contact/index.html", title: "Contact" },
-  { file: "404.html", title: "Not Found" },
+  { file: "404.html", title: "Not Found", noindex: true },
   { file: "privacy/index.html", title: "Privacy Policy" },
 ];
 
-for (const { file, title } of PAGES) {
+for (const { file, title, noindex = false } of PAGES) {
   describe(file, () => {
     let content;
 
@@ -43,6 +43,15 @@ for (const { file, title } of PAGES) {
     it('declares lang="en"', () => {
       content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
       assert.match(content, /lang="en"/, `Missing lang="en" in ${file}`);
+    });
+
+    it(noindex ? "is marked noindex" : "is indexable", () => {
+      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      assert.equal(
+        /<meta name="robots" content="[^"]*noindex/.test(content),
+        noindex,
+        `Expected ${file} to be ${noindex ? "noindex" : "indexable"}`,
+      );
     });
   });
 }

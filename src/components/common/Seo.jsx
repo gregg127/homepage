@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
-const Seo = ({ title, description, children }) => {
+const Seo = ({ title, description, noindex = false, children }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -22,6 +22,7 @@ const Seo = ({ title, description, children }) => {
         name="description"
         content={description ?? siteMetadata.description}
       />
+      {noindex && <meta name="robots" content="noindex" />}
       {children}
     </>
   );
