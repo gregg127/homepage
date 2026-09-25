@@ -27,7 +27,9 @@ const Seo = ({
     }
   `);
   const siteMetadata = site.siteMetadata;
-  const pageTitle = title ?? siteMetadata.title;
+  const pageTitle = title
+    ? `${title} · ${siteMetadata.author}`
+    : siteMetadata.title;
   const pageDescription = description ?? siteMetadata.description;
   const canonicalUrl =
     pathname && !noindex

@@ -202,7 +202,7 @@ export function Head({ location }) {
   return (
     <Seo
       title="About"
-      description="About Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate."
+      description="Grzegorz Gołębiowski - Principal Engineer and Java tech lead building banking platforms and AI tooling. Experience, tech stack, and education."
       pathname={location.pathname}
     />
   );

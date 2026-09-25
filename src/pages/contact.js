@@ -52,7 +52,7 @@ export function Head({ location }) {
   return (
     <Seo
       title="Contact"
-      description="Get in touch with Grzegorz Gołębiowski."
+      description="Get in touch with Grzegorz Gołębiowski, Principal Engineer and Java tech lead - by email, on GitHub, or on LinkedIn."
       pathname={location.pathname}
     />
   );

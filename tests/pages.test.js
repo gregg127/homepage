@@ -20,12 +20,20 @@ const PAGES = [
     pathname: "/",
     ogType: "profile",
   },
-  { file: "about/index.html", title: "About", pathname: "/about/" },
-  { file: "contact/index.html", title: "Contact", pathname: "/contact/" },
-  { file: "404.html", title: "Not Found", noindex: true },
+  {
+    file: "about/index.html",
+    title: "About · Grzegorz Gołębiowski",
+    pathname: "/about/",
+  },
+  {
+    file: "contact/index.html",
+    title: "Contact · Grzegorz Gołębiowski",
+    pathname: "/contact/",
+  },
+  { file: "404.html", title: "Not Found · Grzegorz Gołębiowski", noindex: true },
   {
     file: "privacy/index.html",
-    title: "Privacy Policy",
+    title: "Privacy Policy · Grzegorz Gołębiowski",
     pathname: "/privacy/",
   },
 ];
