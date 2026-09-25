@@ -23,10 +23,7 @@ const PrivacyContent = styled.div`
   h4,
   h5,
   h6 {
-    border-bottom: none;
-    letter-spacing: normal;
     margin: 20px 0 10px;
-    padding: 0;
   }
 
   hr {
@@ -48,12 +45,12 @@ const PrivacyPage = ({ data }) => (
 
 export default PrivacyPage;
 
-export function Head({ location }) {
+export function Head() {
   return (
     <Seo
       title="Privacy Policy"
       description="Privacy policy for golebiowski.dev — how personal data is handled under GDPR."
-      pathname={location.pathname}
+      pathname="/privacy/"
     />
   );
 }

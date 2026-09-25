@@ -198,12 +198,12 @@ const AboutPage = () => (
 
 export default AboutPage;
 
-export function Head({ location }) {
+export function Head() {
   return (
     <Seo
       title="About"
       description="Grzegorz Gołębiowski - Principal Engineer and Java tech lead building banking platforms and AI tooling. Experience, tech stack, and education."
-      pathname={location.pathname}
+      pathname="/about/"
     />
   );
 }

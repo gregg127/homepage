@@ -1,10 +1,7 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import useSiteMetadata from "../../hooks/useSiteMetadata";
 
 const OG_IMAGE = { path: "/og-image.png", width: 1200, height: 630 };
-
-const withTrailingSlash = (pathname) =>
-  pathname.endsWith("/") ? pathname : `${pathname}/`;
 
 const Seo = ({
   title,
@@ -14,26 +11,18 @@ const Seo = ({
   noindex = false,
   children,
 }) => {
-  const { site } = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          description
-          author
-          siteUrl
-        }
-      }
-    }
-  `);
-  const { author, siteUrl, ...defaults } = site.siteMetadata;
+  const {
+    title: siteTitle,
+    description: siteDescription,
+    author,
+    siteUrl,
+  } = useSiteMetadata();
 
-  const pageTitle = title ? `${title} · ${author}` : defaults.title;
-  const pageDescription = description ?? defaults.description;
-  const canonicalUrl =
-    pathname && !noindex ? `${siteUrl}${withTrailingSlash(pathname)}` : null;
+  const pageTitle = title ? `${title} · ${author}` : siteTitle;
+  const pageDescription = description ?? siteDescription;
+  const canonicalUrl = pathname && !noindex ? `${siteUrl}${pathname}` : null;
   const imageUrl = `${siteUrl}${OG_IMAGE.path}`;
-  const imageAlt = defaults.title;
+  const imageAlt = siteTitle;
 
   return (
     <>

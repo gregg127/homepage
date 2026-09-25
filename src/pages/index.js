@@ -1,9 +1,9 @@
 import React from "react";
-import { graphql } from "gatsby";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
 import Seo from "../components/common/Seo";
+import useSiteMetadata from "../hooks/useSiteMetadata";
 
 const Intro = styled.div`
   font-size: 1.2em;
@@ -61,8 +61,9 @@ const IndexPage = () => (
 
 export default IndexPage;
 
-export function Head({ location, data }) {
-  const { author, jobTitle, email, siteUrl, social } = data.site.siteMetadata;
+export function Head() {
+  const { author, jobTitle, email, siteUrl, social } = useSiteMetadata();
+  const [firstName, lastName] = author.split(" ");
   const person = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -78,28 +79,15 @@ export function Head({ location, data }) {
   };
 
   return (
-    <Seo pathname={location.pathname} ogType="profile">
+    <Seo pathname="/" ogType="profile">
+      <meta property="profile:first_name" content={firstName} />
+      <meta property="profile:last_name" content={lastName} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(person).replace(/</g, "\\u003c"),
+        }}
       />
     </Seo>
   );
 }
-
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        author
-        jobTitle
-        email
-        siteUrl
-        social {
-          github
-          linkedin
-        }
-      }
-    }
-  }
-`;

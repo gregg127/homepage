@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "../ui/Link";
+import useSiteMetadata from "../../hooks/useSiteMetadata";
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -21,23 +22,26 @@ const Links = styled.div`
   gap: 16px;
 `;
 
-const Footer = () => (
-  <StyledFooter>
-    <span>© {new Date().getFullYear()} Grzegorz Gołębiowski</span>
-    <Links>
-      <Link href="https://github.com/gregg127" openInNewTab>
-        GitHub
-      </Link>
-      <Link
-        href="https://www.linkedin.com/in/grzegorz-golebiowski"
-        openInNewTab
-      >
-        LinkedIn
-      </Link>
-      <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">CV</Link>
-      <Link href="/privacy">Privacy Policy</Link>
-    </Links>
-  </StyledFooter>
-);
+const Footer = () => {
+  const { author, social } = useSiteMetadata();
+
+  return (
+    <StyledFooter>
+      <span>
+        © {new Date().getFullYear()} {author}
+      </span>
+      <Links>
+        <Link href={social.github} openInNewTab>
+          GitHub
+        </Link>
+        <Link href={social.linkedin} openInNewTab>
+          LinkedIn
+        </Link>
+        <Link href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf">CV</Link>
+        <Link href="/privacy">Privacy Policy</Link>
+      </Links>
+    </StyledFooter>
+  );
+};
 
 export default Footer;

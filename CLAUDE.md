@@ -44,7 +44,7 @@ After each commit, check whether the change affects anything documented in this 
 
 ## Code Conventions
 
-- Pages: `.js` in `src/pages/`. Components: `.jsx` in `src/components/<category>/`.
+- Pages: `.js` in `src/pages/`. Components: `.jsx` in `src/components/<category>/`. Hooks: `.js` in `src/hooks/`.
 - Markdown sourced via GraphQL lives in `content/` (not `static/`, which is published as-is).
 - `export default` for components; named `export function Head()` for Gatsby's head API.
 - Never hardcode colours — always use CSS custom properties (defined in `src/components/common/Page.jsx`):
@@ -54,7 +54,7 @@ After each commit, check whether the change affects anything documented in this 
 - No TypeScript, no ESLint, no Prettier — project is intentionally plain JS. Don't add config files for these.
 - No comments unless the why is genuinely non-obvious.
 
-Every page must: wrap content in `<Page>` and export `Head({ location })` returning `<Seo title=… description=… pathname={location.pathname} />` (`src/components/common/Seo.jsx`), which renders `<html lang="en" />`, `<title>`, `<meta name="description">`, and the canonical link. Pages that shouldn't be indexed pass `noindex` instead of `pathname`. `title` is rendered as `<title> · Grzegorz Gołębiowski`; omit it to use the full site title (homepage only). Site-wide values (name, URL, description, social links) live in `siteMetadata` in `gatsby-config.js`.
+Every page must: wrap content in `<Page>` and export `Head()` returning `<Seo title=… description=… pathname="/route/" />` (`src/components/common/Seo.jsx`), which renders `<html lang="en" />`, `<title>`, `<meta name="description">`, and the canonical link. Pass the page's route as a literal with a trailing slash, not `location.pathname` — Head re-renders with the visitor's URL after hydration, so a mistyped or `index.html` URL would become the canonical. Pages that shouldn't be indexed pass `noindex` instead of `pathname`. `title` is rendered as `<title> · Grzegorz Gołębiowski`; omit it to use the full site title (homepage only). Site-wide values (name, URL, description, social links) live in `siteMetadata` in `gatsby-config.js` — read them with `useSiteMetadata()` (`src/hooks/useSiteMetadata.js`) instead of hardcoding them.
 
 ## Quality Gates
 

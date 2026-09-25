@@ -139,3 +139,16 @@ for (const {
     });
   });
 }
+
+describe("index.html profile tags", () => {
+  it("has profile:first_name and profile:last_name", () => {
+    const $ = cheerio.load(
+      fs.readFileSync(path.join(PUBLIC_DIR, "index.html"), "utf8"),
+    );
+    const profile = (property) =>
+      $(`meta[property="profile:${property}"]`).attr("content");
+
+    assert.equal(profile("first_name"), "Grzegorz");
+    assert.equal(profile("last_name"), "Gołębiowski");
+  });
+});

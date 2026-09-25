@@ -25,6 +25,10 @@ describe("structured data: index.html", () => {
     assert.equal(blocks.length, 1);
   });
 
+  it("escapes < so the script element cannot be closed early", () => {
+    assert.ok(!blocks[0].includes("<"), "JSON-LD contains a raw <");
+  });
+
   it("JSON-LD is valid JSON", () => {
     assert.doesNotThrow(() => JSON.parse(blocks[0]));
   });
