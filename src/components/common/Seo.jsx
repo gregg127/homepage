@@ -1,6 +1,8 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
+const OG_IMAGE = { path: "/og-image.png", width: 1200, height: 630 };
+
 const withTrailingSlash = (pathname) =>
   pathname.endsWith("/") ? pathname : `${pathname}/`;
 
@@ -31,6 +33,7 @@ const Seo = ({
     pathname && !noindex
       ? `${siteMetadata.siteUrl}${withTrailingSlash(pathname)}`
       : null;
+  const imageUrl = `${siteMetadata.siteUrl}${OG_IMAGE.path}`;
 
   return (
     <>
@@ -45,7 +48,13 @@ const Seo = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content={siteMetadata.author} />
       <meta property="og:locale" content="en_US" />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content={OG_IMAGE.width} />
+      <meta property="og:image:height" content={OG_IMAGE.height} />
+      <meta property="og:image:alt" content={siteMetadata.title} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={siteMetadata.title} />
       {children}
     </>
   );

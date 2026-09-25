@@ -8,6 +8,11 @@ const PUBLIC_DIR = path.join(__dirname, "..", "public");
 
 const SITE_URL = "https://golebiowski.dev";
 
+const pngSize = (file) => {
+  const header = fs.readFileSync(file).subarray(0, 24);
+  return { width: header.readUInt32BE(16), height: header.readUInt32BE(20) };
+};
+
 const PAGES = [
   {
     file: "index.html",
@@ -97,10 +102,32 @@ for (const {
       assert.equal(og("type"), ogType);
       assert.equal(og("site_name"), "Grzegorz Gołębiowski");
       assert.equal(og("locale"), "en_US");
-      assert.ok(
+      assert.equal(
         $('meta[name="twitter:card"]').attr("content"),
-        `Missing twitter:card in ${file}`,
+        "summary_large_image",
       );
+    });
+
+    it("og:image points to an existing image with matching dimensions", () => {
+      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      const $ = cheerio.load(content);
+      const og = (property) =>
+        $(`meta[property="og:${property}"]`).attr("content");
+      const image = og("image");
+
+      assert.ok(
+        image?.startsWith(`${SITE_URL}/`),
+        `og:image must be an absolute ${SITE_URL} URL, got ${image}`,
+      );
+      assert.equal($('meta[name="twitter:image"]').attr("content"), image);
+      assert.ok(og("image:alt"), `Missing og:image:alt in ${file}`);
+
+      const imageFile = path.join(PUBLIC_DIR, image.slice(SITE_URL.length));
+      assert.ok(fs.existsSync(imageFile), `${image} does not exist in public/`);
+      assert.deepEqual(pngSize(imageFile), {
+        width: Number(og("image:width")),
+        height: Number(og("image:height")),
+      });
     });
   });
 }
