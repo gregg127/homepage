@@ -39,10 +39,8 @@ describe("structured data: index.html", () => {
     assert.ok(person.email, "missing email");
   });
 
-  it("includes employer and alma mater", () => {
+  it("includes alma mater", () => {
     const person = JSON.parse(blocks[0]);
-    assert.equal(person.worksFor?.["@type"], "Organization");
-    assert.equal(person.worksFor?.name, "e-point SA");
     assert.equal(person.alumniOf?.["@type"], "CollegeOrUniversity");
     assert.equal(
       person.alumniOf?.name,

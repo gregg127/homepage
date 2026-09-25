@@ -69,11 +69,6 @@ export function Head({ location, data }) {
     name: author,
     url: `${siteUrl}/`,
     jobTitle,
-    worksFor: {
-      "@type": "Organization",
-      name: "e-point SA",
-      url: "https://www.e-point.com/",
-    },
     alumniOf: {
       "@type": "CollegeOrUniversity",
       name: "Polish-Japanese Academy of Information Technology",
