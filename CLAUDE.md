@@ -21,10 +21,10 @@ npm run containerDown  # Stop Docker container
 
 Branch naming:
 
-| Type | Prefix | Example |
-|------|--------|---------|
+| Type    | Prefix     | Example                 |
+| ------- | ---------- | ----------------------- |
 | Feature | `feature/` | `feature/add-blog-page` |
-| Bug fix | `fix/` | `fix/docker-fonts` |
+| Bug fix | `fix/`     | `fix/docker-fonts`      |
 
 PR to `main` triggers `pr.yml` (build + test) — this must be green to merge. Merge to `main` triggers `deploy.yml` which re-runs tests then deploys.
 
