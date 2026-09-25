@@ -23,6 +23,7 @@ npm run test
 | `bundle.test.js`          | Build artifacts (`webpack.stats.json`, `chunk-map.json`, `page-data/`) exist; HTML pages > 1 KB; reports total bundle size      |
 | `accessibility.test.js`   | Runs axe-core via jsdom against each page; one test per impact level (`moderate`/`serious`/`critical`) — any violation fails    |
 | `navigation.test.js`      | Header menu on every page: expected labels, hrefs, and the CV link's `target`/`rel`                                             |
+| `structured-data.test.js` | Homepage JSON-LD is valid JSON describing a schema.org `Person` with employer, alma mater, and `sameAs` social links               |
 
 ## Debugging failures
 

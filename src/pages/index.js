@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
@@ -60,6 +61,50 @@ const IndexPage = () => (
 
 export default IndexPage;
 
-export function Head({ location }) {
-  return <Seo pathname={location.pathname} ogType="profile" />;
+export function Head({ location, data }) {
+  const { author, jobTitle, email, siteUrl, social } = data.site.siteMetadata;
+  const person = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: author,
+    url: `${siteUrl}/`,
+    jobTitle,
+    worksFor: {
+      "@type": "Organization",
+      name: "e-point SA",
+      url: "https://www.e-point.com/",
+    },
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Polish-Japanese Academy of Information Technology",
+    },
+    sameAs: [social.github, social.linkedin],
+    email,
+  };
+
+  return (
+    <Seo pathname={location.pathname} ogType="profile">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
+      />
+    </Seo>
+  );
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        author
+        jobTitle
+        email
+        siteUrl
+        social {
+          github
+          linkedin
+        }
+      }
+    }
+  }
+`;

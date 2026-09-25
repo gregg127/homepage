@@ -5,6 +5,8 @@ const siteMetadata = {
   title: `Grzegorz Gołębiowski - Principal Engineer, Tech Lead`,
   description: `Personal website of Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate.`,
   author: `Grzegorz Gołębiowski`,
+  jobTitle: `Principal Engineer`,
+  email: `grzegorz.golebiowski127@gmail.com`,
   siteUrl: `https://golebiowski.dev`,
   social: {
     github: `https://github.com/gregg127`,
