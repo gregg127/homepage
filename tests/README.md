@@ -15,7 +15,7 @@ npm run test
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `robots-txt.test.js`      | `public/robots.txt` exists, has `User-agent: *`, `Allow: /`, references the sitemap                                             |
 | `sitemap.test.js`         | `sitemap-index.xml` and `sitemap-0.xml` are well-formed and contain all 4 pages, exclude `/404`                                 |
-| `pages.test.js`           | Each built HTML page has the correct `<title>`, a non-empty `<meta name="description">`, `lang="en"`; only 404 is `noindex`     |
+| `pages.test.js`           | Each built HTML page has the correct `<title>`, a non-empty `<meta name="description">`, `lang="en"`, canonical URL; only 404 is `noindex` |
 | `html-validity.test.js`   | DOM-level checks via cheerio: heading hierarchy, every `<img>` has alt, internal links resolve, no localhost in production HTML |
 | `asset-integrity.test.js` | Every JS/CSS/img/icon path referenced in HTML resolves to a real, non-empty file in `public/`                                   |
 | `manifest.test.js`        | `manifest.webmanifest` is valid JSON with required PWA fields and existing icon files                                           |

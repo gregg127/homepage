@@ -60,6 +60,6 @@ const IndexPage = () => (
 
 export default IndexPage;
 
-export function Head() {
-  return <Seo />;
+export function Head({ location }) {
+  return <Seo pathname={location.pathname} />;
 }

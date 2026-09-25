@@ -48,11 +48,12 @@ const ContactPage = () => (
 
 export default ContactPage;
 
-export function Head() {
+export function Head({ location }) {
   return (
     <Seo
       title="Contact"
       description="Get in touch with Grzegorz Gołębiowski."
+      pathname={location.pathname}
     />
   );
 }

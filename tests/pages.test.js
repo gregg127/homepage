@@ -5,15 +5,25 @@ const path = require("node:path");
 
 const PUBLIC_DIR = path.join(__dirname, "..", "public");
 
+const SITE_URL = "https://golebiowski.dev";
+
 const PAGES = [
-  { file: "index.html", title: "Grzegorz Gołębiowski - Principal Engineer, Tech Lead" },
-  { file: "about/index.html", title: "About" },
-  { file: "contact/index.html", title: "Contact" },
+  {
+    file: "index.html",
+    title: "Grzegorz Gołębiowski - Principal Engineer, Tech Lead",
+    pathname: "/",
+  },
+  { file: "about/index.html", title: "About", pathname: "/about/" },
+  { file: "contact/index.html", title: "Contact", pathname: "/contact/" },
   { file: "404.html", title: "Not Found", noindex: true },
-  { file: "privacy/index.html", title: "Privacy Policy" },
+  {
+    file: "privacy/index.html",
+    title: "Privacy Policy",
+    pathname: "/privacy/",
+  },
 ];
 
-for (const { file, title, noindex = false } of PAGES) {
+for (const { file, title, pathname, noindex = false } of PAGES) {
   describe(file, () => {
     let content;
 
@@ -52,6 +62,16 @@ for (const { file, title, noindex = false } of PAGES) {
         noindex,
         `Expected ${file} to be ${noindex ? "noindex" : "indexable"}`,
       );
+    });
+
+    const canonicalUrl = pathname && `${SITE_URL}${pathname}`;
+
+    it(canonicalUrl ? "has a canonical link" : "has no canonical link", () => {
+      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      const canonicals = [
+        ...content.matchAll(/<link rel="canonical" href="([^"]*)"/g),
+      ].map((m) => m[1]);
+      assert.deepEqual(canonicals, canonicalUrl ? [canonicalUrl] : []);
     });
   });
 }

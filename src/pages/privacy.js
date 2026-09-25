@@ -48,11 +48,12 @@ const PrivacyPage = ({ data }) => (
 
 export default PrivacyPage;
 
-export function Head() {
+export function Head({ location }) {
   return (
     <Seo
       title="Privacy Policy"
       description="Privacy policy for golebiowski.dev — how personal data is handled under GDPR."
+      pathname={location.pathname}
     />
   );
 }

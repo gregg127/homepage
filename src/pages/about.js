@@ -198,11 +198,12 @@ const AboutPage = () => (
 
 export default AboutPage;
 
-export function Head() {
+export function Head({ location }) {
   return (
     <Seo
       title="About"
       description="About Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate."
+      pathname={location.pathname}
     />
   );
 }
