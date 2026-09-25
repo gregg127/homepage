@@ -54,7 +54,7 @@ After each commit, check whether the change affects anything documented in this 
 - No TypeScript, no ESLint, no Prettier — project is intentionally plain JS. Don't add config files for these.
 - No comments unless the why is genuinely non-obvious.
 
-Every page must: wrap content in `<Page>` and export `Head()` returning `<Seo title=… description=… pathname="/route/" />` (`src/components/common/Seo.jsx`), which renders `<html lang="en" />`, `<title>`, `<meta name="description">`, and the canonical link. Pass the page's route as a literal with a trailing slash, not `location.pathname` — Head re-renders with the visitor's URL after hydration, so a mistyped or `index.html` URL would become the canonical. Pages that shouldn't be indexed pass `noindex` instead of `pathname`. `title` is rendered as `<title> · Grzegorz Gołębiowski`; omit it to use the full site title (homepage only). Site-wide values (name, URL, description, social links) live in `siteMetadata` in `gatsby-config.js` — read them with `useSiteMetadata()` (`src/hooks/useSiteMetadata.js`) instead of hardcoding them.
+Every page wraps content in `<Page>` and exports `Head()` returning `<Seo title=… description=… pathname="/route/" />`. Use a literal route with a trailing slash, never `location.pathname` (it would leak visitor URLs into the canonical); use `noindex` instead for unindexed pages. Omit `title` only on the homepage. Read site-wide values via `useSiteMetadata()`, never hardcode them.
 
 ## Quality Gates
 
