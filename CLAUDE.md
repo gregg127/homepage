@@ -21,10 +21,10 @@ npm run containerDown  # Stop Docker container
 
 Branch naming:
 
-| Type | Prefix | Example |
-|------|--------|---------|
+| Type    | Prefix     | Example                 |
+| ------- | ---------- | ----------------------- |
 | Feature | `feature/` | `feature/add-blog-page` |
-| Bug fix | `fix/` | `fix/docker-fonts` |
+| Bug fix | `fix/`     | `fix/docker-fonts`      |
 
 PR to `main` triggers `pr.yml` (build + test) — this must be green to merge. Merge to `main` triggers `deploy.yml` which re-runs tests then deploys.
 
@@ -44,7 +44,8 @@ After each commit, check whether the change affects anything documented in this 
 
 ## Code Conventions
 
-- Pages: `.js` in `src/pages/`. Components: `.jsx` in `src/components/<category>/`.
+- Pages: `.js` in `src/pages/`. Components: `.jsx` in `src/components/<category>/`. Hooks: `.js` in `src/hooks/`.
+- Markdown sourced via GraphQL lives in `content/` (not `static/`, which is published as-is).
 - `export default` for components; named `export function Head()` for Gatsby's head API.
 - Never hardcode colours — always use CSS custom properties (defined in `src/components/common/Page.jsx`):
   `--color-text`, `--color-text-muted`, `--color-text-link-hover`, `--color-background`, `--color-secondary`.
@@ -53,7 +54,7 @@ After each commit, check whether the change affects anything documented in this 
 - No TypeScript, no ESLint, no Prettier — project is intentionally plain JS. Don't add config files for these.
 - No comments unless the why is genuinely non-obvious.
 
-Every page must: wrap content in `<Page>`, export `Head()` with `<html lang="en" />`, `<title>`, and `<meta name="description">`.
+Every page wraps content in `<Page>` and exports `Head()` returning `<Seo title=… description=… pathname="/route/" />`. Use a literal route with a trailing slash, never `location.pathname` (it would leak visitor URLs into the canonical); use `noindex` instead for unindexed pages. Omit `title` only on the homepage. Read site-wide values via `useSiteMetadata()`, never hardcode them.
 
 ## Quality Gates
 

@@ -35,8 +35,12 @@ for (const file of PAGES) {
       assert.equal($("body").length, 1, "expected exactly one <body> element");
     });
 
-    it("has at most one <h1>", () => {
-      assert.ok($("h1").length <= 1, `found ${$("h1").length} <h1> elements`);
+    it("has exactly one <h1>", () => {
+      assert.equal($("h1").length, 1, `found ${$("h1").length} <h1> elements`);
+    });
+
+    it("<h1> is the first heading on the page", () => {
+      assert.equal($("h1, h2, h3, h4, h5, h6").first().prop("tagName"), "H1");
     });
 
     it("heading hierarchy does not skip levels", () => {

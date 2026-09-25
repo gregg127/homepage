@@ -7,6 +7,7 @@ const PUBLIC_DIR = path.join(__dirname, "..", "public");
 
 const ASSETS = [
   "favicon.svg",
+  "og-image.png",
   "Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf",
   "jin_yang_handshake.mp4",
   "icons/java-svgrepo-com.svg",

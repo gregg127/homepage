@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
+import Seo from "../components/common/Seo";
+import useSiteMetadata from "../hooks/useSiteMetadata";
 
 const Intro = styled.div`
   font-size: 1.2em;
@@ -34,7 +36,7 @@ const Intro = styled.div`
 const IndexPage = () => (
   <Page>
     <Intro>
-      <Panel title="GRZEGORZ GOŁĘBIOWSKI">
+      <Panel title="GRZEGORZ GOŁĘBIOWSKI" as="h1">
         <div className="introContent">
           <span className="title">computer science graduate</span>
           <span className="divider"> | </span>
@@ -60,14 +62,32 @@ const IndexPage = () => (
 export default IndexPage;
 
 export function Head() {
+  const { author, jobTitle, email, siteUrl, social } = useSiteMetadata();
+  const [firstName, lastName] = author.split(" ");
+  const person = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: author,
+    url: `${siteUrl}/`,
+    jobTitle,
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Polish-Japanese Academy of Information Technology",
+    },
+    sameAs: [social.github, social.linkedin],
+    email,
+  };
+
   return (
-    <>
-      <html lang="en" />
-      <title>Grzegorz Gołębiowski - personal website</title>
-      <meta
-        name="description"
-        content="Personal website of Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate."
+    <Seo pathname="/" ogType="profile">
+      <meta property="profile:first_name" content={firstName} />
+      <meta property="profile:last_name" content={lastName} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(person).replace(/</g, "\\u003c"),
+        }}
       />
-    </>
+    </Seo>
   );
 }

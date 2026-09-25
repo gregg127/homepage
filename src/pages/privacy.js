@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import Page from "../components/common/Page";
 import Panel from "../components/layout/Panel";
+import Seo from "../components/common/Seo";
 
 const PrivacyContent = styled.div`
   text-align: left;
@@ -22,10 +23,7 @@ const PrivacyContent = styled.div`
   h4,
   h5,
   h6 {
-    border-bottom: none;
-    letter-spacing: normal;
     margin: 20px 0 10px;
-    padding: 0;
   }
 
   hr {
@@ -37,7 +35,7 @@ const PrivacyContent = styled.div`
 
 const PrivacyPage = ({ data }) => (
   <Page>
-    <Panel title="privacy policy">
+    <Panel title="privacy policy" as="h1">
       <PrivacyContent
         dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
       />
@@ -49,14 +47,11 @@ export default PrivacyPage;
 
 export function Head() {
   return (
-    <>
-      <html lang="en" />
-      <title>Privacy Policy</title>
-      <meta
-        name="description"
-        content="Privacy policy for golebiowski.dev — how personal data is handled under GDPR."
-      />
-    </>
+    <Seo
+      title="Privacy Policy"
+      description="Privacy policy for golebiowski.dev"
+      pathname="/privacy/"
+    />
   );
 }
 
