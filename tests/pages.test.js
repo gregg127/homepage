@@ -2,6 +2,7 @@ const { describe, it } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
+const cheerio = require("cheerio");
 
 const PUBLIC_DIR = path.join(__dirname, "..", "public");
 
@@ -12,6 +13,7 @@ const PAGES = [
     file: "index.html",
     title: "Grzegorz Gołębiowski - Principal Engineer, Tech Lead",
     pathname: "/",
+    ogType: "profile",
   },
   { file: "about/index.html", title: "About", pathname: "/about/" },
   { file: "contact/index.html", title: "Contact", pathname: "/contact/" },
@@ -23,7 +25,13 @@ const PAGES = [
   },
 ];
 
-for (const { file, title, pathname, noindex = false } of PAGES) {
+for (const {
+  file,
+  title,
+  pathname,
+  ogType = "website",
+  noindex = false,
+} of PAGES) {
   describe(file, () => {
     let content;
 
@@ -72,6 +80,27 @@ for (const { file, title, pathname, noindex = false } of PAGES) {
         ...content.matchAll(/<link rel="canonical" href="([^"]*)"/g),
       ].map((m) => m[1]);
       assert.deepEqual(canonicals, canonicalUrl ? [canonicalUrl] : []);
+    });
+
+    it("has Open Graph and Twitter Card tags", () => {
+      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      const $ = cheerio.load(content);
+      const og = (property) =>
+        $(`meta[property="og:${property}"]`).attr("content");
+
+      assert.equal(og("title"), title);
+      assert.equal(
+        og("description"),
+        $('meta[name="description"]').attr("content"),
+      );
+      assert.equal(og("url"), canonicalUrl || undefined);
+      assert.equal(og("type"), ogType);
+      assert.equal(og("site_name"), "Grzegorz Gołębiowski");
+      assert.equal(og("locale"), "en_US");
+      assert.ok(
+        $('meta[name="twitter:card"]').attr("content"),
+        `Missing twitter:card in ${file}`,
+      );
     });
   });
 }

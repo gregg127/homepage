@@ -61,5 +61,5 @@ const IndexPage = () => (
 export default IndexPage;
 
 export function Head({ location }) {
-  return <Seo pathname={location.pathname} />;
+  return <Seo pathname={location.pathname} ogType="profile" />;
 }
