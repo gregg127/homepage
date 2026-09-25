@@ -45,6 +45,7 @@ After each commit, check whether the change affects anything documented in this 
 ## Code Conventions
 
 - Pages: `.js` in `src/pages/`. Components: `.jsx` in `src/components/<category>/`.
+- Markdown sourced via GraphQL lives in `content/` (not `static/`, which is published as-is).
 - `export default` for components; named `export function Head()` for Gatsby's head API.
 - Never hardcode colours — always use CSS custom properties (defined in `src/components/common/Page.jsx`):
   `--color-text`, `--color-text-muted`, `--color-text-link-hover`, `--color-background`, `--color-secondary`.

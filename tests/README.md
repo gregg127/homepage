@@ -24,6 +24,7 @@ npm run test
 | `accessibility.test.js`   | Runs axe-core via jsdom against each page; one test per impact level (`moderate`/`serious`/`critical`) — any violation fails    |
 | `navigation.test.js`      | Header menu on every page: expected labels, hrefs, and the CV link's `target`/`rel`                                             |
 | `structured-data.test.js` | Homepage JSON-LD is valid JSON describing a schema.org `Person` with employer, alma mater, and `sameAs` social links               |
+| `privacy.test.js`         | `/privacy` renders both language versions with a working `#polityka-prywatności` anchor; raw markdown is not published        |
 
 ## Debugging failures
 

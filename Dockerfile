@@ -15,6 +15,7 @@ WORKDIR /usr/src/app
 COPY package*.json .
 COPY gatsby-*.js .
 COPY static ./static/
+COPY content ./content/
 COPY --from=cv-builder /cv/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf ./static/
 COPY src ./src/
 RUN npm install --production;
