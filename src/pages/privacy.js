@@ -49,7 +49,7 @@ export function Head() {
   return (
     <Seo
       title="Privacy Policy"
-      description="Privacy policy for golebiowski.dev — how personal data is handled under GDPR."
+      description="Privacy policy for golebiowski.dev"
       pathname="/privacy/"
     />
   );
