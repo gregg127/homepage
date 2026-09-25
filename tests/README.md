@@ -5,7 +5,8 @@ Integration tests that validate the artifacts under `public/` after `gatsby buil
 ## Run
 
 ```sh
-npm test  # runs `gatsby build` then the tests
+npm run build
+npm run test
 ```
 
 ## Suites

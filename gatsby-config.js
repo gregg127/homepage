@@ -3,7 +3,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Grzegorz Gołębiowski - personal website`,
+    title: `Grzegorz Gołębiowski - Principal Engineer, Tech Lead`,
     siteUrl: `https://golebiowski.dev`,
   },
 
@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Grzegorz Gołębiowski - personal website`,
+        name: `Grzegorz Gołębiowski - Principal Engineer, Tech Lead`,
         short_name: `Grzegorz Gołębiowski`,
         lang: "en",
         start_url: `/`,

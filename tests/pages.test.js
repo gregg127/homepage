@@ -6,7 +6,7 @@ const path = require("node:path");
 const PUBLIC_DIR = path.join(__dirname, "..", "public");
 
 const PAGES = [
-  { file: "index.html", title: "Grzegorz Gołębiowski - personal website" },
+  { file: "index.html", title: "Grzegorz Gołębiowski - Principal Engineer, Tech Lead" },
   { file: "about/index.html", title: "About" },
   { file: "contact/index.html", title: "Contact" },
   { file: "404.html", title: "Not Found" },
