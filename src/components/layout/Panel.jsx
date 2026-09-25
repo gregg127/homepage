@@ -6,7 +6,8 @@ const StyledPanel = styled.div`
   margin: 10px auto;
   padding: 20px;
 
-  h2 {
+  .panel-title {
+    font-size: 1.5em;
     margin: 10px 0 30px 0;
     padding: 0 0 20px 0;
     border-bottom: 1px solid var(--color-secondary);
@@ -25,10 +26,10 @@ const StyledPanel = styled.div`
   }
 `;
 
-const Panel = ({ title, children }) => {
+const Panel = ({ title, as: Heading = "h2", children }) => {
   return (
     <StyledPanel>
-      <h2>{title}</h2>
+      <Heading className="panel-title">{title}</Heading>
       <div className="children">{children}</div>
     </StyledPanel>
   );

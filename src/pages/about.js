@@ -32,7 +32,7 @@ const About = styled.div`
 const AboutPage = () => (
   <Page>
     <About>
-      <Panel title="about me">
+      <Panel title="about me" as="h1">
         <div>
           Software Engineer with a Master's degree in Computer Science and
           hands-on experience in Java-based tech stack. Led a team of 10+

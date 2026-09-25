@@ -19,7 +19,7 @@ const Contact = styled.div`
 const ContactPage = () => (
   <Page>
     <Contact>
-      <Panel title="any questions?">
+      <Panel title="any questions?" as="h1">
         <p>
           Drop me a line at{" "}
           <Link href="mailto:grzegorz.golebiowski127@gmail.com">

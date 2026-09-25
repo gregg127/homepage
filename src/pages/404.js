@@ -13,7 +13,7 @@ const NotFound = styled.div`
 const NotFoundPage = () => (
   <Page>
     <NotFound>
-      <Panel title="page not found">
+      <Panel title="page not found" as="h1">
         <div>
           <span>try something else</span>
         </div>

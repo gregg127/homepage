@@ -94,7 +94,7 @@ For any privacy-related question or request, contact me at **grzegorz.golebiowsk
 
 ---
 
-# Polityka prywatności
+## Polityka prywatności
 
 _Ostatnia aktualizacja: 13 maja 2026 r._
 

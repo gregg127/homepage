@@ -36,7 +36,7 @@ const Intro = styled.div`
 const IndexPage = () => (
   <Page>
     <Intro>
-      <Panel title="GRZEGORZ GOŁĘBIOWSKI">
+      <Panel title="GRZEGORZ GOŁĘBIOWSKI" as="h1">
         <div className="introContent">
           <span className="title">computer science graduate</span>
           <span className="divider"> | </span>

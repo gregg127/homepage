@@ -38,7 +38,7 @@ const PrivacyContent = styled.div`
 
 const PrivacyPage = ({ data }) => (
   <Page>
-    <Panel title="privacy policy">
+    <Panel title="privacy policy" as="h1">
       <PrivacyContent
         dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
       />
