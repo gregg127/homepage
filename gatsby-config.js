@@ -3,7 +3,7 @@
  */
 const siteMetadata = {
   title: `Grzegorz Gołębiowski - Principal Engineer, Tech Lead`,
-  description: `Personal website of Grzegorz Gołębiowski - software engineer, tech lead, and computer science graduate.`,
+  description: `Software engineer, tech lead, computer science graduate. Banking sector experience with Java, microservices and high-traffic platforms.`,
   author: `Grzegorz Gołębiowski`,
   jobTitle: `Software Engineer`,
   email: `grzegorz.golebiowski127@gmail.com`,
