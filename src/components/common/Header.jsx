@@ -64,16 +64,17 @@ const StyledMenu = styled.nav`
   @media (max-width: 576px) {
     margin-bottom: 0;
     font-size: 1em;
+    padding: 5px;
 
     ul {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      gap: 5px;
+      gap: 2px;
       text-align: left;
     }
 
     li {
-      margin: 5px 20px;
+      margin: 2px 5px;
     }
   }
 `;
@@ -97,7 +98,6 @@ const Header = () => (
           <a
             className="link"
             href="/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf"
-            target="_blank"
             rel="noopener noreferrer"
           >
             CV
