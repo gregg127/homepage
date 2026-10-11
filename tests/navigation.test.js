@@ -21,7 +21,7 @@ const MENU_ITEMS = [
   {
     label: "CV",
     href: "/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf",
-    target: "_blank",
+    target: undefined,
     rel: "noopener noreferrer",
   },
 ];
