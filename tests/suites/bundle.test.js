@@ -54,6 +54,55 @@ describe("built pages", () => {
   }
 });
 
+const INDEX_HTML_BUDGET = 80 * 1024;
+const LATIN_EXT_RANGE = "u+0100-02ba";
+const EXPECTED_FONT_FACES = [
+  "Lato normal 300",
+  "Lato italic 300",
+  "Lato normal 400",
+  "Courier Prime normal 400",
+];
+
+const fontFaces = (html) =>
+  [...html.matchAll(/@font-face\{([^}]*)\}/g)].map(([, body]) => {
+    const prop = (name) =>
+      body.match(new RegExp(`${name}:([^;]+)`))?.[1].replace(/["']/g, "");
+    return {
+      face: `${prop("font-family")} ${prop("font-style")} ${prop("font-weight")}`,
+      unicodeRange: prop("unicode-range")?.toLowerCase() ?? "",
+    };
+  });
+
+describe("font budget", () => {
+  it(`index.html is under ${INDEX_HTML_BUDGET / 1024} KB`, () => {
+    const size = fs.statSync(path.join(PUBLIC_DIR, "index.html")).size;
+    assert.ok(
+      size < INDEX_HTML_BUDGET,
+      `index.html is ${size} bytes — check for unused inlined @font-face rules`,
+    );
+  });
+
+  for (const file of PAGE_FILES) {
+    it(`${file} inlines only the font faces in use`, () => {
+      const faces = [...new Set(fontFaces(readPage(file)).map((f) => f.face))];
+      assert.deepEqual(faces.sort(), [...EXPECTED_FONT_FACES].sort());
+    });
+  }
+
+  it("every font face has a latin-ext subset for Polish characters", () => {
+    const faces = fontFaces(readPage("index.html"));
+    for (const expected of EXPECTED_FONT_FACES) {
+      assert.ok(
+        faces.some(
+          ({ face, unicodeRange }) =>
+            face === expected && unicodeRange.includes(LATIN_EXT_RANGE),
+        ),
+        `${expected} has no latin-ext @font-face rule`,
+      );
+    }
+  });
+});
+
 describe("font-display", () => {
   it("built CSS uses font-display: block (not swap) for all @font-face rules", () => {
     const indexHtml = readPage("index.html");

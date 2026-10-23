@@ -30,7 +30,7 @@ All in `suites/`.
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `accessibility.test.js`   | Runs axe-core via jsdom against each page; one test per impact level (`moderate`/`serious`/`critical`) — any violation fails                                                                          |
 | `asset-integrity.test.js` | Every JS/CSS/img/icon path referenced in HTML resolves to a real, non-empty file in `public/`                                                                                                                      |
-| `bundle.test.js`          | Build artifacts (`webpack.stats.json`, `chunk-map.json`, `page-data/`) exist; every page has `page-data.json`; HTML pages > 1 KB; built CSS uses `font-display: block`; reports total bundle size                 |
+| `bundle.test.js`          | Build artifacts (`webpack.stats.json`, `chunk-map.json`, `page-data/`) exist; every page has `page-data.json`; HTML pages > 1 KB; `index.html` < 80 KB; each page inlines only the used font faces, each with a `latin-ext` subset; built CSS uses `font-display: block`; reports total bundle size                 |
 | `html-validity.test.js`   | Via cheerio: exactly one `<h1>` and it comes first, no heading skips a level, `<img>` alt, no duplicate ids, internal links and `#anchors` resolve, `target="_blank"` has `rel="noopener noreferrer"`, no dev hostnames |
 | `manifest.test.js`        | `manifest.webmanifest` is valid JSON with required PWA fields, a valid `display`, root-relative `start_url`, and existing icon files                                                                               |
 | `navigation.test.js`      | Header menu and footer links/copyright on every page (labels, hrefs, `target`/`rel`); contact page links to email, GitHub and LinkedIn                                                                             |
@@ -92,5 +92,6 @@ tests/
 - **`missing assets`** → HTML references `/foo.png` but `public/foo.png` doesn't exist; either the file wasn't added to `static/` or a path is wrong
 - **axe violations** → the failure message includes the rule id, target selector, and a help URL with the fix
 - **`heading <hN> skips a level`** → e.g. a page jumps from `<h2>` straight to `<h4>`; insert the missing level or restructure
+- **`font budget` / `inlines only the font faces in use`** → `gatsby-browser.js` imports a font weight or style the site doesn't use (small files are inlined as base64 into every page); if a new weight is genuinely needed, add it to `EXPECTED_FONT_FACES` in `bundle.test.js`
 - **`font-display`** → `gatsby-node.js` rewrites `@fontsource` `swap` to `block`; if this fails, that webpack rule stopped matching
 - **`og:image` dimensions** → `og:image:width`/`height` in `Seo` no longer match the actual PNG; update one or the other
