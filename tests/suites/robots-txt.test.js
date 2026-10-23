@@ -3,7 +3,9 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const ROBOTS_TXT = path.join(__dirname, "..", "public", "robots.txt");
+const { PUBLIC_DIR } = require("../site");
+
+const ROBOTS_TXT = path.join(PUBLIC_DIR, "robots.txt");
 
 const AI_BOTS_DISALLOWED = [
   "GPTBot",
@@ -39,7 +41,7 @@ describe("robots.txt", () => {
 
   for (const bot of AI_BOTS_DISALLOWED) {
     it(`disallows ${bot}`, () => {
-      const re = new RegExp(`^User-agent: ${bot}\\s*\\nDisallow: /`, "m");
+      const re = new RegExp(`^User-agent: ${bot}\\s*\\nDisallow: /$`, "m");
       assert.match(
         content,
         re,

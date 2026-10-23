@@ -4,6 +4,7 @@ ci:
       - https://golebiowski.dev/
       - https://golebiowski.dev/about/
       - https://golebiowski.dev/contact/
+      - https://golebiowski.dev/privacy/
     numberOfRuns: 3
     settings:
       preset: desktop

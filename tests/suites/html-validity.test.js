@@ -4,15 +4,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const cheerio = require("cheerio");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
-
-const PAGES = [
-  "index.html",
-  "about/index.html",
-  "contact/index.html",
-  "404.html",
-  "privacy/index.html",
-];
+const { PUBLIC_DIR, PAGE_FILES, readPage } = require("../site");
 
 const FORBIDDEN_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"];
 
@@ -25,9 +17,9 @@ const resolveInternalRef = (href) => {
   return path.join(PUBLIC_DIR, trimmed, "index.html");
 };
 
-for (const file of PAGES) {
+for (const file of PAGE_FILES) {
   describe(`html validity: ${file}`, () => {
-    const html = fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+    const html = readPage(file);
     const $ = cheerio.load(html);
 
     it("parses as HTML with <html> and <body>", () => {
@@ -47,14 +39,42 @@ for (const file of PAGES) {
       const levels = $("h1, h2, h3, h4, h5, h6")
         .map((_, el) => Number(el.tagName.slice(1)))
         .get();
-      let maxSeen = 0;
-      for (const level of levels) {
+      for (let i = 1; i < levels.length; i++) {
         assert.ok(
-          level <= maxSeen + 1 || maxSeen === 0,
-          `heading <h${level}> skips a level (previous deepest was h${maxSeen})`,
+          levels[i] <= levels[i - 1] + 1,
+          `heading <h${levels[i]}> skips a level (previous was h${levels[i - 1]})`,
         );
-        if (level > maxSeen) maxSeen = level;
       }
+    });
+
+    it("has no duplicate id attributes", () => {
+      const ids = $("[id]")
+        .map((_, el) => $(el).attr("id"))
+        .get();
+      const duplicates = ids.filter((id, i) => ids.indexOf(id) !== i);
+      assert.deepEqual(duplicates, [], `duplicate ids: ${duplicates.join(", ")}`);
+    });
+
+    it("same-page anchors point at an existing id", () => {
+      const broken = $('a[href^="#"]')
+        .map((_, el) => $(el).attr("href"))
+        .get()
+        .filter((href) => href.length > 1)
+        .filter(
+          (href) => $(`[id="${decodeURIComponent(href.slice(1))}"]`).length === 0,
+        );
+      assert.deepEqual(broken, [], `broken anchors: ${broken.join(", ")}`);
+    });
+
+    it('target="_blank" links have rel="noopener noreferrer"', () => {
+      const unsafe = $('a[target="_blank"]')
+        .filter((_, el) => {
+          const rel = ($(el).attr("rel") || "").split(/\s+/);
+          return !rel.includes("noopener") || !rel.includes("noreferrer");
+        })
+        .map((_, el) => $(el).attr("href"))
+        .get();
+      assert.deepEqual(unsafe, [], `unsafe target="_blank": ${unsafe.join(", ")}`);
     });
 
     it("every <img> has a non-empty alt attribute", () => {

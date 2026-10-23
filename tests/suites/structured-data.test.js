@@ -1,21 +1,19 @@
 const { describe, it, before } = require("node:test");
 const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const path = require("node:path");
-const cheerio = require("cheerio");
 
-const INDEX_HTML = path.join(__dirname, "..", "public", "index.html");
-
-const EXPECTED_SAME_AS = [
-  "https://github.com/gregg127",
-  "https://www.linkedin.com/in/grzegorz-golebiowski",
-];
+const {
+  SITE_URL,
+  AUTHOR,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  loadPage,
+} = require("../site");
 
 describe("structured data: index.html", () => {
   let blocks;
 
   before(() => {
-    const $ = cheerio.load(fs.readFileSync(INDEX_HTML, "utf8"));
+    const $ = loadPage("index.html");
     blocks = $('script[type="application/ld+json"]')
       .map((_, el) => $(el).html())
       .get();
@@ -37,8 +35,8 @@ describe("structured data: index.html", () => {
     const person = JSON.parse(blocks[0]);
     assert.equal(person["@context"], "https://schema.org");
     assert.equal(person["@type"], "Person");
-    assert.equal(person.name, "Grzegorz Gołębiowski");
-    assert.equal(person.url, "https://golebiowski.dev/");
+    assert.equal(person.name, AUTHOR);
+    assert.equal(person.url, `${SITE_URL}/`);
     assert.ok(person.jobTitle, "missing jobTitle");
     assert.ok(person.email, "missing email");
   });
@@ -54,6 +52,6 @@ describe("structured data: index.html", () => {
 
   it("links to social profiles via sameAs", () => {
     const person = JSON.parse(blocks[0]);
-    assert.deepEqual(person.sameAs, EXPECTED_SAME_AS);
+    assert.deepEqual(person.sameAs, [GITHUB_URL, LINKEDIN_URL]);
   });
 });

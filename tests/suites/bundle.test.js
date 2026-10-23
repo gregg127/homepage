@@ -3,15 +3,8 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
+const { PUBLIC_DIR, PAGE_FILES, readPage } = require("../site");
 const MIN_HTML_SIZE = 1024;
-
-const PAGES = [
-  "index.html",
-  "about/index.html",
-  "contact/index.html",
-  "404.html",
-];
 
 const dirSize = (dir) => {
   let total = 0;
@@ -39,7 +32,7 @@ describe("build artifacts", () => {
   });
 
   it("every page has a corresponding page-data.json", () => {
-    const routes = ["index", "404", "about", "contact"];
+    const routes = PAGE_FILES.map((file) => file.replace(/(\/index)?\.html$/, ""));
     const missing = routes.filter(
       (r) =>
         !fs.existsSync(path.join(PUBLIC_DIR, "page-data", r, "page-data.json")),
@@ -49,7 +42,7 @@ describe("build artifacts", () => {
 });
 
 describe("built pages", () => {
-  for (const file of PAGES) {
+  for (const file of PAGE_FILES) {
     it(`${file} is larger than ${MIN_HTML_SIZE} bytes`, () => {
       const full = path.join(PUBLIC_DIR, file);
       const size = fs.statSync(full).size;
@@ -63,10 +56,7 @@ describe("built pages", () => {
 
 describe("font-display", () => {
   it("built CSS uses font-display: block (not swap) for all @font-face rules", () => {
-    const indexHtml = fs.readFileSync(
-      path.join(PUBLIC_DIR, "index.html"),
-      "utf8",
-    );
+    const indexHtml = readPage("index.html");
     const cssRefs = [
       ...indexHtml.matchAll(/href="(\/styles\.[^"]+\.css)"/g),
     ].map((m) => m[1]);

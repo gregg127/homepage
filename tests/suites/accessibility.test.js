@@ -1,26 +1,17 @@
 const { describe, it, before } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
-const path = require("node:path");
 const { JSDOM, VirtualConsole } = require("jsdom");
 const axeSource = fs.readFileSync(require.resolve("axe-core"), "utf8");
 
 const silentConsole = new VirtualConsole();
 silentConsole.on("jsdomError", () => {});
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
-
-const PAGES = [
-  "index.html",
-  "about/index.html",
-  "contact/index.html",
-  "privacy/index.html",
-];
+const { PAGE_FILES, readPage } = require("../site");
 
 const IMPACT_LEVELS = ["moderate", "serious", "critical"];
 
-const runAxe = async (htmlPath) => {
-  const html = fs.readFileSync(htmlPath, "utf8");
+const runAxe = async (html) => {
   const dom = new JSDOM(html, {
     runScripts: "outside-only",
     pretendToBeVisual: true,
@@ -43,12 +34,12 @@ const formatViolations = (violations) =>
     })
     .join("\n");
 
-for (const file of PAGES) {
+for (const file of PAGE_FILES) {
   describe(`accessibility: ${file}`, () => {
     let allViolations;
 
     before(async () => {
-      allViolations = await runAxe(path.join(PUBLIC_DIR, file));
+      allViolations = await runAxe(readPage(file));
     });
 
     for (const impact of IMPACT_LEVELS) {

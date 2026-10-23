@@ -2,17 +2,8 @@ const { describe, it } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
-const cheerio = require("cheerio");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
-
-const PAGES = [
-  "index.html",
-  "about/index.html",
-  "contact/index.html",
-  "404.html",
-  "privacy/index.html",
-];
+const { PUBLIC_DIR, PAGE_FILES, loadPage } = require("../site");
 
 const isExternal = (url) =>
   /^(https?:)?\/\//.test(url) ||
@@ -45,10 +36,9 @@ const collectRefs = ($) => {
   return refs;
 };
 
-for (const file of PAGES) {
+for (const file of PAGE_FILES) {
   describe(`asset integrity: ${file}`, () => {
-    const html = fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
-    const $ = cheerio.load(html);
+    const $ = loadPage(file);
     const refs = collectRefs($);
     const localRefs = refs.filter(
       (r) => r.url && !isExternal(r.url) && r.url.startsWith("/"),

@@ -63,7 +63,7 @@ Every change must pass both gates before it can ship:
 - **axe-core**: no moderate, serious, or critical accessibility violations on any page.
 - **Lighthouse CI**: performance ≥90%, accessibility ≥90%, best-practices ≥90%, SEO ≥90%. Thresholds are in `lighthouserc.yml`.
 
-When adding a page, add it to the `PAGES` arrays in `tests/pages.test.js`, `tests/html-validity.test.js`, `tests/accessibility.test.js`, `tests/asset-integrity.test.js`, and add its URL to `lighthouserc.yml`.
+When adding a page, add it to `PAGES` in `tests/site.js` (every per-page suite and the sitemap check read it from there) and, if indexable, add its URL to `lighthouserc.yml`.
 
 ## Testing
 
@@ -73,7 +73,7 @@ Tests run against **built output in `public/`**, not source files. Always build 
 npm run build && npm run test
 ```
 
-Test files in `tests/` cover: page metadata, robots.txt, sitemap, HTML validity, asset integrity, PWA manifest, static assets, bundle sizes, and axe-core accessibility. Each file name is self-explanatory.
+Test files in `tests/suites/` cover: page metadata, robots.txt, sitemap, HTML validity, asset integrity, PWA manifest, static assets, bundle sizes, theme colour tokens, navigation, structured data, the privacy page, and axe-core accessibility. Shared constants and the page list live in `tests/site.js`. Each file name is self-explanatory.
 
 Any meaningful code change should be accompanied by expanded or new tests. If you add a page, new static asset, or change behaviour that existing tests don't cover, update the relevant test file or add a new one. Don't leave a change untested just because the existing suite still passes.
 

@@ -3,11 +3,10 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
+const { PUBLIC_DIR, SITE_URL, INDEXED_PATHNAMES } = require("../site");
+
 const SITEMAP_INDEX = path.join(PUBLIC_DIR, "sitemap-index.xml");
 const SITEMAP_0 = path.join(PUBLIC_DIR, "sitemap-0.xml");
-const SITE_URL = "https://golebiowski.dev";
-const EXPECTED_PAGES = ["/", "/about/", "/contact/", "/privacy/"];
 
 describe("sitemap-index.xml", () => {
   it("exists in public directory", () => {
@@ -29,20 +28,10 @@ describe("sitemap-index.xml", () => {
     );
   });
 
-  it("references sitemap-0.xml", () => {
+  it("references only sitemap-0.xml on the site URL", () => {
     const content = fs.readFileSync(SITEMAP_INDEX, "utf8");
-    assert.ok(
-      content.includes("sitemap-0.xml"),
-      "sitemap-index.xml does not reference sitemap-0.xml",
-    );
-  });
-
-  it("uses the correct site URL", () => {
-    const content = fs.readFileSync(SITEMAP_INDEX, "utf8");
-    assert.ok(
-      content.includes(SITE_URL),
-      `sitemap-index.xml does not contain ${SITE_URL}`,
-    );
+    const locs = [...content.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1]);
+    assert.deepEqual(locs, [`${SITE_URL}/sitemap-0.xml`]);
   });
 });
 
@@ -57,14 +46,13 @@ describe("sitemap-0.xml", () => {
     assert.ok(content.includes("</urlset>"), "Missing </urlset> closing tag");
   });
 
-  it("contains all expected pages", () => {
+  it("lists exactly the expected pages", () => {
     const content = fs.readFileSync(SITEMAP_0, "utf8");
-    for (const page of EXPECTED_PAGES) {
-      assert.ok(
-        content.includes(`${SITE_URL}${page}`),
-        `sitemap-0.xml is missing page: ${page}`,
-      );
-    }
+    const locs = [...content.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1]);
+    assert.deepEqual(
+      locs.sort(),
+      INDEXED_PATHNAMES.map((page) => `${SITE_URL}${page}`).sort(),
+    );
   });
 
   it("has no 404 page", () => {

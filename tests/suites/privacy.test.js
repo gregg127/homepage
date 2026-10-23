@@ -2,14 +2,11 @@ const { describe, it } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
-const cheerio = require("cheerio");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
+const { PUBLIC_DIR, loadPage } = require("../site");
 
 describe("privacy policy", () => {
-  const $ = cheerio.load(
-    fs.readFileSync(path.join(PUBLIC_DIR, "privacy", "index.html"), "utf8"),
-  );
+  const $ = loadPage("privacy/index.html");
 
   it("raw markdown is not published", () => {
     assert.ok(
