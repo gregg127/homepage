@@ -64,7 +64,7 @@ Every page wraps content in `<Page>` and exports `Head()` returning `<Seo title=
 Every change must pass both gates before it can ship:
 
 - **axe-core**: no moderate, serious, or critical accessibility violations on any page.
-- **Lighthouse CI**: performance ≥90%, accessibility ≥90%, best-practices ≥90%, SEO ≥90%. Thresholds are in `lighthouserc.yml`.
+- **Lighthouse CI**: performance ≥95%, accessibility ≥95%, best-practices ≥95%, SEO ≥95%. Thresholds are in `lighthouserc.yml`.
 
 When adding a page, add it to `PAGES` in `tests/site.js` (every per-page suite, the screenshot tests and the sitemap check read it from there), run `npm run updateScreenshots`, and, if indexable, add its URL to `lighthouserc.yml`.
 
