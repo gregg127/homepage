@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledButton = styled.a`
@@ -29,12 +28,5 @@ const Button = ({ href, openInNewTab = false, download = false, children }) => (
     {children}
   </StyledButton>
 );
-
-Button.propTypes = {
-  href: PropTypes.string.isRequired,
-  openInNewTab: PropTypes.bool,
-  download: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-};
 
 export default Button;
