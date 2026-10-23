@@ -16,7 +16,6 @@ jobs:
       - name: Create placeholder CV PDF
         run: touch static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf
       - run: npm ci
-      - run: npm run build
       - run: npm run test
 
   deploy:

@@ -20,7 +20,7 @@
     "containerDown": "docker compose down",
     "docs": "docsify serve docsify --open",
     "playwright": "docker compose run --rm --user \"$(id -u):$(id -g)\" playwright node_modules/.bin/playwright",
-    "test": "npm run testOutput && npm run testPlaywright",
+    "test": "npm run clean && npm run build && npm run testOutput && npm run testPlaywright",
     "testOutput": "node --test tests/suites/*.test.js",
     "testPlaywright": "npm run playwright -- test",
     "updateScreenshots": "npm run build && npm run playwright -- test --update-snapshots=all",

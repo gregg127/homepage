@@ -7,17 +7,13 @@ Integration tests that validate the artifacts under `public/` after `gatsby buil
 
 ## Run
 
-None of the test scripts build — they test whatever is currently in `public/`. Always build first:
-
-```sh
-npm run clean && npm run build && npm run test
-```
+`npm run test` runs `npm run clean` and builds the site first, so it always tests the current source, with nothing cached or left over from earlier builds. `testOutput` and `testPlaywright` skip the build for quick reruns and test whatever is currently in `public/` — after changing the source, run `npm run build` first or they pass on stale output.
 
 | Script                      | Runs                                                       |
 | --------------------------- | ---------------------------------------------------------- |
-| `npm run test`              | both of the below                                          |
-| `npm run testOutput`        | build-output suites                                        |
-| `npm run testPlaywright`    | screenshot tests, in Docker                                |
+| `npm run test`              | cleans, builds, then both of the below                     |
+| `npm run testOutput`        | build-output suites, on the existing build                 |
+| `npm run testPlaywright`    | screenshot tests, in Docker, on the existing build         |
 | `npm run updateScreenshots` | builds, then overwrites every reference screenshot — never fails on a diff |
 
 The screenshot scripts need Docker; the first run pulls the Playwright image (~2 GB). To pass extra Playwright arguments, use `npm run playwright -- <args>`, e.g. `npm run playwright -- test -g about`.
@@ -85,8 +81,8 @@ tests/
 - **`toHaveScreenshot` failed** → Playwright writes the expected, actual and diff images to `../test-results/`; in CI the job log shows only how many pixels differ, so reproduce locally with `npm run testPlaywright` to see them. If the change was intended, run `npm run updateScreenshots`; if not, fix the regression
 - **`A snapshot doesn't exist`** → a new page or project has no reference yet; run `npm run updateScreenshots`
 
-- **`page X is missing` / `public/X is missing`** → either the build is stale (re-run `npm run build`) or the page was removed or renamed in source
-- **a file that `should not exist` is in `public/`** → `gatsby build` never deletes old output; run `npm run clean` first
+- **`page X is missing` / `public/X is missing`** → either the build is stale (re-run `npm run test`, or `npm run build` before `testOutput`) or the page was removed or renamed in source
+- **a file that `should not exist` is in `public/`** → `gatsby build` never deletes old output; `npm run test` cleans first, but after a plain `npm run build` run `npm run clean`
 - **`broken internal links`** → a page links to a route that doesn't exist; check the `to=` / `href=` in source pages
 - **`images missing alt`** → an `<img>` is missing the `alt` attribute; check page sources
 - **`decorative images without a label`** → an `<img alt="">` has no visible text beside it, so it conveys nothing to screen readers; give it a real `alt`

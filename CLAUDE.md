@@ -8,9 +8,9 @@ Personal portfolio/resume website built with Gatsby 5 + React 19 + styled-compon
 npm run dev                # Gatsby dev server → localhost:8000
 npm run build              # Build CV PDF (if latexmk available) + Gatsby site → public/
 npm run clean              # Clear .cache/ and public/
-npm run test               # Run all tests: build-output suites + Playwright (requires a prior build)
-npm run testOutput         # Build-output suites only (node --test)
-npm run testPlaywright     # Playwright screenshot tests only (in Docker)
+npm run test               # Clean + build, then run all tests: build-output suites + Playwright
+npm run testOutput         # Build-output suites only, on the existing public/ (node --test)
+npm run testPlaywright     # Playwright screenshot tests only, on the existing public/ (in Docker)
 npm run updateScreenshots  # Build, then overwrite reference screenshots
 npm run containerUp        # Build + run Docker locally (port 8000)
 npm run containerDown      # Stop Docker container
@@ -70,11 +70,13 @@ When adding a page, add it to `PAGES` in `tests/site.js` (every per-page suite, 
 
 ## Testing
 
-Tests run against **built output in `public/`**, not source files. Always build before testing:
+Tests run against **built output in `public/`**, not source files. `npm run test` cleans and builds first, so it always tests the current source with nothing left over from earlier builds:
 
 ```bash
-npm run build && npm run test
+npm run test
 ```
+
+`testOutput` and `testPlaywright` skip the build for faster reruns — run `npm run build` first if the source changed since the last build.
 
 Test files in `tests/suites/` cover: page metadata, robots.txt, sitemap, HTML validity, asset integrity, PWA manifest, static assets, bundle sizes, theme colour tokens, navigation, structured data, the privacy page, and axe-core accessibility. Shared constants and the page list live in `tests/site.js`. Each file name is self-explanatory.
 
@@ -85,7 +87,7 @@ Any meaningful code change should be accompanied by expanded or new tests. If yo
 ## Gotchas
 
 - **`deploy.sh` pushes to the production Docker registry.** Running it locally (via `npm run deploy`) will build and push a Docker image to Harbor and commit locally — but won't push to git (that part is done by CI). Don't run it outside CI unless you intend a manual release.
-- **Tests operate on `public/`, not `src/`.** A passing build that doesn't re-run `gatsby build` will test stale output. When in doubt: `npm run clean && npm run build && npm run test`.
+- **Tests operate on `public/`, not `src/`.** `npm run test` cleans and rebuilds first, but `testOutput` and `testPlaywright` test whatever is already in `public/` and will pass on stale output after a source change. When in doubt, use `npm run test`.
 - **`font-display` is overridden by webpack.** `gatsby-node.js` rewrites every `font-display: swap` in `@fontsource` stylesheets to `block` at build time. To change font-display behaviour, edit `gatsby-node.js` — not the @fontsource source files.
 - **CV PDF must exist before `gatsby build`.** CI creates a placeholder with `touch`. Locally, if `latexmk` is not installed and `static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf` is absent, the build will fail.
 - **Screenshot tests run in Docker, not on the host.** The `playwright` service in `docker-compose.yml` (official Playwright image, forced to `linux/amd64`) gives every machine and CI the same OS, fonts and browser build. Running `npx playwright test` directly on the host renders text slightly differently and fails against the references. The image tag must match the `@playwright/test` version in `package.json` (pinned exactly); `playwright.config.js` throws if they differ, so bump both together.

@@ -20,17 +20,13 @@ npm install
 npm run dev                # start dev server at localhost:8000
 npm run build              # build CV PDF (if latexmk available) + Gatsby site → public/
 npm run clean              # clear .cache/ and public/
-npm run test               # run all tests: build-output suites + Playwright screenshots (requires a prior build)
-npm run testOutput         # build-output suites only
-npm run testPlaywright     # Playwright screenshot tests only (in Docker)
+npm run test               # clean + build, then run all tests: build-output suites + Playwright screenshots
+npm run testOutput         # build-output suites only, on the existing build
+npm run testPlaywright     # Playwright screenshot tests only, on the existing build (in Docker)
 npm run updateScreenshots  # build, then overwrite the reference screenshots
 ```
 
-Tests run against the built output in `public/`, not source files. Always build before testing:
-
-```sh
-npm run build && npm run test
-```
+Tests run against the built output in `public/`, not source files. `npm run test` cleans and builds first; `testOutput` and `testPlaywright` don't, so run `npm run build` before them after changing the source.
 
 ## Run in Docker
 
