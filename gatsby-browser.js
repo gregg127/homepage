@@ -1,8 +1,4 @@
-import "@fontsource/lato/latin.css";
-import "@fontsource/lato/latin-italic.css";
-import "@fontsource/lato/latin-ext.css";
-import "@fontsource/lato/latin-ext-italic.css";
-import "@fontsource/courier-prime/latin.css";
-import "@fontsource/courier-prime/latin-italic.css";
-import "@fontsource/courier-prime/latin-ext.css";
-import "@fontsource/courier-prime/latin-ext-italic.css";
+import "@fontsource/lato/300.css";
+import "@fontsource/lato/300-italic.css";
+import "@fontsource/lato/400.css";
+import "@fontsource/courier-prime/400.css";

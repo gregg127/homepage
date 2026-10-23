@@ -1,5 +1,5 @@
 ---
-version: '3.8'
+version: "3.8"
 services:
   homepage:
     container_name: gatsby_page
@@ -7,3 +7,16 @@ services:
       context: .
       dockerfile: Dockerfile
     ports: [8000:80]
+
+  # Runs the screenshot tests. Not started by `docker compose up`.
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.64.1-noble
+    platform: linux/amd64
+    profiles: [test]
+    working_dir: /work
+    volumes: [.:/work]
+    environment:
+      HOME: /tmp
+      CI: ${CI:-}
+    ipc: host
+    init: true

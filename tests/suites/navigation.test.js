@@ -1,18 +1,15 @@
 const { describe, it } = require("node:test");
 const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const path = require("node:path");
-const cheerio = require("cheerio");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
-
-const PAGES = [
-  "index.html",
-  "about/index.html",
-  "contact/index.html",
-  "404.html",
-  "privacy/index.html",
-];
+const {
+  AUTHOR,
+  EMAIL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  CV_PATH,
+  PAGE_FILES,
+  loadPage,
+} = require("../site");
 
 const MENU_ITEMS = [
   { label: "HOME", href: "/", target: undefined, rel: undefined },
@@ -20,18 +17,16 @@ const MENU_ITEMS = [
   { label: "CONTACT", href: "/contact/", target: undefined, rel: undefined },
   {
     label: "CV",
-    href: "/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf",
+    href: CV_PATH,
     target: undefined,
     rel: "noopener noreferrer",
   },
 ];
 
 describe("navigation", () => {
-  for (const file of PAGES) {
+  for (const file of PAGE_FILES) {
     it(`${file} renders every menu item as expected`, () => {
-      const $ = cheerio.load(
-        fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8"),
-      );
+      const $ = loadPage(file);
       const links = $("nav a")
         .map((_, el) => ({
           label: $(el).text().trim(),
@@ -49,19 +44,19 @@ describe("navigation", () => {
 const FOOTER_LINKS = [
   {
     label: "GitHub",
-    href: "https://github.com/gregg127",
+    href: GITHUB_URL,
     target: "_blank",
     rel: "noopener noreferrer",
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/grzegorz-golebiowski",
+    href: LINKEDIN_URL,
     target: "_blank",
     rel: "noopener noreferrer",
   },
   {
     label: "CV",
-    href: "/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf",
+    href: CV_PATH,
     target: undefined,
     rel: undefined,
   },
@@ -79,15 +74,13 @@ const linksIn = ($, selector) =>
     .get();
 
 describe("footer", () => {
-  for (const file of PAGES) {
+  for (const file of PAGE_FILES) {
     it(`${file} renders the copyright and every footer link`, () => {
-      const $ = cheerio.load(
-        fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8"),
-      );
+      const $ = loadPage(file);
 
       assert.match(
         $("footer span").text(),
-        /^© \d{4} Grzegorz Gołębiowski$/,
+        new RegExp(`^© \\d{4} ${AUTHOR}$`),
       );
       assert.deepEqual(linksIn($, "footer a"), FOOTER_LINKS);
     });
@@ -96,22 +89,14 @@ describe("footer", () => {
 
 describe("contact page", () => {
   it("links to email, GitHub and LinkedIn", () => {
-    const $ = cheerio.load(
-      fs.readFileSync(path.join(PUBLIC_DIR, "contact/index.html"), "utf8"),
-    );
+    const $ = loadPage("contact/index.html");
 
     assert.deepEqual(
       linksIn($, "main a").map(({ label, href }) => ({ label, href })),
       [
-        {
-          label: "grzegorz.golebiowski127@gmail.com",
-          href: "mailto:grzegorz.golebiowski127@gmail.com",
-        },
-        { label: "GitHub", href: "https://github.com/gregg127" },
-        {
-          label: "LinkedIn",
-          href: "https://www.linkedin.com/in/grzegorz-golebiowski",
-        },
+        { label: EMAIL, href: `mailto:${EMAIL}` },
+        { label: "GitHub", href: GITHUB_URL },
+        { label: "LinkedIn", href: LINKEDIN_URL },
       ],
     );
   });

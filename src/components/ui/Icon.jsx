@@ -32,7 +32,7 @@ const Icon = ({ iconName, label }) => {
       <img
         className="icon"
         src={"/icons/" + iconName + "-svgrepo-com.svg"}
-        alt={iconName}
+        alt=""
       />
       <div className="iconLabel">{label}</div>
     </StyledIcon>

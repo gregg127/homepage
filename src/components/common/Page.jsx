@@ -1,9 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Header from "./Header";
 import Footer from "./Footer";
-
-import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -32,10 +30,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.1em;
     color: var(--color-text);
     background-color: var(--color-background);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
     font-family: "Lato", sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -49,7 +43,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const StyledWrapper = styled.div`
-  margin: 0;
   text-align: center;
   min-height: 100vh;
   display: flex;

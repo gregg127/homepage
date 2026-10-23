@@ -13,6 +13,5 @@ jobs:
           node-version: '25'
       - name: Create placeholder for CV PDF (compiled when building Docker image)
         run: touch static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf
-      - run: npm install
-      - run: npm run build
-      - run: npm run test
+      - run: npm ci
+      - run: npm run test # cleans and builds the site, then runs the suites and Playwright screenshot tests

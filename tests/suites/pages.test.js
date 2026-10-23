@@ -2,41 +2,20 @@ const { describe, it } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
-const cheerio = require("cheerio");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
-
-const SITE_URL = "https://golebiowski.dev";
+const {
+  PUBLIC_DIR,
+  SITE_URL,
+  AUTHOR,
+  PAGES,
+  readPage,
+  loadPage,
+} = require("../site");
 
 const pngSize = (file) => {
   const header = fs.readFileSync(file).subarray(0, 24);
   return { width: header.readUInt32BE(16), height: header.readUInt32BE(20) };
 };
-
-const PAGES = [
-  {
-    file: "index.html",
-    title: "Grzegorz Gołębiowski - Principal Engineer, Tech Lead",
-    pathname: "/",
-    ogType: "profile",
-  },
-  {
-    file: "about/index.html",
-    title: "About · Grzegorz Gołębiowski",
-    pathname: "/about/",
-  },
-  {
-    file: "contact/index.html",
-    title: "Contact · Grzegorz Gołębiowski",
-    pathname: "/contact/",
-  },
-  { file: "404.html", title: "Not Found · Grzegorz Gołębiowski", noindex: true },
-  {
-    file: "privacy/index.html",
-    title: "Privacy Policy · Grzegorz Gołębiowski",
-    pathname: "/privacy/",
-  },
-];
 
 for (const {
   file,
@@ -51,11 +30,11 @@ for (const {
     it("exists in public directory", () => {
       const fullPath = path.join(PUBLIC_DIR, file);
       assert.ok(fs.existsSync(fullPath), `public/${file} is missing`);
-      content = fs.readFileSync(fullPath, "utf8");
+      content = readPage(file);
     });
 
     it("has correct title", () => {
-      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      content ??= readPage(file);
       assert.ok(
         content.includes(`>${title}</title>`),
         `Expected title "${title}" in ${file}`,
@@ -63,7 +42,7 @@ for (const {
     });
 
     it("has a non-empty meta description", () => {
-      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      content ??= readPage(file);
       assert.match(
         content,
         /<meta name="description" content=".+?"/,
@@ -72,12 +51,12 @@ for (const {
     });
 
     it('declares lang="en"', () => {
-      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      content ??= readPage(file);
       assert.match(content, /lang="en"/, `Missing lang="en" in ${file}`);
     });
 
     it(noindex ? "is marked noindex" : "is indexable", () => {
-      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      content ??= readPage(file);
       assert.equal(
         /<meta name="robots" content="[^"]*noindex/.test(content),
         noindex,
@@ -88,7 +67,7 @@ for (const {
     const canonicalUrl = pathname && `${SITE_URL}${pathname}`;
 
     it(canonicalUrl ? "has a canonical link" : "has no canonical link", () => {
-      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
+      content ??= readPage(file);
       const canonicals = [
         ...content.matchAll(/<link rel="canonical" href="([^"]*)"/g),
       ].map((m) => m[1]);
@@ -96,8 +75,7 @@ for (const {
     });
 
     it("has Open Graph and Twitter Card tags", () => {
-      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
-      const $ = cheerio.load(content);
+      const $ = loadPage(file);
       const og = (property) =>
         $(`meta[property="og:${property}"]`).attr("content");
 
@@ -108,7 +86,7 @@ for (const {
       );
       assert.equal(og("url"), canonicalUrl || undefined);
       assert.equal(og("type"), ogType);
-      assert.equal(og("site_name"), "Grzegorz Gołębiowski");
+      assert.equal(og("site_name"), AUTHOR);
       assert.equal(og("locale"), "en_US");
       assert.equal(
         $('meta[name="twitter:card"]').attr("content"),
@@ -117,8 +95,7 @@ for (const {
     });
 
     it("og:image points to an existing image with matching dimensions", () => {
-      content ??= fs.readFileSync(path.join(PUBLIC_DIR, file), "utf8");
-      const $ = cheerio.load(content);
+      const $ = loadPage(file);
       const og = (property) =>
         $(`meta[property="og:${property}"]`).attr("content");
       const image = og("image");
@@ -140,11 +117,24 @@ for (const {
   });
 }
 
+describe("page metadata uniqueness", () => {
+  const $$ = PAGES.map(({ file }) => loadPage(file));
+
+  for (const [label, read] of [
+    ["title", ($) => $("head > title").text()],
+    ["meta description", ($) => $('meta[name="description"]').attr("content")],
+  ]) {
+    it(`every page has a distinct ${label}`, () => {
+      const values = $$.map(read);
+      const duplicates = values.filter((v, i) => values.indexOf(v) !== i);
+      assert.deepEqual(duplicates, [], `duplicate ${label}: ${duplicates}`);
+    });
+  }
+});
+
 describe("index.html profile tags", () => {
   it("has profile:first_name and profile:last_name", () => {
-    const $ = cheerio.load(
-      fs.readFileSync(path.join(PUBLIC_DIR, "index.html"), "utf8"),
-    );
+    const $ = loadPage("index.html");
     const profile = (property) =>
       $(`meta[property="profile:${property}"]`).attr("content");
 

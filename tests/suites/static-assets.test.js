@@ -3,12 +3,12 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
+const { PUBLIC_DIR, CV_PATH } = require("../site");
 
 const ASSETS = [
   "favicon.svg",
   "og-image.png",
-  "Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf",
+  CV_PATH.slice(1),
   "jin_yang_handshake.mp4",
   "icons/java-svgrepo-com.svg",
   "icons/python-svgrepo-com.svg",

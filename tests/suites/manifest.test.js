@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
+const { PUBLIC_DIR } = require("../site");
 const MANIFEST_PATH = path.join(PUBLIC_DIR, "manifest.webmanifest");
 const VALID_DISPLAY = ["fullscreen", "standalone", "minimal-ui", "browser"];
 

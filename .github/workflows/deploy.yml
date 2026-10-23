@@ -15,8 +15,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Create placeholder CV PDF
         run: touch static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf
-      - run: npm install
-      - run: npm run build
+      - run: npm ci
       - run: npm run test
 
   deploy:

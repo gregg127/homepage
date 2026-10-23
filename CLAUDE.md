@@ -5,12 +5,15 @@ Personal portfolio/resume website built with Gatsby 5 + React 19 + styled-compon
 ## Commands
 
 ```bash
-npm run dev          # Gatsby dev server → localhost:8000
-npm run build        # Build CV PDF (if latexmk available) + Gatsby site → public/
-npm run clean        # Clear .cache/ and public/
-npm run test         # Run integration tests (requires a prior build)
-npm run containerUp  # Build + run Docker locally (port 8000)
-npm run containerDown  # Stop Docker container
+npm run dev                # Gatsby dev server → localhost:8000
+npm run build              # Build CV PDF (if latexmk available) + Gatsby site → public/
+npm run clean              # Clear .cache/ and public/
+npm run test               # Clean + build, then run all tests: build-output suites + Playwright
+npm run testOutput         # Build-output suites only, on the existing public/ (node --test)
+npm run testPlaywright     # Playwright screenshot tests only, on the existing public/ (in Docker)
+npm run updateScreenshots  # Build, then overwrite reference screenshots
+npm run containerUp        # Build + run Docker locally (port 8000)
+npm run containerDown      # Stop Docker container
 ```
 
 **Node.js 25 required** — see `.nvmrc`. Run `nvm use` to switch automatically.
@@ -61,28 +64,33 @@ Every page wraps content in `<Page>` and exports `Head()` returning `<Seo title=
 Every change must pass both gates before it can ship:
 
 - **axe-core**: no moderate, serious, or critical accessibility violations on any page.
-- **Lighthouse CI**: performance ≥90%, accessibility ≥90%, best-practices ≥90%, SEO ≥90%. Thresholds are in `lighthouserc.yml`.
+- **Lighthouse CI**: performance ≥95%, accessibility ≥95%, best-practices ≥95%, SEO ≥95%. Thresholds are in `lighthouserc.yml`.
 
-When adding a page, add it to the `PAGES` arrays in `tests/pages.test.js`, `tests/html-validity.test.js`, `tests/accessibility.test.js`, `tests/asset-integrity.test.js`, and add its URL to `lighthouserc.yml`.
+When adding a page, add it to `PAGES` in `tests/site.js` (every per-page suite, the screenshot tests and the sitemap check read it from there), run `npm run updateScreenshots`, and, if indexable, add its URL to `lighthouserc.yml`.
 
 ## Testing
 
-Tests run against **built output in `public/`**, not source files. Always build before testing:
+Tests run against **built output in `public/`**, not source files. `npm run test` cleans and builds first, so it always tests the current source with nothing left over from earlier builds:
 
 ```bash
-npm run build && npm run test
+npm run test
 ```
 
-Test files in `tests/` cover: page metadata, robots.txt, sitemap, HTML validity, asset integrity, PWA manifest, static assets, bundle sizes, and axe-core accessibility. Each file name is self-explanatory.
+`testOutput` and `testPlaywright` skip the build for faster reruns — run `npm run build` first if the source changed since the last build.
+
+Test files in `tests/suites/` cover: page metadata, robots.txt, sitemap, HTML validity, asset integrity, PWA manifest, static assets, bundle sizes, theme colour tokens, navigation, structured data, the privacy page, and axe-core accessibility. Shared constants and the page list live in `tests/site.js`. Each file name is self-explanatory.
+
+`tests/playwright/` holds screenshot tests: every page in `PAGES`, light and dark theme, desktop and mobile, compared against references committed in `tests/playwright/screenshots/`. After a deliberate visual change, run `npm run updateScreenshots` and review the changed PNGs before committing them.
 
 Any meaningful code change should be accompanied by expanded or new tests. If you add a page, new static asset, or change behaviour that existing tests don't cover, update the relevant test file or add a new one. Don't leave a change untested just because the existing suite still passes.
 
 ## Gotchas
 
 - **`deploy.sh` pushes to the production Docker registry.** Running it locally (via `npm run deploy`) will build and push a Docker image to Harbor and commit locally — but won't push to git (that part is done by CI). Don't run it outside CI unless you intend a manual release.
-- **Tests operate on `public/`, not `src/`.** A passing build that doesn't re-run `gatsby build` will test stale output. When in doubt: `npm run clean && npm run build && npm run test`.
+- **Tests operate on `public/`, not `src/`.** `npm run test` cleans and rebuilds first, but `testOutput` and `testPlaywright` test whatever is already in `public/` and will pass on stale output after a source change. When in doubt, use `npm run test`.
 - **`font-display` is overridden by webpack.** `gatsby-node.js` rewrites every `font-display: swap` in `@fontsource` stylesheets to `block` at build time. To change font-display behaviour, edit `gatsby-node.js` — not the @fontsource source files.
 - **CV PDF must exist before `gatsby build`.** CI creates a placeholder with `touch`. Locally, if `latexmk` is not installed and `static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf` is absent, the build will fail.
+- **Screenshot tests run in Docker, not on the host.** The `playwright` service in `docker-compose.yml` (official Playwright image, forced to `linux/amd64`) gives every machine and CI the same OS, fonts and browser build. Running `npx playwright test` directly on the host renders text slightly differently and fails against the references. The image tag must match the `@playwright/test` version in `package.json` (pinned exactly); `playwright.config.js` throws if they differ, so bump both together.
 - **`public/` and `.cache/` are not tracked by git.** Don't try to commit or diff them.
 
 ## CI/CD Pipeline

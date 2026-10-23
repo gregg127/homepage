@@ -7,3 +7,5 @@ cv/*
 !cv/*.tex
 !cv/*.md
 static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf
+test-results/
+playwright-report/

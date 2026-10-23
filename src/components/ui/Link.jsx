@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledLink = styled.a`
@@ -20,11 +19,5 @@ const Link = ({ href, openInNewTab = false, children }) => (
     {children}
   </StyledLink>
 );
-
-Link.propTypes = {
-  href: PropTypes.string.isRequired,
-  openInNewTab: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-};
 
 export default Link;
