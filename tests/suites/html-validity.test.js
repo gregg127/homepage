@@ -77,18 +77,38 @@ for (const file of PAGE_FILES) {
       assert.deepEqual(unsafe, [], `unsafe target="_blank": ${unsafe.join(", ")}`);
     });
 
-    it("every <img> has a non-empty alt attribute", () => {
-      const missing = [];
-      $("img").each((_, el) => {
-        const alt = $(el).attr("alt");
-        if (alt === undefined || alt.trim() === "") {
-          missing.push($(el).attr("src") || "(no src)");
-        }
-      });
-      assert.equal(
-        missing.length,
-        0,
-        `images missing alt: ${missing.join(", ")}`,
+    it("every <img> has an alt attribute", () => {
+      const missing = $("img")
+        .filter((_, el) => $(el).attr("alt") === undefined)
+        .map((_, el) => $(el).attr("src") || "(no src)")
+        .get();
+      assert.deepEqual(missing, [], `images missing alt: ${missing.join(", ")}`);
+    });
+
+    it("every <img> with an empty alt has a visible text label", () => {
+      const unlabelled = $("img")
+        .filter(
+          (_, el) =>
+            $(el).attr("alt").trim() === "" && $(el).parent().text().trim() === "",
+        )
+        .map((_, el) => $(el).attr("src") || "(no src)")
+        .get();
+      assert.deepEqual(
+        unlabelled,
+        [],
+        `decorative images without a label: ${unlabelled.join(", ")}`,
+      );
+    });
+
+    it("labelled tech icons use an empty alt so labels aren't read twice", () => {
+      const redundant = $("img.icon")
+        .filter((_, el) => $(el).attr("alt") !== "")
+        .map((_, el) => $(el).attr("src"))
+        .get();
+      assert.deepEqual(
+        redundant,
+        [],
+        `icons with redundant alt text: ${redundant.join(", ")}`,
       );
     });
 

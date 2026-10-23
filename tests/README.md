@@ -31,7 +31,7 @@ All in `suites/`.
 | `accessibility.test.js`   | Runs axe-core via jsdom against each page; one test per impact level (`moderate`/`serious`/`critical`) — any violation fails                                                                          |
 | `asset-integrity.test.js` | Every JS/CSS/img/icon path referenced in HTML resolves to a real, non-empty file in `public/`                                                                                                                      |
 | `bundle.test.js`          | Build artifacts (`webpack.stats.json`, `chunk-map.json`, `page-data/`) exist; every page has `page-data.json`; HTML pages > 1 KB; `index.html` < 80 KB; each page inlines only the used font faces, each with a `latin-ext` subset; built CSS uses `font-display: block`; reports total bundle size                 |
-| `html-validity.test.js`   | Via cheerio: exactly one `<h1>` and it comes first, no heading skips a level, `<img>` alt, no duplicate ids, internal links and `#anchors` resolve, `target="_blank"` has `rel="noopener noreferrer"`, no dev hostnames |
+| `html-validity.test.js`   | Via cheerio: exactly one `<h1>` and it comes first, no heading skips a level, `<img>` alt (empty only for labelled icons), no duplicate ids, internal links and `#anchors` resolve, `target="_blank"` has `rel="noopener noreferrer"`, no dev hostnames |
 | `manifest.test.js`        | `manifest.webmanifest` is valid JSON with required PWA fields, a valid `display`, root-relative `start_url`, and existing icon files                                                                               |
 | `navigation.test.js`      | Header menu and footer links/copyright on every page (labels, hrefs, `target`/`rel`); contact page links to email, GitHub and LinkedIn                                                                             |
 | `pages.test.js`           | Each page has correct `<title>`, meta description, `lang="en"`, canonical URL (none on 404), OG/Twitter tags; `og:image` exists with matching PNG dimensions and alt; titles and descriptions are unique across pages; homepage `profile:*` tags; only 404 is `noindex` |
@@ -88,7 +88,9 @@ tests/
 - **`page X is missing` / `public/X is missing`** → either the build is stale (re-run `npm run build`) or the page was removed or renamed in source
 - **a file that `should not exist` is in `public/`** → `gatsby build` never deletes old output; run `npm run clean` first
 - **`broken internal links`** → a page links to a route that doesn't exist; check the `to=` / `href=` in source pages
-- **`images missing alt`** → an `<img>` is missing the `alt` attribute; check `src/components/ui/Icon.jsx` and page sources
+- **`images missing alt`** → an `<img>` is missing the `alt` attribute; check page sources
+- **`decorative images without a label`** → an `<img alt="">` has no visible text beside it, so it conveys nothing to screen readers; give it a real `alt`
+- **`icons with redundant alt text`** → `Icon.jsx` must keep `alt=""` because its visible label already names the icon
 - **`missing assets`** → HTML references `/foo.png` but `public/foo.png` doesn't exist; either the file wasn't added to `static/` or a path is wrong
 - **axe violations** → the failure message includes the rule id, target selector, and a help URL with the fix
 - **`heading <hN> skips a level`** → e.g. a page jumps from `<h2>` straight to `<h4>`; insert the missing level or restructure
