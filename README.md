@@ -5,7 +5,7 @@ Source code for my personal website built with Gatsby 5 + React 19 + styled-comp
 ## Prerequisites
 
 - **Node.js 25** — run `nvm use` in the project root (reads `.nvmrc` automatically)
-- **Docker** — for container builds
+- **Docker** — for container builds and the Playwright screenshot tests
 - **latexmk** + full TeX Live installation — required to build the CV PDF locally (optional: skipped automatically if absent)
 
 ## Setup
@@ -17,10 +17,13 @@ npm install
 ## Development
 
 ```sh
-npm run dev        # start dev server at localhost:8000
-npm run build      # build CV PDF (if latexmk available) + Gatsby site → public/
-npm run clean      # clear .cache/ and public/
-npm run test       # run integration tests (requires a prior build)
+npm run dev                # start dev server at localhost:8000
+npm run build              # build CV PDF (if latexmk available) + Gatsby site → public/
+npm run clean              # clear .cache/ and public/
+npm run test               # run all tests: build-output suites + Playwright screenshots (requires a prior build)
+npm run testOutput         # build-output suites only
+npm run testPlaywright     # Playwright screenshot tests only (in Docker)
+npm run updateScreenshots  # build, then overwrite the reference screenshots
 ```
 
 Tests run against the built output in `public/`, not source files. Always build before testing:

@@ -19,7 +19,11 @@
     "containerUp": "docker compose up -d --build",
     "containerDown": "docker compose down",
     "docs": "docsify serve docsify --open",
-    "test": "node --test tests/suites/*.test.js",
+    "playwright": "docker compose run --rm --user \"$(id -u):$(id -g)\" playwright node_modules/.bin/playwright",
+    "test": "npm run testOutput && npm run testPlaywright",
+    "testOutput": "node --test tests/suites/*.test.js",
+    "testPlaywright": "npm run playwright -- test",
+    "updateScreenshots": "npm run build && npm run playwright -- test --update-snapshots=all",
     "deploy": "./deploy.sh"
   },
   "dependencies": {
@@ -41,6 +45,7 @@
     "styled-components": "^6.5.3"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "axe-core": "^4.13.0",
     "cheerio": "^1.2.0",
     "docsify-cli": "^4.4.4",
