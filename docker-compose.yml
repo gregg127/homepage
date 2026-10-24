@@ -7,14 +7,24 @@ services:
       context: .
       dockerfile: Dockerfile
     ports: [8000:80]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 2s
+      retries: 15
 
-  # Runs the screenshot tests. Not started by `docker compose up`.
   playwright:
-    image: mcr.microsoft.com/playwright:v1.64.1-noble
+    build:
+      context: tests
+      dockerfile: playwright/Dockerfile
     platform: linux/amd64
     profiles: [test]
-    working_dir: /work
-    volumes: [.:/work]
+    entrypoint: [/app/node_modules/.bin/playwright]
+    depends_on:
+      homepage:
+        condition: service_healthy
+    volumes:
+      - ./tests/playwright/screenshots:/app/tests/playwright/screenshots
+      - ./test-results:/app/test-results
     environment:
       HOME: /tmp
       CI: ${CI:-}
