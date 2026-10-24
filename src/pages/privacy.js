@@ -17,6 +17,10 @@ const PrivacyContent = styled.div`
     }
   }
 
+  code {
+    font: inherit;
+  }
+
   h1,
   h2,
   h3,
