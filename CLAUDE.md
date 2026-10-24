@@ -10,8 +10,8 @@ npm run build              # Build CV PDF (if latexmk available) + Gatsby site �
 npm run clean              # Clear .cache/ and public/
 npm run test               # Clean + build, then run all tests: build-output suites + Playwright
 npm run testOutput         # Build-output suites only, on the existing public/ (node --test)
-npm run testPlaywright     # Playwright screenshot tests only, on the existing public/ (in Docker)
-npm run updateScreenshots  # Build, then overwrite reference screenshots
+npm run testPlaywright     # Playwright screenshot tests only, against the app built and served in Docker
+npm run updateScreenshots  # Overwrite reference screenshots (app built in Docker)
 npm run containerUp        # Build + run Docker locally (port 8000)
 npm run containerDown      # Stop Docker container
 ```
@@ -70,13 +70,13 @@ When adding a page, add it to `PAGES` in `tests/site.js` (every per-page suite, 
 
 ## Testing
 
-Tests run against **built output in `public/`**, not source files. `npm run test` cleans and builds first, so it always tests the current source with nothing left over from earlier builds:
+Build-output suites run against **built output in `public/`**, not source files; screenshot tests run against the production image built by Docker. `npm run test` cleans and builds first, so it always tests the current source with nothing left over from earlier builds:
 
 ```bash
 npm run test
 ```
 
-`testOutput` and `testPlaywright` skip the build for faster reruns — run `npm run build` first if the source changed since the last build.
+`testOutput` skips the build for faster reruns — run `npm run build` first if the source changed since the last build. `testPlaywright` builds the app from source in Docker on every run.
 
 Test files in `tests/suites/` cover: page metadata, robots.txt, sitemap, HTML validity, asset integrity, PWA manifest, static assets, bundle sizes, theme colour tokens, navigation, structured data, the privacy page, and axe-core accessibility. Shared constants and the page list live in `tests/site.js`. Each file name is self-explanatory.
 
@@ -87,10 +87,10 @@ Any meaningful code change should be accompanied by expanded or new tests. If yo
 ## Gotchas
 
 - **`deploy.sh` pushes to the production Docker registry.** Running it locally (via `npm run deploy`) will build and push a Docker image to Harbor and commit locally — but won't push to git (that part is done by CI). Don't run it outside CI unless you intend a manual release.
-- **Tests operate on `public/`, not `src/`.** `npm run test` cleans and rebuilds first, but `testOutput` and `testPlaywright` test whatever is already in `public/` and will pass on stale output after a source change. When in doubt, use `npm run test`.
+- **Tests operate on `public/`, not `src/`.** `npm run test` cleans and rebuilds first, but `testOutput` tests whatever is already in `public/` and will pass on stale output after a source change. `testPlaywright` doesn't use `public/`: it rebuilds the app image from source every run. When in doubt, use `npm run test`.
 - **`font-display` is overridden by webpack.** `gatsby-node.js` rewrites every `font-display: swap` in `@fontsource` stylesheets to `block` at build time. To change font-display behaviour, edit `gatsby-node.js` — not the @fontsource source files.
 - **CV PDF must exist before `gatsby build`.** CI creates a placeholder with `touch`. Locally, if `latexmk` is not installed and `static/Grzegorz-Golebiowski-Java-Tech-Lead-CV.pdf` is absent, the build will fail.
-- **Screenshot tests run in Docker, not on the host.** The `playwright` service in `docker-compose.yml` (official Playwright image, forced to `linux/amd64`) gives every machine and CI the same OS, fonts and browser build. Running `npx playwright test` directly on the host renders text slightly differently and fails against the references. The image tag must match the `@playwright/test` version in `package.json` (pinned exactly); `playwright.config.js` throws if they differ, so bump both together.
+- **Screenshot tests run entirely in Docker, not on the host.** See `tests/README.md` for how the containers are built and wired.
 - **`public/` and `.cache/` are not tracked by git.** Don't try to commit or diff them.
 
 ## CI/CD Pipeline

@@ -1,0 +1,9 @@
+{
+  "name": "golebiowski_homepage-playwright",
+  "private": true,
+  "description": "Screenshot tests, installed and run only inside the Playwright container",
+  "dependencies": {
+    "@playwright/test": "1.64.1",
+    "cheerio": "^1.2.0"
+  }
+}
