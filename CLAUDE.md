@@ -43,6 +43,8 @@ Reduce bullet list left padding on mobile
 
 Use: **Add** / **Fix** / **Update** / **Remove**.
 
+Never add a `Co-Authored-By` trailer (or any other attribution trailer) to commit messages.
+
 After each commit, check whether the change affects anything documented in this file or in `README.md` (commands, conventions, thresholds, gotchas, pipeline, prerequisites). If it does, update the relevant file in the same commit or a follow-up before the PR is merged.
 
 ## Code Conventions
@@ -69,6 +71,8 @@ Every change must pass both gates before it can ship:
 When adding a page, add it to `PAGES` in `tests/site.js` (every per-page suite, the screenshot tests and the sitemap check read it from there), run `npm run updateScreenshots`, and, if indexable, add its URL to `lighthouserc.yml`.
 
 ## Testing
+
+**Never run `npm run testPlaywright` or `npm run updateScreenshots` unless specifically asked.**
 
 Tests run against **built output in `public/`**, not source files. `npm run test` cleans and builds first, so it always tests the current source with nothing left over from earlier builds:
 
