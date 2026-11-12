@@ -40,7 +40,7 @@ const IndexPage = () => (
         <div className="introContent">
           <span className="title">computer science graduate</span>
           <span className="divider"> | </span>
-          <span className="title">software engineer</span>
+          <span className="title">principal engineer</span>
           <span className="divider"> | </span>
           <span className="title">tech lead</span>
           <div className="video">

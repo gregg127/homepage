@@ -18,23 +18,23 @@ const Contact = styled.div`
 `;
 
 const ContactPage = () => {
-  const { email, social } = useSiteMetadata();
+  const { social } = useSiteMetadata();
 
   return (
     <Page>
       <Contact>
-        <Panel title="any questions?" as="h1">
+        <Panel title="get in touch" as="h1">
           <p>
-            Drop me a line at <Link href={`mailto:${email}`}>{email}</Link>.
+            Feel free to message me on{" "}
+            <Link href={social.linkedin} openInNewTab>
+              LinkedIn
+            </Link>
+            .
           </p>
           <p>
             I'm also on{" "}
             <Link href={social.github} openInNewTab>
               GitHub
-            </Link>{" "}
-            and{" "}
-            <Link href={social.linkedin} openInNewTab>
-              LinkedIn
             </Link>
             .
           </p>
@@ -50,7 +50,7 @@ export function Head() {
   return (
     <Seo
       title="Contact"
-      description="Get in touch with Grzegorz Gołębiowski - by email, on GitHub, or on LinkedIn."
+      description="Get in touch with Grzegorz Gołębiowski on LinkedIn or GitHub."
       pathname="/contact/"
     />
   );

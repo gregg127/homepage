@@ -22,11 +22,11 @@ npm run build              # build CV PDF (if latexmk available) + Gatsby site â
 npm run clean              # clear .cache/ and public/
 npm run test               # clean + build, then run all tests: build-output suites + Playwright screenshots
 npm run testOutput         # build-output suites only, on the existing build
-npm run testPlaywright     # Playwright screenshot tests only, on the existing build (in Docker)
-npm run updateScreenshots  # build, then overwrite the reference screenshots
+npm run testPlaywright     # Playwright screenshot tests only, against the app built and served in Docker
+npm run updateScreenshots  # overwrite the reference screenshots (app built in Docker)
 ```
 
-Tests run against the built output in `public/`, not source files. `npm run test` cleans and builds first; `testOutput` and `testPlaywright` don't, so run `npm run build` before them after changing the source.
+The build-output suites run against `public/`, not source files. `npm run test` cleans and builds first; `testOutput` doesn't, so run `npm run build` before it after changing the source. `testPlaywright` builds the production Docker image from source and tests the app running in it, so it never uses `public/`.
 
 ## Run in Docker
 

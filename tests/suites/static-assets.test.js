@@ -12,7 +12,6 @@ const ASSETS = [
   "jin_yang_handshake.mp4",
   "icons/java-svgrepo-com.svg",
   "icons/python-svgrepo-com.svg",
-  "icons/clojure-svgrepo-com.svg",
   "icons/spring-svgrepo-com.svg",
   "icons/postgresql-svgrepo-com.svg",
   "icons/kafka-svgrepo-com.svg",
@@ -24,8 +23,6 @@ const ASSETS = [
   "icons/javascript-svgrepo-com.svg",
   "icons/typescript-svgrepo-com.svg",
   "icons/react-svgrepo-com.svg",
-  "icons/linux-svgrepo-com.svg",
-  "icons/apple-svgrepo-com.svg",
   "icons/sun-svgrepo-com.svg",
   "icons/moon-svgrepo-com.svg",
 ];
