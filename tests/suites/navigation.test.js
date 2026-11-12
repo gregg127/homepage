@@ -3,7 +3,6 @@ const assert = require("node:assert/strict");
 
 const {
   AUTHOR,
-  EMAIL,
   GITHUB_URL,
   LINKEDIN_URL,
   CV_PATH,
@@ -88,15 +87,14 @@ describe("footer", () => {
 });
 
 describe("contact page", () => {
-  it("links to email, GitHub and LinkedIn", () => {
+  it("links to LinkedIn and GitHub", () => {
     const $ = loadPage("contact/index.html");
 
     assert.deepEqual(
       linksIn($, "main a").map(({ label, href }) => ({ label, href })),
       [
-        { label: EMAIL, href: `mailto:${EMAIL}` },
-        { label: "GitHub", href: GITHUB_URL },
         { label: "LinkedIn", href: LINKEDIN_URL },
+        { label: "GitHub", href: GITHUB_URL },
       ],
     );
   });
