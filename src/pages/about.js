@@ -34,14 +34,14 @@ const AboutPage = () => (
     <About>
       <Panel title="about me" as="h1">
         <div>
-          Software Engineer with a Master's degree in Computer Science and
-          hands-on experience in Java-based tech stack. Led a team of 10+
-          members in building software for the banking sector. Experienced in
-          guiding the transformation of a system from monolithic architecture to
-          microservices, while continuously delivering new features and
-          developing solutions to address challenges related to latency,
-          throughput and scalability. Collaborated closely with clients and
-          across multiple teams to deliver solutions.
+          Software Engineer with hands-on experience in Java-based tech stack.
+          Led a team of 10+ members in building software for the banking
+          sector. Experienced in guiding the transformation of a system from
+          monolithic architecture to microservices, while continuously
+          delivering new features and developing solutions to address
+          challenges related to latency, throughput and scalability.
+          Collaborated closely with clients and across multiple teams to
+          deliver solutions.
         </div>
         <div className="about-current">
           Currently working as a Principal Engineer, building AI solutions that
@@ -79,11 +79,11 @@ const AboutPage = () => (
               header: "Tech Lead, Senior Java Developer",
               date: "Jan 2023 – Sep 2025",
               list: [
-                "Led development of a CMS web platform with 15+ deployed services, serving traffic for millions of users for one of the leading banks in Poland",
-                "Delivered features across multiple projects in both time-and-material and fixed-price contracts, working across Waterfall and Agile methodologies",
-                "Redesigned release and deployment processes, reducing error rate and developer's manual effort",
+                "Led a team of 10+ members developing a CMS web platform with 15+ deployed services for one of the leading banks in Poland",
+                "Guided the transformation from monolithic architecture to microservices while continuously delivering new features",
+                "Analysed requirements and estimated work together with the client and other teams, delivering features in both time-and-material and fixed-price contracts, across Waterfall and Agile methodologies",
+                "Redesigned release and deployment processes, reducing error rate and developers' manual effort",
                 "Led major version migrations of PostgreSQL 9.6 to 16, OKD 3 to 4 and Java 8 to 11 across multiple applications",
-                "Maintained and enhanced a throttling mechanism using Apache Kafka as a message broker",
                 "Analysed DDoS incidents, investigated logs, implemented traffic protection measures and fixed corresponding bugs",
               ],
             },
@@ -101,9 +101,7 @@ const AboutPage = () => (
               date: "Sep 2020 – Apr 2022",
               list: [
                 "Remediated security vulnerabilities identified in external audits and tuned circuit breaker and rate limiting mechanisms",
-                "Implemented new features and contributed to client requirements analysis and refinement within an Agile team",
-                "Maintained and improved Jenkins pipelines",
-                "Improved system observability with Grafana dashboards and alerts",
+                "Improved Jenkins pipelines and system observability with Grafana dashboards and alerts",
               ],
             },
             {
@@ -111,13 +109,12 @@ const AboutPage = () => (
               date: "Aug 2019 – Aug 2020",
               list: [
                 <>
-                  Developed and maintained the{" "}
+                  Developed new modules and components of the{" "}
                   <Link href="https://www.e-point.com/produkty/e-point-cms">
                     e-point CMS
                   </Link>{" "}
-                  platform for the banking and insurance sector
+                  platform for clients in the banking and insurance sector
                 </>,
-                "Implemented new CMS modules and components tailored to client requirements",
               ],
             },
           ].map((entry, index) => (
@@ -136,7 +133,6 @@ const AboutPage = () => (
           {[
             { iconName: "java", label: "Java" },
             { iconName: "python", label: "Python" },
-            { iconName: "clojure", label: "Clojure" },
             { iconName: "spring", label: "Spring" },
             { iconName: "postgresql", label: "PostgreSQL" },
             { iconName: "kafka", label: "Kafka" },
@@ -148,8 +144,6 @@ const AboutPage = () => (
             { iconName: "javascript", label: "JavaScript" },
             { iconName: "typescript", label: "TypeScript" },
             { iconName: "react", label: "React" },
-            { iconName: "linux", label: "Linux" },
-            { iconName: "apple", label: "macOS" },
           ].map((tech, index) => (
             <Icon key={index} iconName={tech.iconName} label={tech.label} />
           ))}
@@ -202,7 +196,7 @@ export function Head() {
   return (
     <Seo
       title="About"
-      description="Software engineer, tech lead. Experience in the banking sector building high-traffic Java platforms."
+      description="Principal engineer and Java tech lead. Building AI tooling for software development and high-traffic platforms for the banking sector."
       pathname="/about/"
     />
   );
